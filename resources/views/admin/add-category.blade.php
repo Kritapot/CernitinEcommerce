@@ -26,6 +26,17 @@
                                 </div>
                             </div>
                             <div class="control-group">
+                                <label class="control-label">ประเภทย่อย</label>
+                                <div class="controls">
+                                    <select name="parent_id" style="width: 220px">
+                                        <option value="0">--ประเภทหลัก--</option>
+                                            @foreach ($levelCategory as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
                                 <label class="control-label">รายละเอียด</label>
                                 <div class="controls">
                                     <textarea name="description" id="description"></textarea>

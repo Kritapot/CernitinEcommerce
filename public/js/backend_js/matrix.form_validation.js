@@ -62,10 +62,6 @@ $(document).ready(function(){
 				required:true,
 				description: true
 			},
-			url:{
-				required:true,
-				url: true
-			}
 		},
 		errorClass: "help-inline",
 		errorElement: "span",
@@ -88,10 +84,6 @@ $(document).ready(function(){
 				required:true,
 				description: true
 			},
-			url:{
-				required:true,
-				url: true
-			}
 		},
 		errorClass: "help-inline",
 		errorElement: "span",

@@ -29,6 +29,7 @@ class CategoryController extends Controller
         $data                       =   $request->all();
         $saveCategory               =   new Category;
         $saveCategory->name         =   $data['name'];
+        $saveCategory->parent_id    =   $data['parent_id'];
         $saveCategory->description  =   $data['description'];
         $saveCategory->url          =   $data['url'];
         $saveCategory->save();
@@ -58,8 +59,9 @@ class CategoryController extends Controller
     public function edit_category($id) {
 
         $category       =   Category::where('id', $id)->first();
+        $levelCategory      =   Category::get();
 
-        return view('admin.edit-category', with(['category' => $category]));
+        return view('admin.edit-category', with(['category' => $category, 'levelCategory' => $levelCategory]));
     }
 
 

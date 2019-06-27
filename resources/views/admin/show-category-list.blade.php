@@ -55,6 +55,14 @@
                                             </div>
                                         </th>
                                         <th class="ui-state-default" role="columnheader" tabindex="0"
+                                        aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                                        aria-label="Browser: activate to sort column ascending"
+                                        style="width: 100px;">
+                                            <div class="DataTables_sort_wrapper">รหัสประเภทย่อย<span
+                                                    class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
+                                            </div>
+                                        </th>
+                                        <th class="ui-state-default" role="columnheader" tabindex="0"
                                             aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending"
                                             style="width: 399px;">
@@ -86,6 +94,7 @@
                                         <tr class="gradeA odd">
                                             <td class="  sorting_1">{{ $item->id }}</td>
                                             <td class="">{{ $item->name }}</td>
+                                            <td class="">{{ $item->parent_id }}</td>
                                             <td class="">{{ $item->description }}</td>
                                             <td class="">{{ $item->url }}</td>
                                             <td class="">

@@ -9,6 +9,10 @@ class Category extends Model
     protected $fillable = [
         'name',
         'description',
-        'url',
     ];
+
+    public function getUrlAttribute($value)
+    {
+        return !empty($value) ? $value : "";
+    }
 }
