@@ -16,7 +16,7 @@
         <div id="loginbox">
             <form id="loginform" class="form-vertical" method="post" action="{{ url('admin') }}">{{ csrf_field() }}
                 @if (Session::has('flash_message_errors'))
-                        <div class="alert alert-error alert-block">
+                        <div class="alert alert-error alert-block" id="message-box">
                             <strong>{!! session('flash_message_errors') !!}</strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -24,7 +24,7 @@
                     </div>
                 @endif
                 @if (Session::has('flash_message_success'))
-                    <div class="alert alert-success alert-block">
+                    <div class="alert alert-success alert-block" id="message-box">
                         <strong>{!! session('flash_message_success') !!}</strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
