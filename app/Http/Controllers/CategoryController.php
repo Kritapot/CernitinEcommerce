@@ -22,7 +22,15 @@ class CategoryController extends Controller
         $saveCategory->url          =   $data['url'];
         $saveCategory->save();
 
-        return redirect('/admin/add-category')->with('flash_message_success', 'บันทึกประเภทสินค้าเรียบร้อยแล้ว');
+        return redirect('/admin/show-category')->with('flash_message_success', 'บันทึกประเภทสินค้าเรียบร้อยแล้ว');
 
+    }
+
+
+    public function show_category()
+    {
+        $category       =   Category::get();
+
+        return view('admin.show-category-list', with(['category' => $category]));
     }
 }

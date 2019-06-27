@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
     //Category
     Route::get('/admin/add-category', 'CategoryController@add_category');
     Route::post('/admin/add-category/save', 'CategoryController@save');
+    Route::get('/admin/show-category', 'CategoryController@show_category');
+
 });
 
 

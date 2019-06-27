@@ -9,10 +9,11 @@
 <link rel="stylesheet" href="{{ asset('css/backend_css') }}/fullcalendar.css" />
 <link rel="stylesheet" href="{{ asset('css/backend_css') }}/matrix-style.css" />
 <link rel="stylesheet" href="{{ asset('css/backend_css') }}/matrix-media.css" />
+<link rel="stylesheet" href="{{ asset('css/backend_css') }}/select2.css" />
+<link rel="stylesheet" href="{{ asset('css/backend_css') }}/uniform.css" />
 <link href="{{ asset('fonts/backend_fonts') }}/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="{{ asset('css/backend_css') }}/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ asset('vendor/mdbootstrap') }}/mdb.min.css" />
 
 </head>
 <body>
@@ -29,6 +30,10 @@
 <script src="{{ asset('js/backend_js') }}/jquery.validate.js"></script>
 <script src="{{ asset('js/backend_js') }}/matrix.js"></script>
 <script src="{{ asset('js/backend_js') }}/matrix.form_validation.js"></script>
+<script src="{{ asset('js/backend_js') }}/jquery.dataTables.min.js"></script>
+<script src="{{ asset('js/backend_js') }}/matrix.tables.js"></script>
+
+
 <script>
     $("#message-box").fadeTo(4000, 2000).slideUp(500, function(){
     $("#message-box").slideUp(2000);

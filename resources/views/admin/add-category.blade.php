@@ -18,22 +18,6 @@
                     </div>
 
                     <div class="widget-content nopadding">
-                        @if (Session::has('flash_message_errors'))
-                        <div class="alert alert-error alert-block" id="message-box">
-                            <strong>{!! session('flash_message_errors') !!}</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        @endif
-                        @if (Session::has('flash_message_success'))
-                        <div class="alert alert-success alert-block" id="message-box">
-                            <strong>{!! session('flash_message_success') !!}</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        @endif
                         <form class="form-horizontal" method="post" action="{{ url('/admin/add-category/save') }}" name="add-category" id="add-category" novalidate="novalidate">{{ csrf_field() }}
                             <div class="control-group">
                                 <label class="control-label">ชื่อประเภท</label>
