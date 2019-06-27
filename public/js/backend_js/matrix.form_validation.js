@@ -22,7 +22,7 @@ $(document).ready(function(){
 
 	$('select').select2();
 
-	// Form Validation
+    // Form Validation
     $("#basic_validate").validate({
 		rules:{
 			required:{
@@ -35,6 +35,32 @@ $(document).ready(function(){
 			date:{
 				required:true,
 				date: true
+			},
+			url:{
+				required:true,
+				url: true
+			}
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		}
+	});
+
+    $("#add-category").validate({
+		rules:{
+			name:{
+				required:true,
+				name: true
+			},
+			description:{
+				required:true,
+				description: true
 			},
 			url:{
 				required:true,

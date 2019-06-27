@@ -29,6 +29,10 @@
 <script src="{{ asset('js/backend_js') }}/jquery.validate.js"></script>
 <script src="{{ asset('js/backend_js') }}/matrix.js"></script>
 <script src="{{ asset('js/backend_js') }}/matrix.form_validation.js"></script>
-
+<script>
+    $("#message-box").fadeTo(4000, 2000).slideUp(500, function(){
+    $("#message-box").slideUp(2000);
+    });
+</script>
 </body>
 </html>
