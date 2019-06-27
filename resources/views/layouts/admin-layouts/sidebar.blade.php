@@ -8,6 +8,12 @@
           <li><a href="{{ url('/admin/show-category') }}">แสดงประเภทสินค้าทั้งหมด</a></li>
         </ul>
       </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>สินค้า</span> <span class="label label-important">3</span></a>
+        <ul>
+          <li><a href="{{ url('/admin/add-product') }}">เพิ่มสินค้า</a></li>
+          <li><a href="{{ url('/admin/show-category') }}">แสดงสินค้าทั้งหมด</a></li>
+        </ul>
+      </li>
       <li> <a href="charts.html"><i class="icon icon-signal"></i> <span>Charts &amp; graphs</span></a> </li>
       <li> <a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a> </li>
       <li><a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a></li>
@@ -21,14 +27,6 @@
           <li><a href="calendar.html">Calendar</a></li>
           <li><a href="invoice.html">Invoice</a></li>
           <li><a href="chat.html">Chat option</a></li>
-        </ul>
-      </li>
-      <li class="submenu"> <a href="#"><i class="icon icon-info-sign"></i> <span>Error</span> <span class="label label-important">4</span></a>
-        <ul>
-          <li><a href="error403.html">Error 403</a></li>
-          <li><a href="error404.html">Error 404</a></li>
-          <li><a href="error405.html">Error 405</a></li>
-          <li><a href="error500.html">Error 500</a></li>
         </ul>
       </li>
       <li class="content"> <span>Monthly Bandwidth Transfer</span>
