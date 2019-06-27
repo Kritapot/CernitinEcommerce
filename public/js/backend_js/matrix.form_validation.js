@@ -1,5 +1,22 @@
 
 $(document).ready(function(){
+    $('#new_pwd').click(function() {
+        var current_pwd     =   $('#current_pwd').val();
+        $.ajax({
+            type:   'get',
+            url:    '/admin/check-pwd',
+            data:   {current_pwd : current_pwd},
+            success:function(respon) {
+                if(respon == "Failed") {
+                    $('#password-check').html("<font color='red'>กรอกรหัสผ่านผิด กรุณากรอกใหม่</font>");
+                }else if(respon == "True") {
+                    $('#password-check').html("<font color='green'>รหัสผ่านถูกต้อง</font>")
+                }
+            },error:function(e) {
+                console.log(e)
+            }
+        })
+    });
 
 	$('input[type=checkbox],input[type=radio],input[type=file]').uniform();
 
