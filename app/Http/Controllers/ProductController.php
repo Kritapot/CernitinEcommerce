@@ -11,13 +11,8 @@ class ProductController extends Controller
 {
     public function add_product()
     {
-        $categories             =   Category::where('parent_id', 0)->get();
-        //dd($categories);
-        //$category_dropdown      =   "<option selected disabled>Select</option>";
-        //foreach($categories as $cat){
-            //$category_dropdown  =   "<option value='".$cat->id."'>".$cat->name."</option>";
-        //}
+        $categories                     =   Category::get();
 
-        return view('admin.product.add-product', with(['categories' => $categories]));
+        return view('admin.product.add-product', ['categories' => $categories]);
     }
 }
