@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function add_category()
     {
-        return view('admin.add-category');
+        $levelCategory      =   Category::where('parent_id', 0)->get();
+        return view('admin.add-category', with(['levelCategory' => $levelCategory]));
     }
 
     /**
