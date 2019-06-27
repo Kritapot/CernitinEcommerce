@@ -90,7 +90,7 @@
                                             <td class="">{{ $item->url }}</td>
                                             <td class="">
                                                 <a href="{{ url('/admin/edit-category/'.$item->id) }}" class="btn btn-info btn-mini">แก้ไข</a>
-                                                <button class="btn btn-danger btn-mini">ลบ</button>
+                                                <a id="delCat" href="{{ url('/admin/delete-category/'.$item->id) }}" class="btn btn-danger btn-mini">ลบ</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -103,5 +103,4 @@
         </div>
     </div>
 </div>
-
 @endsection

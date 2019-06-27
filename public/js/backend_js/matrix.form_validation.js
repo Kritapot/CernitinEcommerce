@@ -169,5 +169,11 @@ $(document).ready(function(){
 			$(element).parents('.control-group').removeClass('error');
 			$(element).parents('.control-group').addClass('success');
 		}
-	});
+    });
+
+    $('#delCat').click(function() {
+
+    });
+
+
 });
