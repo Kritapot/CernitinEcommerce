@@ -76,7 +76,34 @@ $(document).ready(function(){
 			$(element).parents('.control-group').removeClass('error');
 			$(element).parents('.control-group').addClass('success');
 		}
+    });
+
+    $("#edit-category").validate({
+		rules:{
+			name:{
+				required:true,
+				name: true
+			},
+			description:{
+				required:true,
+				description: true
+			},
+			url:{
+				required:true,
+				url: true
+			}
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		}
 	});
+
 
 	$("#number_validate").validate({
 		rules:{

@@ -8,6 +8,22 @@
                 class="current">แสดงประเภทสินค้าทั้งหมด</a> </div>
         <h1>ประเภทสินค้า</h1>
     </div>
+    @if (Session::has('flash_message_errors'))
+    <div class="alert alert-error alert-block" id="message-box">
+        <strong>{!! session('flash_message_errors') !!}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+    @if (Session::has('flash_message_success'))
+    <div class="alert alert-success alert-block" id="message-box">
+        <strong>{!! session('flash_message_success') !!}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
     <div class="container-fluid">
         <hr>
         <div class="row-fluid">
@@ -16,23 +32,6 @@
                     <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
                         <h5>แสดงประเภทสินค้าทั้งหมด</h5>
                     </div>
-                    @if (Session::has('flash_message_errors'))
-                    <div class="alert alert-error alert-block" id="message-box">
-                        <strong>{!! session('flash_message_errors') !!}</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @endif
-                    @if (Session::has('flash_message_success'))
-                    <div class="alert alert-success alert-block" id="message-box">
-                        <strong>{!! session('flash_message_success') !!}</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @endif
-
                     <div class="widget-content nopadding">
                         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
                             <table class="table table-bordered data-table dataTable" id="DataTables_Table_0">
@@ -58,7 +57,7 @@
                                         <th class="ui-state-default" role="columnheader" tabindex="0"
                                             aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending"
-                                            style="width: 499px;">
+                                            style="width: 399px;">
                                             <div class="DataTables_sort_wrapper">รายละเอียด<span
                                                     class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
                                             </div>
@@ -74,7 +73,7 @@
                                         <th class="ui-state-default" role="columnheader" tabindex="0"
                                         aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                                         aria-label="Engine version: activate to sort column ascending"
-                                        style="width: 73px;">
+                                        style="width: 173px;">
                                         <div class="DataTables_sort_wrapper">Action<span
                                                 class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
                                         </div>
@@ -90,7 +89,7 @@
                                             <td class="">{{ $item->description }}</td>
                                             <td class="">{{ $item->url }}</td>
                                             <td class="">
-                                                <button class="btn btn-info btn-mini">แก้ไข</button>
+                                                <a href="{{ url('/admin/edit-category/'.$item->id) }}" class="btn btn-info btn-mini">แก้ไข</a>
                                                 <button class="btn btn-danger btn-mini">ลบ</button>
                                             </td>
                                         </tr>

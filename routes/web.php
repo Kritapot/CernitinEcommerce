@@ -29,7 +29,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/add-category', 'CategoryController@add_category');
     Route::post('/admin/add-category/save', 'CategoryController@save');
     Route::get('/admin/show-category', 'CategoryController@show_category');
-
+    Route::get('/admin/show-category', 'CategoryController@show_category');
+    Route::get('/admin/edit-category/{id}', 'CategoryController@edit_category');
+    Route::post('/admin/update-category/{id}', 'CategoryController@update_category');
 });
 
 
