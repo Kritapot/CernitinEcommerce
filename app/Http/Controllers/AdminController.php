@@ -73,4 +73,20 @@ class AdminController extends Controller
             echo "Failed"; die;
         }
     }
+
+
+    public function update_password(Request $request)
+    {
+            $data               =   $request->all();
+            $checkPassword      =   User::where('email', Auth::user()->email)->first();
+            $currentPassword    =   $data['current_pwd'];
+
+            if(Hash::check($currentPassword, $checkPassword['password'])){
+                $password   =   bcrypt($data['new_pwd']);
+                User::where('id', 1)->update(['password' => $password]);
+                return redirect('/admin/setting')->with('flash_message_success', 'เปลี่ยนรหัสผ่านเรียบร้อยแล้ว');
+            }else{
+                return redirect('/admin/setting')->with('flash_message_errors', 'กรอกรหัสผ่านผิด');
+            }
+    }
 }

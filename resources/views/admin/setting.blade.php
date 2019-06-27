@@ -13,8 +13,27 @@
                 <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
                   <h5>เปลี่ยนรหัสผ่าน</h5>
                 </div>
+
                 <div class="widget-content nopadding">
-                    <form class="form-horizontal" method="post" action="#" name="password_validate" id="password_validate" novalidate="novalidate">
+                    @if (Session::has('flash_message_errors'))
+                        <div class="alert alert-error alert-block">
+                            <strong>{!! session('flash_message_errors') !!}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                    @endif
+                    @if (Session::has('flash_message_success'))
+                        <div class="alert alert-success alert-block">
+                            <strong>{!! session('flash_message_success') !!}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+
+                    <form class="form-horizontal" method="post" action="{{ url('/admin/update-password') }}" name="password_validate" id="password_validate" novalidate="novalidate">
+                        {{ csrf_field() }}
                         <div class="control-group">
                         <label class="control-label">Current password</label>
                         <div class="controls">
