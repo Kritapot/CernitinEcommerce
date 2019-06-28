@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Session;
+use Image;
+use Auth;
 use App\Category;
 use App\Product;
 use PhpParser\Node\Scalar\MagicConst\Method;
@@ -24,16 +27,38 @@ class ProductController extends Controller
             $saveProduct->product_color =   $data['product_color'];
             $saveProduct->description   =   $data['description'];
             $saveProduct->price         =   $data['price'];
-            if(!empty($data['image'])){
-                $saveProduct->image         =   $data['image'];
-            }else{
-                $saveProduct->image         =   "";
-            }
-            $saveProduct->save();
 
+            //Upload Image
+            if($request->hasFile('image')){
+                $imgTmp         =   Input::file('image');
+                if($imgTmp->isValid()){
+                    $extention              =   $imgTmp->getClientOriginalExtension();
+                    $filename               =   rand(111, 99999).'.'.$extention;
+                    $large_image_path       =   'images/backend_images/products/large/'.$filename;
+                    $medium_image_path      =   'images/backend_images/products/medium/'.$filename;
+                    $small_image_path       =   'images/backend_images/products/small/'.$filename;
+
+                }
+                //Resize Image
+                Image::make($imgTmp)->save($large_image_path);
+                Image::make($imgTmp)->resize(600, 600)->save($medium_image_path);
+                Image::make($imgTmp)->resize(300, 300)->save($small_image_path);
+
+                //Save name image into database
+                $saveProduct->image         =   $filename;
+            }
+
+            $saveProduct->save();
+            return redirect('/admin/list-product')->with('flash_message_success', 'เพิ่มรายการสินค้าเรียบร้อยแล้ว');
         }
 
         $categories     =   Category::get();
         return view('admin.product.add-product', ['categories' => $categories]);
+    }
+
+
+    public function list_product()
+    {
+        return view('admin.product.list-product');
     }
 }

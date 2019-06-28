@@ -79,7 +79,7 @@ class CategoryController extends Controller
         $updateCategory                     =   Category::where('id', $id)->first();
         $updateCategory->name               =   $data['name'];
         $updateCategory->description        =   $data['description'];
-        $updateCategory->url               =   $data['url'];
+        $updateCategory->url                =   $data['url'];
         $updateCategory->save();
 
         return redirect('/admin/show-category')->with('flash_message_success', 'แก้ไขประเภทสินค้าเรียบร้อย');

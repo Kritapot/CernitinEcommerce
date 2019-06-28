@@ -91,6 +91,9 @@ $(document).ready(function(){
             category_id:{
 				required:true,
 				category_id: true
+            },
+            image:{
+				required:true,
 			},
 		},
 		errorClass: "help-inline",

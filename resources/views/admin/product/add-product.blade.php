@@ -33,7 +33,7 @@
                         <h5>เพิ่มสินค้า</h5>
                     </div>
                     <div class="widget-content nopadding">
-                        <form class="form-horizontal" method="post" action="{{ url('/admin/add-product') }}" name="add-product" id="add-product" novalidate="novalidate">{{ csrf_field() }}
+                        <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{{ url('/admin/add-product') }}" name="add-product" id="add-product" novalidate="novalidate">{{ csrf_field() }}
                             <div class="control-group">
                                 <label class="control-label">ประเภทสินค้า</label>
                                 <div class="controls">
