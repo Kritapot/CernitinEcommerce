@@ -66,7 +66,7 @@
                                         aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                                         aria-label="Browser: activate to sort column ascending"
                                         style="width: 100px;">
-                                            <div class="DataTables_sort_wrapper">รหัสสินค้า<span
+                                            <div class="DataTables_sort_wrapper">code<span
                                                     class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
                                             </div>
                                         </th>
@@ -97,7 +97,7 @@
                                         <th class="ui-state-default" role="columnheader" tabindex="0"
                                         aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                                         aria-label="Engine version: activate to sort column ascending"
-                                        style="width: 173px;">
+                                        style="width: 200px;">
                                         <div class="DataTables_sort_wrapper">Action<span
                                                 class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
                                         </div>
@@ -119,10 +119,25 @@
                                                 @endif
                                             </td>
                                             <td class="">
+                                                <a href="#myModal{{ $item['id'] }}" data-toggle="modal" class="btn btn-success btn-mini">ดูรายละเอียด</a>
                                                 <a href="" class="btn btn-info btn-mini">แก้ไข</a>
                                                 <a id="delete-product" href="" class="btn btn-danger btn-mini">ลบ</a>
                                             </td>
                                         </tr>
+                                                <div id="myModal{{ $item['id'] }}" class="modal hide">
+                                                    <div class="modal-header">
+                                                        <button data-dismiss="modal" class="close" type="button">×</button>
+                                                        <h3>รายละเอียดของสินค้า</h3>
+                                                    </div>
+                                                    <div class="modal-body" style="font-size: 1.4em">
+                                                        <p><span style="font-weight: 600">รหัสสินค้า :</span> {{ $item['id'] }}</p>
+                                                        <p><span style="font-weight: 600">ประเภทสินค้า :</span> {{ $item['category_id'] }}</p>
+                                                        <p><span style="font-weight: 600">รายละเอียด :</span> {{ $item['description'] }}</p>
+                                                        <p><span style="font-weight: 600">code :</span> {{ $item['product_code'] }}</p>
+                                                        <p><span style="font-weight: 600">สี :</span> {{ $item['product_color'] }}</p>
+                                                        <p><span style="font-weight: 600">ราคา :</span> {{ $item['price'] }}</p>
+                                                    </div>
+                                                </div>
                                     @endforeach
                                 </tbody>
                             </table>
