@@ -59,6 +59,13 @@ class ProductController extends Controller
 
     public function list_product()
     {
-        return view('admin.product.list-product');
+        $product        =   Product::get();
+
+        foreach ($product as $key => $value) {
+            $categories_name                =   Category::where('id', $value->category_id)->first();
+            $product[$key]->category_id     =   $categories_name->name;
+        }
+
+        return view('admin.product.list-product', ['product' => $product]);
     }
 }
