@@ -15,4 +15,9 @@ class Category extends Model
     {
         return !empty($value) ? $value : "";
     }
+
+    public function product()
+    {
+        return $this->hasMany(Product::class, 'id');
+    }
 }

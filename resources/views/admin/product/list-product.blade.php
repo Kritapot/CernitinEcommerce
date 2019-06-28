@@ -120,7 +120,7 @@
                                             </td>
                                             <td class="">
                                                 <a href="#myModal{{ $item['id'] }}" data-toggle="modal" class="btn btn-success btn-mini">ดูรายละเอียด</a>
-                                                <a href="" class="btn btn-info btn-mini">แก้ไข</a>
+                                                <a href="{{ url('/admin/edit-product/'.$item['id']) }}" class="btn btn-info btn-mini">แก้ไข</a>
                                                 <a id="delete-product" href="" class="btn btn-danger btn-mini">ลบ</a>
                                             </td>
                                         </tr>
