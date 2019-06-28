@@ -80,8 +80,10 @@
                                 <div class="controls">
                                     <input type="file" name="image" id="image">
                                     <input type="hidden" name="current_image" value="{{$product['image']}}">
-                                    <img style="width: 100px" src="{{ asset('images/backend_images/products/small/'.$product['image']) }}">
-
+                                    @if (!empty($product['image']))
+                                        <img style="width: 100px" src="{{ asset('images/backend_images/products/small/'.$product['image']) }}">
+                                        | <a id="delete-pic" href="{{ url('/admin/delete-pic-product/'.$product['id']) }}" class="btn btn-danger btn-mini">ลบรูปภาพ</a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-actions">

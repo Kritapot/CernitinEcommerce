@@ -117,4 +117,12 @@ class ProductController extends Controller
 
         return view('admin.product.edit-product', ['product' => $product, 'categories_dropdown' => $categories_dropdown]);
     }
+
+
+    public function delete_picture($id)
+    {
+        Product::where('id', $id)->update(['image' => ""]);
+
+        return redirect()->back()->with('flash_message_success', 'ลบรูปภาพสินค้าเรียบร้อย');
+    }
 }
