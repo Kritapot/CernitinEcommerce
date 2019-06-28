@@ -99,7 +99,7 @@
                                             <td class="">{{ $item->url }}</td>
                                             <td class="">
                                                 <a href="{{ url('/admin/edit-category/'.$item->id) }}" class="btn btn-info btn-mini">แก้ไข</a>
-                                                <a id="delCat" href="{{ url('/admin/delete-category/'.$item->id) }}" class="btn btn-danger btn-mini">ลบ</a>
+                                                <a rel="{{$item->id}}" id="delCat" rel1="delete-category" href="javascript:" class="btn btn-danger btn-mini deleteCategory">ลบ</a>
                                             </td>
                                         </tr>
                                     @endforeach

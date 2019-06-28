@@ -125,4 +125,12 @@ class ProductController extends Controller
 
         return redirect()->back()->with('flash_message_success', 'ลบรูปภาพสินค้าเรียบร้อย');
     }
+
+
+    public function delete_product($id) {
+        Product::where('id', $id)->first()->delete();
+
+        return redirect('/admin/list-product')->with('flash_message_success', 'ลบรายการสินค้าเรียบร้อยแล้ว');
+
+    }
 }

@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
     $('#current_pwd').keyup(function() {
         var current_pwd     =   $('#current_pwd').val();
@@ -227,9 +226,55 @@ $(document).ready(function(){
 		}
     });
 
-    $('#delCat').click(function() {
+    $('.deleteCategory').click(function() {
+        var id                  =   $(this).attr('rel');
+        var deleteFunction      =   $(this).attr('rel1');
 
+        Swal.fire({
+            title: 'คุณแน่ใจที่จะลบประเภทสินค้า?',
+            text: "คุณจะไม่สามารถกลับไปแก้ไขได้อีกถ้ากดปุ่มยืนยัน!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ยืนยันการลบประเภทสินค้า',
+            cancelButtonText: 'ยกเลิการทำรายการ'
+          }).then((result) => {
+            if (result.value) {
+              Swal.fire(
+                'ลบประเภทสินค้า!',
+                'ประเภทสินค้าถูกลบเรียบร้อยแล้ว',
+                'success'
+              )
+              window.location.href="/admin/"+deleteFunction+"/"+id;
+            }
+          })
     });
 
+    $('.deleteRecord').click(function() {
+        var id                  =   $(this).attr('rel');
+        var deleteFunction      =   $(this).attr('rel1');
+
+        Swal.fire({
+            title: 'คุณแน่ใจที่จะลบรายการสินค้า?',
+            text: "คุณจะไม่สามารถกลับไปแก้ไขได้อีกถ้ากดปุ่มยืนยัน!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ยืนยันการลบรายการสินค้า',
+            cancelButtonText: 'ยกเลิการทำรายการ'
+          }).then((result) => {
+            if (result.value) {
+              Swal.fire(
+                'ลบรายการสินค้า!',
+                'รายการสินค้าถูกลบเรียบร้อยแล้ว',
+                'success'
+              )
+              window.location.href="/admin/"+deleteFunction+"/"+id;
+            }
+          })
+
+    });
 
 });
