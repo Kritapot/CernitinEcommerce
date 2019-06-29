@@ -135,8 +135,15 @@ class ProductController extends Controller
     }
 
 
-    public function add_attributes($id)
+    public function add_attributes(Request $request, $id)
     {
-        return view('admin.product.add-attributes');
+        if($request->isMethod('post')) {
+            $data       =   $request->all();
+            dd($data);
+        }
+
+        $productAt      =   Product::where('id', $id)->first();
+
+        return view('admin.product.add-attributes', with(['productAt' => $productAt]));
     }
 }

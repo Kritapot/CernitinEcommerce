@@ -16,37 +16,33 @@
                     <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
                         <h5>เพิ่ม attributes</h5>
                     </div>
-
                     <div class="widget-content nopadding">
-                        <form class="form-horizontal" method="post" action="{{ url('/admin/add-attributes') }}" name="add-attributes" id="add-attributes" novalidate="novalidate">{{ csrf_field() }}
+                        <form class="form-horizontal" method="post" action="{{ url('/admin/add-attributes/'.$productAt['id']) }}" name="add-attributes" id="add-attributes" novalidate="novalidate">{{ csrf_field() }}
                             <div class="control-group">
-                                <label class="control-label">ชื่อประเภท</label>
-                                <div class="controls">
-                                    <input type="text" name="name" id="name">
-                                </div>
+                                <label class="control-label">ชื่อสินค้า</label>
+                                <label class="control-label"><strong>{{ $productAt['product_name'] }}</strong></label>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">ประเภทย่อย</label>
-                                <div class="controls">
-                                    <select name="parent_id" style="width: 220px">
-                                        <option value="0">--ประเภทหลัก--</option>
-                                    </select>
-                                </div>
+                                <label class="control-label">Code</label>
+                                <label class="control-label"><strong>{{ $productAt['product_code'] }}</strong></label>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">รายละเอียด</label>
-                                <div class="controls">
-                                    <textarea name="description" id="description"></textarea>
-                                </div>
+                                <label class="control-label">สี</label>
+                                <label class="control-label"><strong>{{ $productAt['product_color'] }}</strong></label>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">URL</label>
-                                <div class="controls">
-                                    <input type="text" name="url" id="url">
+                                <label class="control-label"></label>
+                                <div class="field_wrapper">
+                                        <input type="text" name="sku[]" id="sku" placeholder="หน่วย" style="width: 120px"/>
+                                        <input type="text" name="size[]" id="size" placeholder="ขนาด" style="width: 120px"/>
+                                        <input type="text" name="price[]" id="price" placeholder="ราคา" style="width: 120px"/>
+                                        <input type="text" name="stock[]" id="stock" placeholder="สินค้าใน stock" style="width: 120px"/>
+                                        <a href="javascript:void(0);" class="add_button" title="Add field"><i style="font-size: 1.4em" class="icon-chevron-down">เพิ่ม</i></a>
                                 </div>
                             </div>
                             <div class="form-actions">
                                 <input type="submit" value="บันทึก" class="btn btn-success">
+                                <a href="/admin/list-product" class="btn btn-info">กลับไป</a>
                             </div>
                         </form>
 
