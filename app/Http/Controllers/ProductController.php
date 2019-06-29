@@ -10,6 +10,7 @@ use Auth;
 use App\Category;
 use App\Product;
 use PhpParser\Node\Scalar\MagicConst\Method;
+use App\ProductAttributes;
 
 class ProductController extends Controller
 {
@@ -137,12 +138,24 @@ class ProductController extends Controller
 
     public function add_attributes(Request $request, $id)
     {
+        $productAt      =   Product::with('product_attributes')->where('id', $id)->first();
         if($request->isMethod('post')) {
             $data       =   $request->all();
-            dd($data);
-        }
 
-        $productAt      =   Product::where('id', $id)->first();
+            foreach($data['sku'] as $key => $value) {
+                if(!empty($value)) {
+                    $product_attributes                     =   new ProductAttributes();
+                    $product_attributes->product_id         =   $id;
+                    $product_attributes->sku                =   $value;
+                    $product_attributes->size               =   $data['size'][$key];
+                    $product_attributes->price              =   $data['price'][$key];
+                    $product_attributes->stock              =   $data['stock'][$key];
+                    $product_attributes->save();
+                }
+            }
+
+            return redirect('/admin/add-attributes/'.$id)->with('flash_message_success', 'เพิ่ม attributes ให้สินค้าเรียบร้อย');
+        }
 
         return view('admin.product.add-attributes', with(['productAt' => $productAt]));
     }

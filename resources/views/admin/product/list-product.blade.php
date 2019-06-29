@@ -36,52 +36,20 @@
                         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
                             <table class="table table-bordered data-table dataTable" id="DataTables_Table_0">
                                 <thead>
-                                    <tr role="row">
-                                        <th>
-                                            <div class="DataTables_sort_wrapper">รหัสสินค้า<span
-                                                    class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
-                                            </div>
-                                        </th>
-                                        <th>
-                                            <div class="DataTables_sort_wrapper">ชื่อประเภทสินค้า<span
-                                                    class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
-                                            </div>
-                                        </th>
-                                        <th>
-                                        <div class="DataTables_sort_wrapper">ชื่อสินค้า<span
-                                                class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
-                                        </div>
-                                        </th>
-                                        <th>
-                                            <div class="DataTables_sort_wrapper">code<span
-                                                    class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
-                                            </div>
-                                        </th>
-                                        <th>
-                                            <div class="DataTables_sort_wrapper">สี<span
-                                                    class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
-                                            </div>
-                                        </th>
-                                        <th>
-                                            <div class="DataTables_sort_wrapper">ราคา<span
-                                                    class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
-                                            </div>
-                                        </th>
-                                        <th>
-                                            <div class="DataTables_sort_wrapper">รูปภาพ<span
-                                                    class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
-                                            </div>
-                                        </th>
-                                        <th>
-                                        <div class="DataTables_sort_wrapper">Action<span
-                                                class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
-                                        </div>
-                                    </th>
+                                    <tr>
+                                        <th>รหัสสินค้า</th>
+                                        <th>ประเภทสินค้า</th>
+                                        <th>ชื่อสินค้า</th>
+                                        <th>code</th>
+                                        <th>สี</th>
+                                        <th>ราคา</th>
+                                        <th>รูปภาพ</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                <tbody>
                                     @foreach ($product as $key => $item)
-                                        <tr class="gradeA">
+                                        <tr>
                                             <td>{{ $item['id'] }}</td>
                                             <td>{{ $item['category_id'] }}</td>
                                             <td>{{ $item['product_name'] }}</td>
