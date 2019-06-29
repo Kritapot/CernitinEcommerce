@@ -133,4 +133,10 @@ class ProductController extends Controller
         return redirect('/admin/list-product')->with('flash_message_success', 'ลบรายการสินค้าเรียบร้อยแล้ว');
 
     }
+
+
+    public function add_attributes($id)
+    {
+        return view('admin.product.add-attributes');
+    }
 }
