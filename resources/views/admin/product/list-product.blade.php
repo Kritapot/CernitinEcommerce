@@ -37,67 +37,42 @@
                             <table class="table table-bordered data-table dataTable" id="DataTables_Table_0">
                                 <thead>
                                     <tr role="row">
-                                        <th class="ui-state-default" role="columnheader" tabindex="0"
-                                            aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                                            aria-sort="ascending"
-                                            aria-label="Rendering engine: activate to sort column descending"
-                                            style="width: 102px;">
+                                        <th>
                                             <div class="DataTables_sort_wrapper">รหัสสินค้า<span
                                                     class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
                                             </div>
                                         </th>
-                                        <th class="ui-state-default" role="columnheader" tabindex="0"
-                                            aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                                            aria-label="Browser: activate to sort column ascending"
-                                            style="width: 229px;">
+                                        <th>
                                             <div class="DataTables_sort_wrapper">ชื่อประเภทสินค้า<span
                                                     class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
                                             </div>
                                         </th>
-                                        <th class="ui-state-default" role="columnheader" tabindex="0"
-                                        aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                                        aria-label="Browser: activate to sort column ascending"
-                                        style="width: 229px;">
+                                        <th>
                                         <div class="DataTables_sort_wrapper">ชื่อสินค้า<span
                                                 class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
                                         </div>
                                         </th>
-                                        <th class="ui-state-default" role="columnheader" tabindex="0"
-                                        aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                                        aria-label="Browser: activate to sort column ascending"
-                                        style="width: 100px;">
+                                        <th>
                                             <div class="DataTables_sort_wrapper">code<span
                                                     class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
                                             </div>
                                         </th>
-                                        <th class="ui-state-default" role="columnheader" tabindex="0"
-                                        aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                                        aria-label="Browser: activate to sort column ascending"
-                                        style="width: 100px;">
+                                        <th>
                                             <div class="DataTables_sort_wrapper">สี<span
                                                     class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
                                             </div>
                                         </th>
-                                        <th class="ui-state-default" role="columnheader" tabindex="0"
-                                            aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                                            aria-label="Engine version: activate to sort column ascending"
-                                            style="width: 100px;">
+                                        <th>
                                             <div class="DataTables_sort_wrapper">ราคา<span
                                                     class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
                                             </div>
                                         </th>
-                                        <th class="ui-state-default" role="columnheader" tabindex="0"
-                                            aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                                            aria-label="Engine version: activate to sort column ascending"
-                                            style="width: 200px;">
+                                        <th>
                                             <div class="DataTables_sort_wrapper">รูปภาพ<span
                                                     class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
                                             </div>
                                         </th>
-                                        <th class="ui-state-default" role="columnheader" tabindex="0"
-                                        aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                                        aria-label="Engine version: activate to sort column ascending"
-                                        style="width: 200px;">
+                                        <th>
                                         <div class="DataTables_sort_wrapper">Action<span
                                                 class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
                                         </div>
@@ -106,19 +81,19 @@
                                 </thead>
                                 <tbody role="alert" aria-live="polite" aria-relevant="all">
                                     @foreach ($product as $key => $item)
-                                        <tr class="gradeA odd">
-                                            <td class="  sorting_1">{{ $item['id'] }}</td>
-                                            <td class="">{{ $item['category_id'] }}</td>
-                                            <td class="">{{ $item['product_name'] }}</td>
-                                            <td class="">{{ $item['product_code'] }}</td>
-                                            <td class="">{{ $item['product_color'] }}</td>
-                                            <td class="">{{ $item['price'] }}</td>
-                                            <td class="">
+                                        <tr class="gradeA">
+                                            <td>{{ $item['id'] }}</td>
+                                            <td>{{ $item['category_id'] }}</td>
+                                            <td>{{ $item['product_name'] }}</td>
+                                            <td>{{ $item['product_code'] }}</td>
+                                            <td>{{ $item['product_color'] }}</td>
+                                            <td>{{ $item['price'] }}</td>
+                                            <td>
                                                 @if (!empty($item['image']))
-                                                <img src="{{ asset('images/backend_images/products/small/'.$item['image']) }}">
+                                                <img style="width: 80px" src="{{ asset('images/backend_images/products/small/'.$item['image']) }}">
                                                 @endif
                                             </td>
-                                            <td class="">
+                                            <td >
                                                 <a href="#myModal{{ $item['id'] }}" data-toggle="modal" class="btn btn-success btn-mini">ดูรายละเอียด</a>
                                                 <a href="{{ url('/admin/edit-product/'.$item['id']) }}" class="btn btn-info btn-mini">แก้ไข</a>
                                                 <a rel="{{ $item['id'] }}" rel1="delete-product" id="delete-product" href="javascript:" class="btn btn-danger btn-mini deleteRecord">ลบ</a>
