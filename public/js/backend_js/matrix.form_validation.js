@@ -277,6 +277,32 @@ $(document).ready(function(){
 
     });
 
+    $('.delattributes').click(function() {
+        var id                  =   $(this).attr('rel');
+        var deleteFunction      =   $(this).attr('rel1');
+
+        Swal.fire({
+            title: 'คุณแน่ใจที่จะลบรายการคุณลักษณะของสินค้า?',
+            text: "คุณจะไม่สามารถกลับไปแก้ไขได้อีกถ้ากดปุ่มยืนยัน!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ยืนยันการลบคุณลักษณะของสินค้า',
+            cancelButtonText: 'ยกเลิการทำรายการ'
+          }).then((result) => {
+            if (result.value) {
+              Swal.fire(
+                'ลบรายการคุณลักษณะของสินค้า!',
+                'รายการคุณลักษณะของสินค้าถูกลบเรียบร้อยแล้ว',
+                'success'
+              )
+              window.location.href="/admin/"+deleteFunction+"/"+id;
+            }
+          })
+
+    });
+
     $(document).ready(function(){
         var maxField = 10; //Input fields increment limitation
         var addButton = $('.add_button'); //Add button selector

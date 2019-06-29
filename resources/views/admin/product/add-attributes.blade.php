@@ -97,7 +97,7 @@
                                             <td>{{ $value['price'] }}</td>
                                             <td>{{ $value['stock'] }}</td>
                                             <td>
-                                                <a href="" class="btn btn-danger btn-mini">ลบ</a>
+                                                <a rel="{{ $value['id'] }}" rel1="delete-attribute" href="javascript:" class="btn btn-danger btn-mini delattributes">ลบรายการ</a>
                                             </td>
                                         </tr>
                                     @endforeach

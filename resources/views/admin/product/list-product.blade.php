@@ -47,7 +47,7 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <div>
                                     @foreach ($product as $key => $item)
                                         <tr>
                                             <td>{{ $item['id'] }}</td>
@@ -63,7 +63,7 @@
                                             </td>
                                             <td >
                                                 <a href="#myModal{{ $item['id'] }}" data-toggle="modal" class="btn btn-warning btn-mini">รายละเอียด</a>
-                                                <a href="{{ url('/admin/add-attributes/'.$item['id']) }}" class="btn btn-success btn-mini">เพิ่ม</a>
+                                                <a href="{{ url('/admin/add-attributes/'.$item['id']) }}" class="btn btn-success btn-mini">เพิ่มคุณลักษณะ</a>
                                                 <a href="{{ url('/admin/edit-product/'.$item['id']) }}" class="btn btn-info btn-mini">แก้ไข</a>
                                                 <a rel="{{ $item['id'] }}" rel1="delete-product" id="delete-product" href="javascript:" class="btn btn-danger btn-mini deleteRecord">ลบ</a>
                                             </td>
@@ -83,7 +83,7 @@
                                                     </div>
                                                 </div>
                                     @endforeach
-                                </tbody>
+                                </div>
                             </table>
                         </div>
                     </div>

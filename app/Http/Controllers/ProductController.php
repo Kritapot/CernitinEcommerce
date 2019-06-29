@@ -159,4 +159,12 @@ class ProductController extends Controller
 
         return view('admin.product.add-attributes', with(['productAt' => $productAt]));
     }
+
+
+    public function delete_attributes($id)
+    {
+        ProductAttributes::where('id', $id)->delete();
+
+        return redirect()->back()->with('flash_message_success', 'ลบรายการคุณลักษณะสินค้าเรียบร้อยแล้ว');
+    }
 }
