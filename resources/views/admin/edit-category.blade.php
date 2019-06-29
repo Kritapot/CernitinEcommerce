@@ -49,6 +49,7 @@
                                 </div>
                                 <div class="form-actions">
                                     <input type="submit" value="บันทึก" class="btn btn-success">
+                                    <a href="/admin/list-product" class="btn btn-info">กลับไป</a>
                                 </div>
                             </form>
 
