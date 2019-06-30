@@ -167,4 +167,16 @@ class ProductController extends Controller
 
         return redirect()->back()->with('flash_message_success', 'ลบรายการคุณลักษณะสินค้าเรียบร้อยแล้ว');
     }
+
+
+    public function products($url = null)
+    {
+        $categorise         =   Category::with('categories')->where('parent_id', 0)->get();
+
+        $categoryDetail     =   Category::where('url', $url)->first();
+        $productAll         =   Product::where('category_id', $categoryDetail->id)->get();
+
+        return view('products.listing', with(['categoryDetail' => $categoryDetail, 'categorise' => $categorise, 'productAll' => $productAll]));
+
+    }
 }
