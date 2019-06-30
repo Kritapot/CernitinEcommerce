@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'IndexController@index');
+
+
 Auth::routes();
 
 Route::match(['get', 'post'], '/admin', 'AdminController@log_in');
