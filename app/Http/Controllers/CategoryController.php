@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function add_category()
     {
-        $levelCategory      =   Category::where('parent_id', 0)->get();
+        $levelCategory      =   Category::with('categories')->where('parent_id', 0)->get();
         return view('admin.add-category', with(['levelCategory' => $levelCategory]));
     }
 
@@ -59,7 +59,7 @@ class CategoryController extends Controller
     public function edit_category($id) {
 
         $category       =   Category::where('id', $id)->first();
-        $levelCategory      =   Category::get();
+        $levelCategory      =   Category::where('parent_id', 0)->get();
 
         return view('admin.edit-category', with(['category' => $category, 'levelCategory' => $levelCategory]));
     }

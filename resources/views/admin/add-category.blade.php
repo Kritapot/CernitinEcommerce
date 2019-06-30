@@ -16,7 +16,6 @@
                     <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
                         <h5>เพิ่มประเภทสินค้า</h5>
                     </div>
-
                     <div class="widget-content nopadding">
                         <form class="form-horizontal" method="post" action="{{ url('/admin/add-category/save') }}" name="add-category" id="add-category" novalidate="novalidate">{{ csrf_field() }}
                             <div class="control-group">
@@ -30,8 +29,8 @@
                                 <div class="controls">
                                     <select name="parent_id" style="width: 220px">
                                         <option value="0">--ประเภทหลัก--</option>
-                                            @foreach ($levelCategory as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @foreach ($levelCategory as $key => $value)
+                                                <option value="{{ $value['id'] }}">{{ $value['name'] }}</option>
                                             @endforeach
                                     </select>
                                 </div>

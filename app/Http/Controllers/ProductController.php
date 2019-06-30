@@ -53,7 +53,7 @@ class ProductController extends Controller
             return redirect('/admin/list-product')->with('flash_message_success', 'เพิ่มรายการสินค้าเรียบร้อยแล้ว');
         }
 
-        $categories     =   Category::get();
+        $categories     =   Category::with('categories')->where('parent_id', 0)->get();
         return view('admin.product.add-product', ['categories' => $categories]);
     }
 
@@ -114,7 +114,7 @@ class ProductController extends Controller
 
 
         $product                =   Product::with('category')->where('id', $id)->first();
-        $categories_dropdown    =   Category::get();
+        $categories_dropdown    =   Category::with('categories')->where('parent_id', 0)->get();
 
         return view('admin.product.edit-product', ['product' => $product, 'categories_dropdown' => $categories_dropdown]);
     }

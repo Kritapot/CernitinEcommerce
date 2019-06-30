@@ -75,7 +75,7 @@
                                     <tr class="gradeA odd">
                                         <td class="  sorting_1">{{ $item->id }}</td>
                                         <td class="">{{ $item->name }}</td>
-                                        <td class="">{{ $item->parent_id }}</td>
+                                        <td class="">@if($item->parent_id == 0)ประเภทหลัก@endif @if($item->parent_id != 0){{ $item->parent_id }}@endif</td>
                                         <td class="">{{ $item->description }}</td>
                                         <td class="">{{ $item->url }}</td>
                                         <td class="">

@@ -39,8 +39,11 @@
                                 <div class="controls">
                                     <select name="category_id" id="category_id" style="width: 220px">
                                             <option selected disabled>-- เลือกประเภทสินค้า --</option>
-                                        @foreach ($categories as $cat)
-                                            <option value="{{$cat->id}}">{{ $cat->name }}</option>
+                                        @foreach ($categories as $key => $value)
+                                            <option value="{{$value['id']}}" style="font-weight: 600">{{ $value['name'] }}</option>
+                                            @foreach ($value['categories'] as $key => $subValue)
+                                                <option value="{{$subValue['id']}}">--{{ $subValue['name'] }}--</option>
+                                            @endforeach
                                         @endforeach
                                     </select>
                                 </div>
@@ -83,6 +86,7 @@
                             </div>
                             <div class="form-actions">
                                 <input type="submit" value="บันทึก" class="btn btn-success">
+                                <a href="/admin/list-product" class="btn btn-info">กลับไป</a>
                             </div>
                         </form>
 

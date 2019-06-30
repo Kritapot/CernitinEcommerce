@@ -39,8 +39,11 @@
                                 <div class="controls">
                                     <select name="category_id" id="category_id" style="width: 220px">
                                             <option selected disabled>-- เลือกประเภทสินค้า --</option>
-                                            @foreach ($categories_dropdown as $item)
-                                                <option value="{{ $item->id }}" @if($product['category']['id'] == $item->id) selected @endif>{{ $item->name }}</option>
+                                            @foreach ($categories_dropdown as $key => $value)
+                                                <option value="{{ $value['id'] }}" @if($product['category']['id'] == $value['id']) selected @endif>{{ $value['name'] }}</option>
+                                                @foreach ($value['categories'] as $key => $subValue)
+                                                    <option value="{{ $subValue['id'] }}" @if($product['category']['id'] == $subValue['id']) selected @endif>---{{ $subValue['name'] }}---</option>
+                                                @endforeach
                                             @endforeach
                                     </select>
                                 </div>
