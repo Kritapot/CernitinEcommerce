@@ -11,13 +11,20 @@ class Category extends Model
         'description',
     ];
 
+    public function product()
+    {
+        return $this->hasMany(Product::class, 'id');
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+
     public function getUrlAttribute($value)
     {
         return !empty($value) ? $value : "";
     }
 
-    public function product()
-    {
-        return $this->hasMany(Product::class, 'id');
-    }
+
 }
