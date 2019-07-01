@@ -17,6 +17,10 @@ Route::get('/', 'IndexController@index');
 //Category/listing
 Route::get('/product/{url}', 'ProductController@products');
 
+//Product detail
+Route::get('/product/{id}', 'ProductController@products_detail');
+
+
 
 Auth::routes();
 

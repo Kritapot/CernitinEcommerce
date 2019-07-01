@@ -122,6 +122,22 @@ class ProductController extends Controller
 
     public function delete_picture($id)
     {
+        $product            =   Product::where('id', $id)->first();
+        $small_image_path   =   "images/backend_images/products/small/";
+        $medium_image_path  =   "images/backend_images/products/medium/";
+        $large_image_path   =   "images/backend_images/products/large/";
+
+        if(file_exists($small_image_path.$product->image)) {
+            unlink($small_image_path.$product->image);
+        }
+        if(file_exists($medium_image_path.$product->image)) {
+            unlink($medium_image_path.$product->image);
+        }
+        if(file_exists($large_image_path.$product->image)) {
+            unlink($large_image_path.$product->image);
+        }
+
+
         Product::where('id', $id)->update(['image' => ""]);
 
         return redirect()->back()->with('flash_message_success', 'ลบรูปภาพสินค้าเรียบร้อย');
@@ -195,6 +211,12 @@ class ProductController extends Controller
 
 
         return view('products.listing', with(['categoryDetail' => $categoryDetail, 'categorise' => $categorise, 'productAll' => $productAll]));
+
+    }
+
+
+    public function products_detail($id)
+    {
 
     }
 }
