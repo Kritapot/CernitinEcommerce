@@ -20,6 +20,8 @@ Route::get('/product/{url}', 'ProductController@products');
 //Product detail
 Route::get('/product-detail/{id}', 'ProductController@products_detail');
 
+//Get price from Product-size
+Route::get('/get-product-size', 'ProductController@product_from_size');
 
 
 Auth::routes();

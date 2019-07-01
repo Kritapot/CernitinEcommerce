@@ -223,4 +223,16 @@ class ProductController extends Controller
 
         return view('products.detail', with(['productDetail' => $productDetail, 'categorise' => $categorise]));
     }
+
+
+    public function product_from_size(Request $request)
+    {
+        $data               =   $request->all();
+        $productAt          =   explode("-", $data['size']);
+
+        $productPriceAt     =   ProductAttributes::where(['product_id' => $productAt[0], 'size' => $productAt[1]])
+                                ->first();
+
+        return $productPriceAt->price;
+    }
 }

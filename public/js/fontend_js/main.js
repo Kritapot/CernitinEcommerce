@@ -4,8 +4,8 @@
 
 	var RGBChange = function() {
 	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
-	};	
-		
+	};
+
 /*scroll to top*/
 
 $(document).ready(function(){
@@ -27,4 +27,20 @@ $(document).ready(function(){
 	        zIndex: 2147483647 // Z-Index for the overlay
 		});
 	});
+});
+
+$(document).ready(function(){
+    $('#select-size').change(function() {
+        var size   = $(this).val();
+        $.ajax({
+            type:   'get',
+            url:    '/get-product-size',
+            data:   {size:size},
+            success:function(respon) {
+                $('#get-price').html("THB "+respon);
+            },error:function(e) {
+                console.log(e)
+            }
+        })
+    });
 });
