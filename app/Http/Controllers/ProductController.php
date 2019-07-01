@@ -171,10 +171,28 @@ class ProductController extends Controller
 
     public function products($url = null)
     {
+        $checkNoneUrl       =   Category::where('url', $url)->count();
+
+        if($checkNoneUrl == 0) {
+            abort(404);
+        }
+
         $categorise         =   Category::with('categories')->where('parent_id', 0)->get();
 
         $categoryDetail     =   Category::where('url', $url)->first();
-        $productAll         =   Product::where('category_id', $categoryDetail->id)->get();
+
+        if($categoryDetail->parent_id == 0) {
+            $subCategories      =   Category::where('parent_id', $categoryDetail->id)->get();
+
+            foreach($subCategories as $subcat) {
+                $cat_ids[]      =   $subcat->id;
+            }
+            $productAll         =  Product::whereIn('category_id', $cat_ids)->get();
+
+        }else {
+            $productAll         =   Product::where('category_id', $categoryDetail->id)->get();
+        }
+
 
         return view('products.listing', with(['categoryDetail' => $categoryDetail, 'categorise' => $categorise, 'productAll' => $productAll]));
 
