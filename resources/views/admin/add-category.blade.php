@@ -47,8 +47,15 @@
                                     <input type="text" name="url" id="url">
                                 </div>
                             </div>
+                            <div class="control-group">
+                                <label class="control-label">เปิด-ปิดการแสดง</label>
+                                <div class="controls">
+                                    <input type="checkbox" name="status" id="status" value="1">
+                                </div>
+                            </div>
                             <div class="form-actions">
                                 <input type="submit" value="บันทึก" class="btn btn-success">
+                                <a href="/admin/show-category" class="btn btn-info">กลับไป</a>
                             </div>
                         </form>
 

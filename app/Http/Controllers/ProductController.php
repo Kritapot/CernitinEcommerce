@@ -171,7 +171,7 @@ class ProductController extends Controller
 
     public function products($url = null)
     {
-        $checkNoneUrl       =   Category::where('url', $url)->count();
+        $checkNoneUrl       =   Category::where(['url' => $url, 'status' => 1])->count();
 
         if($checkNoneUrl == 0) {
             abort(404);

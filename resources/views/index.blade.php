@@ -74,19 +74,23 @@
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
                         <div class="panel panel-default">
                             @foreach ($categorise as $key => $value)
+                            @if ($value['status'] == 1)
                             <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordian" href="#{{  $value['id']  }}">
-                                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                            {{ $value['name'] }}
-                                        </a>
-                                    </h4>
-                                </div>
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="#{{  $value['id']  }}">
+                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                        {{ $value['name'] }}
+                                    </a>
+                                </h4>
+                            </div>
+                            @endif
                                 <div id="{{ $value['id'] }}" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul>
                                             @foreach ($value['categories'] as $key => $subValue)
+                                            @if ($subValue['status'] == 1)
                                                 <li><a href="#">{{ $subValue['name'] }} </a></li>
+                                            @endif
                                             @endforeach
                                         </ul>
                                     </div>

@@ -27,11 +27,20 @@ class CategoryController extends Controller
     public function save(Request $request)
     {
         $data                       =   $request->all();
+
+        if(empty($data['status'])) {
+            $data['status'] = 0;
+        }else{
+            $data['status'] = 1;
+        }
+
         $saveCategory               =   new Category;
         $saveCategory->name         =   $data['name'];
         $saveCategory->parent_id    =   $data['parent_id'];
         $saveCategory->description  =   $data['description'];
         $saveCategory->url          =   $data['url'];
+        $saveCategory->status       =   $data['status'];
+
         $saveCategory->save();
 
         return redirect('/admin/show-category')->with('flash_message_success', 'บันทึกประเภทสินค้าเรียบร้อยแล้ว');
@@ -76,10 +85,17 @@ class CategoryController extends Controller
     {
         $data                               =   $request->all();
 
+        if(empty($data['status'])) {
+            $data['status'] = 0;
+        }else{
+            $data['status'] = 1;
+        }
+
         $updateCategory                     =   Category::where('id', $id)->first();
         $updateCategory->name               =   $data['name'];
         $updateCategory->description        =   $data['description'];
         $updateCategory->url                =   $data['url'];
+        $updateCategory->status             =   $data['status'];
         $updateCategory->save();
 
         return redirect('/admin/show-category')->with('flash_message_success', 'แก้ไขประเภทสินค้าเรียบร้อย');
