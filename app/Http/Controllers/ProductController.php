@@ -21,12 +21,20 @@ class ProductController extends Controller
             if(empty($data['category_id'])) {
                 return redirect()->back()->with('flash_message_errors', 'กรุณาเลือกประเภทของสินค้า');
             }
+
             $saveProduct                =   new Product();
             $saveProduct->product_name  =   $data['name'];
             $saveProduct->category_id   =   $data['category_id'];
             $saveProduct->product_code  =   $data['product_code'];
             $saveProduct->product_color =   $data['product_color'];
             $saveProduct->description   =   $data['description'];
+
+            if(!empty($data['care'])) {
+                $saveProduct->care          =   $data['care'];
+            }else {
+                $saveProduct->care          =   '';
+            }
+
             $saveProduct->price         =   $data['price'];
 
             //Upload Image
@@ -85,6 +93,13 @@ class ProductController extends Controller
             $saveProduct->product_code  =   $data['product_code'];
             $saveProduct->product_color =   $data['product_color'];
             $saveProduct->description   =   $data['description'];
+
+            if(empty($data['care'])) {
+                $saveProduct->care      =   '';
+            }else {
+                $saveProduct->care      =   $data['care'];
+            }
+
             $saveProduct->price         =   $data['price'];
 
             //Upload Image
