@@ -217,6 +217,10 @@ class ProductController extends Controller
 
     public function products_detail($id)
     {
+        $productDetail      =   Product::with('product_attributes')->where('id', $id)->first();
 
+        $categorise         =   Category::with('categories')->where('parent_id', 0)->get();
+
+        return view('products.detail', with(['productDetail' => $productDetail, 'categorise' => $categorise]));
     }
 }

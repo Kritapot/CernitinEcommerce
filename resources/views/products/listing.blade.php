@@ -114,6 +114,9 @@
                                             <div class="overlay-content">
                                                 <h2>{{ $value['price'] }}</h2>
                                                 <p>{{ $value['product_name'] }}</p>
+                                                <p>
+                                                    <a href="{{ url('/product-detail/'.$value['id']) }}">ดูรายละเอียดสินค้า</a>
+                                                </p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
                                         </div>

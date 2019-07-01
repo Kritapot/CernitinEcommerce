@@ -18,7 +18,7 @@ Route::get('/', 'IndexController@index');
 Route::get('/product/{url}', 'ProductController@products');
 
 //Product detail
-Route::get('/product/{id}', 'ProductController@products_detail');
+Route::get('/product-detail/{id}', 'ProductController@products_detail');
 
 
 
