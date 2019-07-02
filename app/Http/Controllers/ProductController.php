@@ -226,9 +226,9 @@ class ProductController extends Controller
         if($checkNoneUrl == 0) {
             abort(404);
         }
-
+        //dropdown category
         $categorise         =   Category::with('categories')->where('parent_id', 0)->get();
-
+        // get category from $url
         $categoryDetail     =   Category::where('url', $url)->first();
 
         if($categoryDetail->parent_id == 0) {
@@ -253,12 +253,19 @@ class ProductController extends Controller
     {
         $productDetail      =   Product::with('product_attributes')->where('id', $id)->first();
 
+        $productRelated     =   Product::where('id', '!=', $id)->where(['category_id' => $productDetail->category_id])->get();
+
         $categorise         =   Category::with('categories')->where('parent_id', 0)->get();
 
         $totalStock         =   ProductAttributes::where('product_id', $id)->sum('stock');
 
 
-        return view('products.detail', with(['productDetail' => $productDetail, 'categorise' => $categorise, 'totalStock' => $totalStock]));
+        return view('products.detail', with([
+            'productDetail'     => $productDetail,
+            'categorise'        => $categorise,
+            'totalStock'        => $totalStock,
+            'productRelated'    => $productRelated
+            ]));
     }
 
 
