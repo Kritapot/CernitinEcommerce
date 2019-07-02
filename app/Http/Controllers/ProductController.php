@@ -49,7 +49,7 @@ class ProductController extends Controller
 
                 }
                 //Resize Image
-                Image::make($imgTmp)->save($large_image_path);
+                Image::make($imgTmp)->resize(1200, 1200)->save($large_image_path);
                 Image::make($imgTmp)->resize(600, 600)->save($medium_image_path);
                 Image::make($imgTmp)->resize(300, 300)->save($small_image_path);
 
@@ -114,7 +114,7 @@ class ProductController extends Controller
 
                 }
                 //Resize Image
-                Image::make($imgTmp)->save($large_image_path);
+                Image::make($imgTmp)->resize(1200, 1200)->save($large_image_path);
                 Image::make($imgTmp)->resize(600, 600)->save($medium_image_path);
                 Image::make($imgTmp)->resize(300, 300)->save($small_image_path);
             }else{
