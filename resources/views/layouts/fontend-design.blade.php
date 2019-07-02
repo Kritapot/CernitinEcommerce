@@ -8,14 +8,14 @@
     <meta name="author" content="">
     <title>Home | E-Shopper</title>
     <link href="{{ asset('css/fontend_css') }}/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/fontend_css') }}/font-awesome.min.css" rel="stylesheet">
     <link href="{{ asset('css/fontend_css') }}/prettyPhoto.css" rel="stylesheet">
     <link href="{{ asset('css/fontend_css') }}/price-range.css" rel="stylesheet">
     <link href="{{ asset('css/fontend_css') }}/animate.css" rel="stylesheet">
 	<link href="{{ asset('css/fontend_css') }}/main.css" rel="stylesheet">
     <link href="{{ asset('css/fontend_css') }}/responsive.css" rel="stylesheet">
-    <link href="{{ asset('vendor/fontawesome') }}/all.css" rel="stylesheet">
     <link href="{{ asset('vendor/tailwind') }}/tailwind.min.css" rel="stylesheet">
+    <link href="{{ asset('vendor/fontawesome') }}/all.css" rel="stylesheet">
+
 </head>
 
 <body>

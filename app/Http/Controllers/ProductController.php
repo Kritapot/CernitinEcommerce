@@ -175,6 +175,12 @@ class ProductController extends Controller
 
             foreach($data['sku'] as $key => $value) {
                 if(!empty($value)) {
+                    $productAtCoutSize  =   ProductAttributes::where(['product_id' => $id, 'size' => $data['size'][$key]])
+                                            ->count();
+                        if($productAtCoutSize>0) {
+                            return redirect('/admin/add-attributes/'.$id)->with('flash_message_errors','ขนาดของสินค้าจะต้องไม่ซ้ำกัน' );
+                        }
+
                     $product_attributes                     =   new ProductAttributes();
                     $product_attributes->product_id         =   $id;
                     $product_attributes->sku                =   $value;
