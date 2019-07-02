@@ -37,6 +37,14 @@ class ProductController extends Controller
 
             $saveProduct->price         =   $data['price'];
 
+            if(empty($data['status'])) {
+                $status     =   0;
+            }else {
+                $status     =   1;
+            }
+
+            $saveProduct->status        =   $status;
+
             //Upload Image
             if($request->hasFile('image')){
                 $imgTmp         =   Input::file('image');
@@ -101,6 +109,12 @@ class ProductController extends Controller
             }
 
             $saveProduct->price         =   $data['price'];
+                if(empty($data['status'])) {
+                    $status    =   0;
+                }else {
+                    $status    =   1;
+                }
+            $saveProduct->status        =   $status;
 
             //Upload Image
             if($request->hasFile('image')){
@@ -237,10 +251,10 @@ class ProductController extends Controller
             foreach($subCategories as $subcat) {
                 $cat_ids[]      =   $subcat->id;
             }
-            $productAll         =  Product::whereIn('category_id', $cat_ids)->get();
+            $productAll         =  Product::whereIn('category_id', $cat_ids)->where('status', 1)->get();
 
         }else {
-            $productAll         =   Product::where('category_id', $categoryDetail->id)->get();
+            $productAll         =   Product::where('category_id', $categoryDetail->id)->where('status', 1)->get();
         }
 
 
@@ -251,6 +265,10 @@ class ProductController extends Controller
 
     public function products_detail($id)
     {
+        $checkCoutProduct   =   Product::where(['status' => 1])->count();
+        if($checkCoutProduct == 0) {
+            abort(404);
+        }
         $productDetail      =   Product::with('product_attributes')->where('id', $id)->first();
 
         $productRelated     =   Product::where('id', '!=', $id)->where(['category_id' => $productDetail->category_id])->get();

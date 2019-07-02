@@ -85,6 +85,12 @@
                                 </div>
                             </div>
                             <div class="control-group">
+                                <label class="control-label">เปิด-ปิดการแสดงสินค้า</label>
+                                <div class="controls">
+                                    <input type="checkbox" name="status" id="status" value="1">
+                                </div>
+                            </div>
+                            <div class="control-group">
                                 <label class="control-label">รูปภาพ</label>
                                 <div class="controls">
                                     <input type="file" name="image" id="image">
