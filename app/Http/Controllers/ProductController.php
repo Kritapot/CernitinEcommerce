@@ -255,7 +255,10 @@ class ProductController extends Controller
 
         $categorise         =   Category::with('categories')->where('parent_id', 0)->get();
 
-        return view('products.detail', with(['productDetail' => $productDetail, 'categorise' => $categorise]));
+        $totalStock         =   ProductAttributes::where('product_id', $id)->sum('stock');
+
+
+        return view('products.detail', with(['productDetail' => $productDetail, 'categorise' => $categorise, 'totalStock' => $totalStock]));
     }
 
 
@@ -266,7 +269,8 @@ class ProductController extends Controller
 
         $productPriceAt     =   ProductAttributes::where(['product_id' => $productAt[0], 'size' => $productAt[1]])
                                 ->first();
-
-        return $productPriceAt->price;
+        echo $productPriceAt->price;
+        echo "#";
+        echo $productPriceAt->stock;
     }
 }

@@ -35,12 +35,14 @@
                                 <span id="get-price">THB {{ $productDetail['price'] }}</span>
                                 <label>Quantity:</label>
                                 <input type="text" >
-                                <button type="button" class="btn btn-fefault cart">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    Add to cart
-                                </button>
+                                @if ($totalStock > 0)
+                                    <button id="cartButton" type="button" class="btn btn-fefault cart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        เพิ่มลงตระกร้า
+                                    </button>
+                                @endif
                             </span>
-                            <p><b>Availability:</b> In Stock</p>
+                            <p id="avibility"><b>สถานะสินค้าใน : </b> @if($totalStock>0) <span style="color: green">ใน stock  {{$totalStock}}</span>  @else <span id="x" style="color: red">สินค้าหมด stock</span> @endif</p>
                             <p><b>Condition:</b> New</p>
                             <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt=""></a>
                         </div><!--/product-information-->

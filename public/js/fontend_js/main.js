@@ -38,7 +38,16 @@ $(document).ready(function(){
             url:    '/get-product-size',
             data:   {size:size},
             success:function(respon) {
-                $('#get-price').html("THB "+respon);
+                var array   =   respon.split("#")
+                $('#get-price').html("THB "+array[0]);
+
+                if(array[1] == 0) {
+                    $('#cartButton').hide();
+                    $('#avibility').html('<h1 style="color: red;">ขออภัยสินค้าหมด stock</h1>');
+                }else {
+                    $('#cartButton').show();
+                    $('#avibility').html('<h1 style="color: green;">สินค้าใน stock : </h1>'+array[1])
+                }
             },error:function(e) {
                 console.log(e)
             }
