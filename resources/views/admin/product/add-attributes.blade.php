@@ -77,32 +77,35 @@
                     </div>
                     <div class="widget-content nopadding">
                         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
-                            <table class="table table-bordered data-table dataTable" id="DataTables_Table_0">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>หน่วย</th>
-                                        <th>ขนาด</th>
-                                        <th>ราคา</th>
-                                        <th>สินค้าใน stock</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($productAt['product_attributes'] as $key => $value)
-                                        <tr>
-                                            <td>{{ $value['id'] }}</td>
-                                            <td>{{ $value['sku'] }}</td>
-                                            <td>{{ $value['size'] }}</td>
-                                            <td>{{ $value['price'] }}</td>
-                                            <td>{{ $value['stock'] }}</td>
-                                            <td>
-                                                <a rel="{{ $value['id'] }}" rel1="delete-attribute" href="javascript:" class="btn btn-danger btn-mini delattributes">ลบรายการ</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                            <form action="{{ url('/admin/edit-attributes/'.$productAt['id']) }}" method="post" name="edit-attributes">{{ csrf_field() }}
+                                    <table class="table table-bordered data-table dataTable" id="DataTables_Table_0">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>หน่วย</th>
+                                                    <th>ขนาด</th>
+                                                    <th>ราคา</th>
+                                                    <th>สินค้าใน stock</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($productAt['product_attributes'] as $key => $value)
+                                                    <tr>
+                                                        <td><input type="hidden" name="idAttr[]" value="{{ $value['id'] }}">{{ $value['id'] }}</td>
+                                                        <td>{{ $value['sku'] }}</td>
+                                                        <td>{{ $value['size'] }}</td>
+                                                        <td><input type="text" name="price[]" value="{{ $value['price'] }}"></td>
+                                                        <td><input type="text" name="stock[]" value="{{ $value['stock'] }}"></td>
+                                                        <td>
+                                                            <input type="submit" value="บันทึก" class="btn btn-success btn-mini">
+                                                            <a rel="{{ $value['id'] }}" rel1="delete-attribute" href="javascript:" class="btn btn-danger btn-mini delattributes">ลบรายการ</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                            </form>
                         </div>
                     </div>
                 </div>

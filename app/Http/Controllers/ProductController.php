@@ -198,6 +198,19 @@ class ProductController extends Controller
     }
 
 
+    public function edit_attributes(Request $request, $id) {
+        if($request->isMethod('post')) {
+            $data       =   $request->all();
+
+            foreach($data['idAttr'] as $key => $value) {
+                ProductAttributes::where(['id' => $data['idAttr'][$key]])
+                    ->update(['price' => $data['price'][$key], 'stock' => $data['stock'][$key]]);
+            }
+            return redirect('/admin/add-attributes/'.$id)->with('flash_message_success', 'แก้ไข attributes ให้สินค้าเรียบร้อย');
+        }
+    }
+
+
     public function delete_attributes($id)
     {
         ProductAttributes::where('id', $id)->delete();

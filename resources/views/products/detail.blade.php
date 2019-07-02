@@ -14,7 +14,6 @@
                         <div class="view-product">
                             <span class='zoom' id='ex1'>
                                 <img src='{{ asset('images/backend_images/products/medium/'.$productDetail['image']) }}'/>
-                                <p id="p-hover-zoom">Hover</p>
                             </span>
                         </div>
                     </div>
