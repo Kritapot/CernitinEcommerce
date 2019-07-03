@@ -374,7 +374,14 @@ class ProductController extends Controller
     {
         if($request->isMethod('post')) {
             $data               =   $request->all();
-            $data['size']       =   explode("-", $data['size'])[1];
+
+
+            if(empty($data['size'])) {
+                $size         =   "";
+            }else {
+                $sizeArr        =   explode("-", $data['size']);
+                $size           =   $sizeArr[1];
+            }
 
             if(empty($data['user_email'])) {
                 $data['user_email']   =   "";
@@ -388,7 +395,7 @@ class ProductController extends Controller
             $saveCart->product_name         =   $data['product_name'];
             $saveCart->product_code         =   $data['product_code'];
             $saveCart->product_color        =   $data['product_color'];
-            $saveCart->size                 =   $data['size'];
+            $saveCart->size                 =   $size;
             $saveCart->price                =   $data['price'];
             $saveCart->quantity             =   $data['quantity'];
             $saveCart->user_email           =   $data['user_email'];
