@@ -92,7 +92,7 @@
                                                 <p>
                                                     <a href="{{ url('/product-detail/'.$value['id']) }}">ดูรายละเอียดสินค้า</a>
                                                 </p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                <a href="{{ url('/add-cart') }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>เพิ่มไปที่ตระกร้าสินค้า</a>
                                             </div>
                                         </div>
                                 </div>

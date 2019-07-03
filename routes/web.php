@@ -26,6 +26,10 @@ Route::get('/get-product-size', 'ProductController@product_from_size');
 //Add to cart
 Route::match(['get', 'post'],'/add-cart', 'ProductController@add_to_cart');
 
+//cart
+Route::match(['get', 'post'],'/cart', 'ProductController@cart');
+Route::get('/cart/delete/{id}', 'ProductController@delete_cart_product');
+
 
 
 

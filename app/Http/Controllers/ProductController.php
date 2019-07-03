@@ -370,6 +370,12 @@ class ProductController extends Controller
         echo $productPriceAt->stock;
     }
 
+    /**
+     * Add to cart function
+     *
+     * @param Request $request
+     * @return void
+     */
     public function add_to_cart(Request $request)
     {
         if($request->isMethod('post')) {
@@ -386,8 +392,11 @@ class ProductController extends Controller
             if(empty($data['user_email'])) {
                 $data['user_email']   =   "";
             }
-            if(empty($data['session_id'])) {
-                $data['session_id']   =   "";
+
+            $session_id     =   Session::get('session_id');
+            if(empty($session_id)) {
+                $session_id     =   str_random(40);
+                Session::put('session_id', $session_id);
             }
 
             $saveCart                       =   new Cart();
@@ -399,8 +408,32 @@ class ProductController extends Controller
             $saveCart->price                =   $data['price'];
             $saveCart->quantity             =   $data['quantity'];
             $saveCart->user_email           =   $data['user_email'];
-            $saveCart->session_id           =   $data['session_id'];
+            $saveCart->session_id           =   $session_id;
             $saveCart->save();
         }
+        return redirect('/cart')
+                ->with('flash_message_success', 'เพิ่มสินค้าลงใน ตระกร้าสินค้า สินค้าเรียบร้อย');
+    }
+
+
+    public function cart()
+    {
+        $session_id     =   Session::get('session_id');
+        $userCart       =   Cart::where('session_id', $session_id)
+                            ->get();
+        foreach($userCart as $key => $value) {
+            $productDetail          =   Product::where('id', $value->product_id)->first();
+            $userCart[$key]->image  =   $productDetail->image;
+        }
+        //DD($userCart);
+        return view('products.cart', with(['userCart' => $userCart]));
+    }
+
+
+    public function delete_cart_product($id)
+    {
+            Cart::where('id', $id)->delete();
+
+            return redirect('/cart');
     }
 }

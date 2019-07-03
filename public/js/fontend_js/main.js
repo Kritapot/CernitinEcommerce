@@ -46,24 +46,43 @@ $(document).ready(function(){
                     $('#avibility').html('<h1 style="color: red;">ขออภัยสินค้าหมด stock</h1>');
                 }else {
                     $('#cartButton').show();
-                    $('#avibility').html('<h1 style="color: green;">สินค้าใน stock : </h1>'+array[1])
+                    $('#avibility').html('<h4 style="color: green;">สินค้าใน stock : </h4>'+array[1])
                 }
             },error:function(e) {
                 console.log(e)
             }
         })
     });
+
+    $('.cart_quantity_delete').click(function() {
+        Swal.fire({
+            position: 'top-end',
+            type: 'success',
+            title: 'ลบรายการออกจากตระกร้าสินค้าเรียบร้อย',
+            showConfirmButton: false,
+            timer: 3500
+          })
+    });
+
+    $('#add-product-card').submit(function() {
+        Swal.fire({
+            position: 'top-end',
+            type: 'success',
+            title: 'เพิ่มรายการไปที่ตระกร้าสินค้าเรียบร้อย',
+            showConfirmButton: false,
+            timer: 3500
+          })
+    });
+
+
 });
 
-
-$(document).ready(function() {
-    $(document).ready(function(){
-        $('#ex1').zoom();
-        $('#ex2').zoom({ on:'grab' });
-        $('#ex3').zoom({ on:'click' });
-        $('#ex4').zoom({ on:'toggle' });
-    });
-})
+$(document).ready(function(){
+    $('#ex1').zoom();
+    $('#ex2').zoom({ on:'grab' });
+    $('#ex3').zoom({ on:'click' });
+    $('#ex4').zoom({ on:'toggle' });
+});
 
 
 

@@ -1633,13 +1633,15 @@ h2.title {
 }
 
 
-.cart_quantity_input {
+  .cart_quantity_input {
   color: #696763;
   float: left;
   font-size: 16px;
   text-align: center;
   font-family: 'Roboto',sans-serif;
-
+  height: 28px;
+  width: 35px;
+  border: 0.5px solid #696763;
 }
 
 
