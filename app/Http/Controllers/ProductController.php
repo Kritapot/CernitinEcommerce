@@ -14,6 +14,12 @@ use App\ProductAttributes;
 
 class ProductController extends Controller
 {
+    /**
+     * Add product function
+     *
+     * @param Request $request
+     * @return void
+     */
     public function add_product(Request $request)
     {
         if($request->isMethod('post')){
@@ -73,7 +79,11 @@ class ProductController extends Controller
         return view('admin.product.add-product', ['categories' => $categories]);
     }
 
-
+    /**
+     * Show all products function
+     *
+     * @return void
+     */
     public function list_product()
     {
         $product        =   Product::get();
@@ -86,7 +96,13 @@ class ProductController extends Controller
         return view('admin.product.list-product', ['product' => $product]);
     }
 
-
+    /**
+     * Edit Update Product function
+     *
+     * @param Request $request
+     * @param  $id
+     * @return void
+     */
     public function edit_product(Request $request, $id)
     {
         if($request->isMethod('post')) {
@@ -148,9 +164,15 @@ class ProductController extends Controller
         return view('admin.product.edit-product', ['product' => $product, 'categories_dropdown' => $categories_dropdown]);
     }
 
-
+    /**
+     * Delete picture product function
+     *
+     * @param $id
+     * @return void
+     */
     public function delete_picture($id)
     {
+        // Delete picture form folder
         $product            =   Product::where('id', $id)->first();
         $small_image_path   =   "images/backend_images/products/small/";
         $medium_image_path  =   "images/backend_images/products/medium/";
@@ -172,7 +194,12 @@ class ProductController extends Controller
         return redirect()->back()->with('flash_message_success', 'ลบรูปภาพสินค้าเรียบร้อย');
     }
 
-
+    /**
+     * Delete product function
+     *
+     * @param  $id
+     * @return void
+     */
     public function delete_product($id) {
         Product::where('id', $id)->first()->delete();
 
@@ -180,7 +207,13 @@ class ProductController extends Controller
 
     }
 
-
+    /**
+     * Add attributes product function
+     *
+     * @param Request $request
+     * @param $id
+     * @return void
+     */
     public function add_attributes(Request $request, $id)
     {
         $productAt      =   Product::with('product_attributes')->where('id', $id)->first();
@@ -211,7 +244,13 @@ class ProductController extends Controller
         return view('admin.product.add-attributes', with(['productAt' => $productAt]));
     }
 
-
+    /**
+     * Edit Updated attributes function
+     *
+     * @param Request $request
+     * @param $id
+     * @return void
+     */
     public function edit_attributes(Request $request, $id) {
         if($request->isMethod('post')) {
             $data       =   $request->all();
@@ -220,11 +259,17 @@ class ProductController extends Controller
                 ProductAttributes::where(['id' => $data['idAttr'][$key]])
                     ->update(['price' => $data['price'][$key], 'stock' => $data['stock'][$key]]);
             }
-            return redirect('/admin/add-attributes/'.$id)->with('flash_message_success', 'แก้ไข attributes ให้สินค้าเรียบร้อย');
+            return redirect('/admin/add-attributes/'.$id)
+                    ->with('flash_message_success', 'แก้ไข attributes ให้สินค้าเรียบร้อย');
         }
     }
 
-
+    /**
+     * Delete attributes function
+     *
+     * @param  $id
+     * @return void
+     */
     public function delete_attributes($id)
     {
         ProductAttributes::where('id', $id)->delete();
@@ -232,7 +277,12 @@ class ProductController extends Controller
         return redirect()->back()->with('flash_message_success', 'ลบรายการคุณลักษณะสินค้าเรียบร้อยแล้ว');
     }
 
-
+    /**
+     * Homepage show product from category function
+     *
+     * @param $url
+     * @return void
+     */
     public function products($url = null)
     {
         $checkNoneUrl       =   Category::where(['url' => $url, 'status' => 1])->count();
@@ -241,28 +291,43 @@ class ProductController extends Controller
             abort(404);
         }
         //dropdown category
-        $categorise         =   Category::with('categories')->where('parent_id', 0)->get();
+        $categorise         =   Category::with('categories')->where('parent_id', 0)
+                                ->get();
         // get category from $url
         $categoryDetail     =   Category::where('url', $url)->first();
 
         if($categoryDetail->parent_id == 0) {
-            $subCategories      =   Category::where('parent_id', $categoryDetail->id)->get();
+            $subCategories      =   Category::where('parent_id', $categoryDetail->id)
+                                    ->get();
 
             foreach($subCategories as $subcat) {
                 $cat_ids[]      =   $subcat->id;
             }
-            $productAll         =  Product::whereIn('category_id', $cat_ids)->where('status', 1)->get();
+            $productAll         =  Product::whereIn('category_id', $cat_ids)
+                                            ->where('status', 1)
+                                            ->get();
 
         }else {
-            $productAll         =   Product::where('category_id', $categoryDetail->id)->where('status', 1)->get();
+            $productAll         =   Product::where('category_id', $categoryDetail->id)
+                                            ->where('status', 1)
+                                            ->get();
         }
 
 
-        return view('products.listing', with(['categoryDetail' => $categoryDetail, 'categorise' => $categorise, 'productAll' => $productAll]));
+        return view('products.listing', with([
+            'categoryDetail'    => $categoryDetail,
+            'categorise'        => $categorise,
+            'productAll'        => $productAll
+        ]));
 
     }
 
-
+    /**
+     * Show Product detail function
+     *
+     * @param $id
+     * @return void
+     */
     public function products_detail($id)
     {
         $checkCoutProduct   =   Product::where(['status' => 1])->count();
@@ -286,7 +351,12 @@ class ProductController extends Controller
             ]));
     }
 
-
+    /**
+     *Page ProductDetail Get product from size function
+     *
+     * @param Request $request
+     * @return void
+     */
     public function product_from_size(Request $request)
     {
         $data               =   $request->all();
