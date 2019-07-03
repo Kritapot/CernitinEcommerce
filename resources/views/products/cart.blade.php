@@ -18,6 +18,14 @@
                 </button>
             </div>
             @endif
+            @if (Session::has('flash_message_errors'))
+            <div class="alert alert-error alert-block" id="message-box">
+                <strong>{!! session('flash_message_errors') !!}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
             <table class="table table-condensed">
                 <thead>
                     <tr class="cart_menu">
@@ -33,7 +41,9 @@
                     @foreach ($userCart as $key => $value)
                     <tr>
                         <td class="cart_product">
-                            <a href=""><img style="width: 100px" src="{{ asset('images/backend_images/products/small/'.$value['image']) }}" alt=""></a>
+                            <a href=""><img style="width: 100px"
+                                    src="{{ asset('images/backend_images/products/small/'.$value['image']) }}"
+                                    alt=""></a>
                         </td>
                         <td class="cart_description">
                             <h4><a href="">{{ $value['product_name'] }}</a></h4>
@@ -44,17 +54,21 @@
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
+                                <a class="cart_quantity_up"
+                                    href="{{ url('/cart/update-quantity/'.$value['id'].'/1') }}"> + </a>
                                 <input class="cart_quantity_input" type="text" name="quantity"
                                     value="{{ $value['quantity'] }}" autocomplete="off" size="2">
+                                @if ($value['quantity']>1)
                                 <a class="cart_quantity_down" href=""> - </a>
+                                @endif
                             </div>
                         </td>
                         <td class="cart_total">
                             <p class="cart_total_price"></p>
                         </td>
                         <td class="cart_delete">
-                            <a class="cart_quantity_delete" href="{{ url('/cart/delete/'.$value['id']) }}"><i class="fa fa-times"></i></a>
+                            <a class="cart_quantity_delete" href="{{ url('/cart/delete/'.$value['id']) }}"><i
+                                    class="fa fa-times"></i></a>
                         </td>
                     </tr>
 

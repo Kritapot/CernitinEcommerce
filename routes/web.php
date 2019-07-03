@@ -30,6 +30,8 @@ Route::match(['get', 'post'],'/add-cart', 'ProductController@add_to_cart');
 Route::match(['get', 'post'],'/cart', 'ProductController@cart');
 Route::get('/cart/delete/{id}', 'ProductController@delete_cart_product');
 
+//update product quaitity
+Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductController@update_quantity');
 
 
 

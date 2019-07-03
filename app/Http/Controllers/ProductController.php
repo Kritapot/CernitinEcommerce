@@ -399,6 +399,20 @@ class ProductController extends Controller
                 Session::put('session_id', $session_id);
             }
 
+            $countCartProduct   =   Cart::where([
+                'product_id'    =>  $data['product_id'],
+                'product_name'  =>  $data['product_name'],
+                'product_code'  =>  $data['product_code'],
+                'product_color' =>  $data['product_color'],
+                'price'         =>  $data['price'],
+                'session_id'    =>  $data['session_id'],
+            ])->count();
+
+            if($countCartProduct > 0){
+                return redirect('/cart')
+                ->with('flash_message_errors', 'มีสินค้านี้ในตระกร้าสินค้าแล้ว');
+            }
+
             $saveCart                       =   new Cart();
             $saveCart->product_id           =   $data['product_id'];
             $saveCart->product_name         =   $data['product_name'];
@@ -415,7 +429,11 @@ class ProductController extends Controller
                 ->with('flash_message_success', 'เพิ่มสินค้าลงใน ตระกร้าสินค้า สินค้าเรียบร้อย');
     }
 
-
+    /**
+     * Show product in cart function
+     *
+     * @return void
+     */
     public function cart()
     {
         $session_id     =   Session::get('session_id');
@@ -429,11 +447,25 @@ class ProductController extends Controller
         return view('products.cart', with(['userCart' => $userCart]));
     }
 
-
+    /**
+     * Delere product in cart function
+     *
+     * @param $id
+     * @return void
+     */
     public function delete_cart_product($id)
     {
             Cart::where('id', $id)->delete();
 
             return redirect('/cart');
+    }
+
+
+    public function update_quantity($id=null, $quantity=null)
+    {
+            Cart::where('id', $id)->increment('quantity', $quantity);
+
+            return redirect()->back();
+
     }
 }
