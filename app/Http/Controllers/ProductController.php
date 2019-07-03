@@ -11,6 +11,7 @@ use App\Category;
 use App\Product;
 use PhpParser\Node\Scalar\MagicConst\Method;
 use App\ProductAttributes;
+use App\Cart;
 
 class ProductController extends Controller
 {
@@ -367,5 +368,32 @@ class ProductController extends Controller
         echo $productPriceAt->price;
         echo "#";
         echo $productPriceAt->stock;
+    }
+
+    public function add_to_cart(Request $request)
+    {
+        if($request->isMethod('post')) {
+            $data               =   $request->all();
+            $data['size']       =   explode("-", $data['size'])[1];
+
+            if(empty($data['user_email'])) {
+                $data['user_email']   =   "";
+            }
+            if(empty($data['session_id'])) {
+                $data['session_id']   =   "";
+            }
+
+            $saveCart                       =   new Cart();
+            $saveCart->product_id           =   $data['product_id'];
+            $saveCart->product_name         =   $data['product_name'];
+            $saveCart->product_code         =   $data['product_code'];
+            $saveCart->product_color        =   $data['product_color'];
+            $saveCart->size                 =   $data['size'];
+            $saveCart->price                =   $data['price'];
+            $saveCart->quantity             =   $data['quantity'];
+            $saveCart->user_email           =   $data['user_email'];
+            $saveCart->session_id           =   $data['session_id'];
+            $saveCart->save();
+        }
     }
 }

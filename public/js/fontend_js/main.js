@@ -40,7 +40,7 @@ $(document).ready(function(){
             success:function(respon) {
                 var array   =   respon.split("#")
                 $('#get-price').html("THB "+array[0]);
-
+                $('#price-change').val(array[0]);
                 if(array[1] == 0) {
                     $('#cartButton').hide();
                     $('#avibility').html('<h1 style="color: red;">ขออภัยสินค้าหมด stock</h1>');

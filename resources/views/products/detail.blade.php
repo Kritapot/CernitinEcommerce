@@ -18,34 +18,43 @@
                         </div>
                     </div>
                     <div class="col-sm-7">
-                        <div class="product-information"><!--/product-information-->
-                            <img src="images/product-details/new.jpg" class="newarrival" alt="">
-                            <h2>{{ $productDetail['product_name'] }}</h2>
-                            <p>
-                                <select id="select-size" name="size" style="width: 220px; padding: 5px 0px; margin: 3px 0px;">
-                                    <option value="">เลือกขนาด</option>
-                                    @foreach ($productDetail['product_attributes'] as $key => $value)
-                                        <option value="{{ $productDetail['id'] }}-{{ $value['size'] }}">{{ $value['size'] }}</option>
-                                    @endforeach
-                                </select>
-                            </p>
-                            <p>รหัสสินค้า : {{ $productDetail['product_code'] }}</p>
-                            <img src="images/product-details/rating.png" alt="">
-                            <span>
-                                <span id="get-price">THB {{ $productDetail['price'] }}</span>
-                                <label>Quantity:</label>
-                                <input type="text" >
-                                @if ($totalStock > 0)
-                                    <button id="cartButton" type="button" class="btn btn-fefault cart">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        เพิ่มลงตระกร้า
-                                    </button>
-                                @endif
-                            </span>
-                            <p id="avibility"><b>สถานะสินค้าใน : </b> @if($totalStock>0) <span style="color: green">ใน stock  {{$totalStock}}</span>  @else <span id="x" style="color: red">สินค้าหมด stock</span> @endif</p>
-                            <p><b>Condition:</b> New</p>
-                            <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt=""></a>
-                        </div><!--/product-information-->
+                        <form name="add-cart" id="add-cart" method="post" action="{{ url('/add-cart') }}">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="product_id" value="{{ $productDetail['id'] }}">
+                            <input type="hidden" name="product_name" value="{{ $productDetail['product_name'] }}">
+                            <input type="hidden" name="product_code" value="{{ $productDetail['product_code'] }}">
+                            <input type="hidden" name="product_color" value="{{ $productDetail['product_color'] }}">
+                            <input type="hidden" id="price-change" name="price" value="{{ $productDetail['price'] }}">
+
+                            <div class="product-information"><!--/product-information-->
+                                    <img src="images/product-details/new.jpg" class="newarrival" alt="">
+                                    <h2>{{ $productDetail['product_name'] }}</h2>
+                                    <p>
+                                        <select id="select-size" name="size" style="width: 220px; padding: 5px 0px; margin: 3px 0px;">
+                                            <option value="">เลือกขนาด</option>
+                                            @foreach ($productDetail['product_attributes'] as $key => $value)
+                                                <option value="{{ $productDetail['id'] }}-{{ $value['size'] }}">{{ $value['size'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </p>
+                                    <p>รหัสสินค้า : {{ $productDetail['product_code'] }}</p>
+                                    <img src="images/product-details/rating.png" alt="">
+                                    <span>
+                                        <span id="get-price">THB {{ $productDetail['price'] }}</span>
+                                        <label>Quantity:</label>
+                                        <input type="text" name="quantity">
+                                        @if ($totalStock > 0)
+                                            <button id="cartButton" type="submit" class="btn btn-fefault cart">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                เพิ่มลงตระกร้า
+                                            </button>
+                                        @endif
+                                    </span>
+                                    <p id="avibility"><b>สถานะสินค้าใน : </b> @if($totalStock>0) <span style="color: green">ใน stock  {{$totalStock}}</span>  @else <span id="x" style="color: red">สินค้าหมด stock</span> @endif</p>
+                                    <p><b>Condition:</b> New</p>
+                                    <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt=""></a>
+                            </div><!--/product-information-->
+                        </form>
                     </div>
                 </div><!--/product-details-->
 

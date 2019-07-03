@@ -23,6 +23,11 @@ Route::get('/product-detail/{id}', 'ProductController@products_detail');
 //Get price from Product-size
 Route::get('/get-product-size', 'ProductController@product_from_size');
 
+//Add to cart
+Route::match(['get', 'post'],'/add-cart', 'ProductController@add_to_cart');
+
+
+
 
 Auth::routes();
 
