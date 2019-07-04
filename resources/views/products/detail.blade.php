@@ -35,10 +35,10 @@
                                 <p>
                                     <select id="select-size" name="size"
                                         style="width: 220px; padding: 5px 0px; margin: 3px 0px;">
-                                        <option value="">เลือกขนาด</option>
                                         @foreach ($productDetail['product_attributes'] as $key => $value)
-                                        <option value="{{ $productDetail['id'] }}-{{ $value['size'] }}">
-                                            {{ $value['size'] }}</option>
+                                            <option value="{{ $productDetail['id'] }}-{{ $value['size'] }}">
+                                                {{ $value['size'] }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </p>

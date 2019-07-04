@@ -381,7 +381,6 @@ class ProductController extends Controller
         if($request->isMethod('post')) {
             $data               =   $request->all();
 
-
             if(empty($data['size'])) {
                 $size         =   "";
             }else {
@@ -392,13 +391,13 @@ class ProductController extends Controller
             if(empty($data['user_email'])) {
                 $data['user_email']   =   "";
             }
-
+            // check empty session , create sesion
             $session_id     =   Session::get('session_id');
             if(empty($session_id)) {
                 $session_id     =   str_random(40);
                 Session::put('session_id', $session_id);
             }
-
+            // check add product in cart
             $countCartProduct   =   Cart::where([
                 'product_id'    =>  $data['product_id'],
                 'product_name'  =>  $data['product_name'],
@@ -411,19 +410,24 @@ class ProductController extends Controller
             if($countCartProduct > 0){
                 return redirect('/cart')
                 ->with('flash_message_errors', 'มีสินค้านี้ในตระกร้าสินค้าแล้ว');
+            }else {
+                $getSku                         =   ProductAttributes::select('sku')->where(['product_id'=>$data['product_id'], 'size'=>$size])
+                                                    ->first();
+
+                $saveCart                       =   new Cart();
+                $saveCart->product_id           =   $data['product_id'];
+                $saveCart->product_name         =   $data['product_name'];
+                $saveCart->product_code         =   $getSku->sku;
+                $saveCart->product_color        =   $data['product_color'];
+                $saveCart->size                 =   $size;
+                $saveCart->price                =   $data['price'];
+                $saveCart->quantity             =   $data['quantity'];
+                $saveCart->user_email           =   $data['user_email'];
+                $saveCart->session_id           =   $session_id;
+                $saveCart->save();
+
             }
 
-            $saveCart                       =   new Cart();
-            $saveCart->product_id           =   $data['product_id'];
-            $saveCart->product_name         =   $data['product_name'];
-            $saveCart->product_code         =   $data['product_code'];
-            $saveCart->product_color        =   $data['product_color'];
-            $saveCart->size                 =   $size;
-            $saveCart->price                =   $data['price'];
-            $saveCart->quantity             =   $data['quantity'];
-            $saveCart->user_email           =   $data['user_email'];
-            $saveCart->session_id           =   $session_id;
-            $saveCart->save();
         }
         return redirect('/cart')
                 ->with('flash_message_success', 'เพิ่มสินค้าลงใน ตระกร้าสินค้า สินค้าเรียบร้อย');
@@ -469,8 +473,24 @@ class ProductController extends Controller
      */
     public function update_quantity($id=null, $quantity=null)
     {
-            Cart::where('id', $id)->increment('quantity', $quantity);
+            $getCartDetail      =   Cart::where('id', $id)->first();
+            $getProductAtt      =   ProductAttributes::where([
+                                        'sku'           => $getCartDetail->product_code,
+                                        'product_id'    => $getCartDetail->product_id,
+                                        'size'          => $getCartDetail->size,
+                                        ])
+                                    ->first();
 
-            echo $quantity;
+            $updateQuantity     =   $getCartDetail->quantity + $quantity;
+
+            if($getProductAtt->stock >= $updateQuantity){
+                Cart::where('id', $id)->increment('quantity', $quantity);
+                return redirect('/cart')
+                    ->with('flash_message_success', 'เพิ่มจำนวนสินค้าเรียบร้อย');
+            }else {
+                return redirect('/cart')
+                    ->with('flash_message_errors', 'จำนวนสินค้าใน stock มีไม่พอ');
+            }
+
     }
 }

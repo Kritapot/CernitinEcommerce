@@ -37,6 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $totalAmount = 0; ?>
                     @foreach ($userCart as $key => $value)
                     <tr>
                         <td class="cart_product">
@@ -53,7 +54,7 @@
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href="javascript:" rel="{{ $value['id'] }}" rel1="update-quantity"> + </a>
+                                <a class="cart_quantity_up" href="{{ url('/cart/update-quantity/'.$value['id'].'/1') }}"> + </a>
                                 <input class="cart_quantity_input" type="text" name="quantity" value="{{ $value['quantity'] }}" autocomplete="off" size="2">
                                 @if ($value['quantity']>1)
                                 <a class="cart_quantity_down" href=""> - </a>
@@ -61,14 +62,14 @@
                             </div>
                         </td>
                         <td class="cart_total">
-                            <p class="cart_total_price"></p>
+                            <p class="cart_total_price">THB{{ $value['price']*$value['quantity'] }}</p>
                         </td>
                         <td class="cart_delete">
                             <a class="cart_quantity_delete" href="{{ url('/cart/delete/'.$value['id']) }}"><i
                                     class="fa fa-times"></i></a>
                         </td>
                     </tr>
-
+                    <?php $totalAmount = $totalAmount + ($value['price']*$value['quantity']) ?>
                     @endforeach
                 </tbody>
             </table>
@@ -143,8 +144,8 @@
                     <ul>
                         <li>Cart Sub Total <span>$59</span></li>
                         <li>Eco Tax <span>$2</span></li>
-                        <li>Shipping Cost <span>Free</span></li>
-                        <li>Total <span>$61</span></li>
+                        <li>ค่าจัดส่ง <span>THB 50</span></li>
+                        <li>ยอดรวม <span>THB <?php echo $totalAmount; ?></span></li>
                     </ul>
                     <a class="btn btn-default update" href="">Update</a>
                     <a class="btn btn-default check_out" href="">Check Out</a>
