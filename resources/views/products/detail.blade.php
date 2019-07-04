@@ -49,7 +49,7 @@
                                 </span>
                                 <span>
                                     <label>จำนวน:</label>
-                                    <input type="text" name="quantity">
+                                    <input type="text" name="quantity" value="1">
                                     @if ($totalStock > 0)
                                     <button id="cartButton" type="submit" class="btn btn-fefault cart">
                                         <i class="fa fa-shopping-cart"></i>

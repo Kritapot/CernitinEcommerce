@@ -74,6 +74,31 @@ $(document).ready(function(){
           })
     });
 
+    $('.cart_quantity_up').click(function() {
+        var id                  =   $(this).attr('rel');
+        var deleteFunction      =   $(this).attr('rel1');
+        var quantity            =   $('.cart_quantity_input').val();
+        $.ajax({
+            type:   'get',
+            url:    '/cart/'+deleteFunction+'/'+id+'/1',
+            data:   {quantity:quantity},
+            success:function(respon) {
+                Swal.fire({
+                    position: 'top-end',
+                    type: 'success',
+                    title: 'เพิ่มจำนวนสินค้าเรียบร้อยแล้ว',
+                    showConfirmButton: false,
+                    timer: 3500
+                  })
+                window.location.href = "/cart"
+                $('#do_action').focus();
+            },error:function(e) {
+                console.log(e)
+            }
+        })
+    });
+
+
 
 });
 

@@ -10,17 +10,16 @@
             </ol>
         </div>
         <div class="table-responsive cart_info">
-            @if (Session::has('flash_message_success'))
-            <div class="alert alert-success alert-block" id="message-box">
-                <strong>{!! session('flash_message_success') !!}</strong>
+            @if (Session::has('flash_message_errors'))
+            <div class="alert alert-error alert-block" id="message-box" style="background-color: #FF6347; color: white">
+                <strong>{!! session('flash_message_errors') !!}</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            @endif
-            @if (Session::has('flash_message_errors'))
-            <div class="alert alert-error alert-block" id="message-box">
-                <strong>{!! session('flash_message_errors') !!}</strong>
+            @elseif (Session::has('flash_message_success'))
+            <div class="alert alert-success alert-block" id="message-box">
+                <strong>{!! session('flash_message_success') !!}</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -54,10 +53,8 @@
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
-                                <a class="cart_quantity_up"
-                                    href="{{ url('/cart/update-quantity/'.$value['id'].'/1') }}"> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity"
-                                    value="{{ $value['quantity'] }}" autocomplete="off" size="2">
+                                <a class="cart_quantity_up" href="javascript:" rel="{{ $value['id'] }}" rel1="update-quantity"> + </a>
+                                <input class="cart_quantity_input" type="text" name="quantity" value="{{ $value['quantity'] }}" autocomplete="off" size="2">
                                 @if ($value['quantity']>1)
                                 <a class="cart_quantity_down" href=""> - </a>
                                 @endif

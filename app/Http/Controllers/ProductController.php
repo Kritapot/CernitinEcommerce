@@ -405,7 +405,7 @@ class ProductController extends Controller
                 'product_code'  =>  $data['product_code'],
                 'product_color' =>  $data['product_color'],
                 'price'         =>  $data['price'],
-                'session_id'    =>  $data['session_id'],
+                'session_id'    =>  $session_id,
             ])->count();
 
             if($countCartProduct > 0){
@@ -460,12 +460,17 @@ class ProductController extends Controller
             return redirect('/cart');
     }
 
-
+    /**
+     * Update quantity product cart function
+     *
+     * @param $id
+     * @param $quantity
+     * @return void
+     */
     public function update_quantity($id=null, $quantity=null)
     {
             Cart::where('id', $id)->increment('quantity', $quantity);
 
-            return redirect()->back();
-
+            echo $quantity;
     }
 }
