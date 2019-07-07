@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Brian2694\Toastr\Facades\Toastr;
 use Session;
 use Image;
-use Auth;
 use App\Category;
 use App\Product;
-use PhpParser\Node\Scalar\MagicConst\Method;
 use App\ProductAttributes;
 use App\Cart;
 
@@ -55,6 +54,7 @@ class ProductController extends Controller
             //Upload Image
             if($request->hasFile('image')){
                 $imgTmp         =   Input::file('image');
+
                 if($imgTmp->isValid()){
                     $extention              =   $imgTmp->getClientOriginalExtension();
                     $filename               =   rand(111, 99999).'.'.$extention;
@@ -381,37 +381,34 @@ class ProductController extends Controller
         if($request->isMethod('post')) {
             $data               =   $request->all();
 
-            if(empty($data['size'])) {
-                $size         =   "";
-            }else {
+
                 $sizeArr        =   explode("-", $data['size']);
-                $size           =   $sizeArr[1];
-            }
+
 
             if(empty($data['user_email'])) {
                 $data['user_email']   =   "";
             }
+
             // check empty session , create sesion
             $session_id     =   Session::get('session_id');
             if(empty($session_id)) {
                 $session_id     =   str_random(40);
                 Session::put('session_id', $session_id);
             }
-            // check add product in cart
-            $countCartProduct   =   Cart::where([
-                'product_id'    =>  $data['product_id'],
-                'product_name'  =>  $data['product_name'],
-                'product_code'  =>  $data['product_code'],
-                'product_color' =>  $data['product_color'],
-                'price'         =>  $data['price'],
-                'session_id'    =>  $session_id,
-            ])->count();
 
-            if($countCartProduct > 0){
-                return redirect('/cart')
-                ->with('flash_message_errors', 'มีสินค้านี้ในตระกร้าสินค้าแล้ว');
-            }else {
-                $getSku                         =   ProductAttributes::select('sku')->where(['product_id'=>$data['product_id'], 'size'=>$size])
+            // check add product in cart
+            $countCartInProduct =   Cart::where('product_id', $data['product_id'])
+                                    ->where('product_name', $data['product_name'])
+                                    ->where('price', $data['price'])
+                                    ->where('session_id', $session_id)
+                                    ->count();
+
+            if($countCartInProduct>0){
+                Toastr::error('ขออภัยสินค้านี้มีในตระกร้าสินค้าแล้ว', '', ["positionClass" => "toast-top-center", "closeButton" => true, "timeOut" => "2000", "progressBar" => true,]);
+                return redirect('/cart');
+            } else {
+
+                $getSku                         =   ProductAttributes::select('sku')->where(['product_id'=>$data['product_id'], 'size'=>$sizeArr[1]])
                                                     ->first();
 
                 $saveCart                       =   new Cart();
@@ -419,18 +416,19 @@ class ProductController extends Controller
                 $saveCart->product_name         =   $data['product_name'];
                 $saveCart->product_code         =   $getSku->sku;
                 $saveCart->product_color        =   $data['product_color'];
-                $saveCart->size                 =   $size;
+                $saveCart->size                 =   $sizeArr[1];
                 $saveCart->price                =   $data['price'];
                 $saveCart->quantity             =   $data['quantity'];
                 $saveCart->user_email           =   $data['user_email'];
                 $saveCart->session_id           =   $session_id;
                 $saveCart->save();
 
+                Toastr::success('เพิ่มสินค้าลงในตระกร้าสินค้าเรียบร้อย', '', ["positionClass" => "toast-top-center", "closeButton" => true, "timeOut" => "2000", "progressBar" => true,]);
+                return redirect('/cart');
+
             }
 
         }
-        return redirect('/cart')
-                ->with('flash_message_success', 'เพิ่มสินค้าลงใน ตระกร้าสินค้า สินค้าเรียบร้อย');
     }
 
     /**
@@ -443,6 +441,7 @@ class ProductController extends Controller
         $session_id     =   Session::get('session_id');
         $userCart       =   Cart::where('session_id', $session_id)
                             ->get();
+
         foreach($userCart as $key => $value) {
             $productDetail          =   Product::where('id', $value->product_id)->first();
             $userCart[$key]->image  =   $productDetail->image;
@@ -460,7 +459,7 @@ class ProductController extends Controller
     public function delete_cart_product($id)
     {
             Cart::where('id', $id)->delete();
-
+            Toastr::success('ลบสินค้าออกจากตระกร้าเรียบร้อยแล้ว', '', ["positionClass" => "toast-top-center", "closeButton" => true, "timeOut" => "2000", "progressBar" => true,]);
             return redirect('/cart');
     }
 
@@ -485,11 +484,11 @@ class ProductController extends Controller
 
             if($getProductAtt->stock >= $updateQuantity){
                 Cart::where('id', $id)->increment('quantity', $quantity);
-                return redirect('/cart')
-                    ->with('flash_message_success', 'เพิ่มจำนวนสินค้าเรียบร้อย');
+                Toastr::success('เพิ่มจำนวนสินค้าเรียบร้อยแล้ว', '', ["positionClass" => "toast-top-center", "closeButton" => true, "timeOut" => "2000", "progressBar" => true,]);
+                return redirect('/cart');
             }else {
-                return redirect('/cart')
-                    ->with('flash_message_errors', 'จำนวนสินค้าใน stock มีไม่พอ');
+                Toastr::error('ขออภัยจำนวนสินค้าใน stock มีไม่พอ', '', ["positionClass" => "toast-top-center", "closeButton" => true, "timeOut" => "2000", "progressBar" => true,]);
+                return redirect('/cart');
             }
 
     }

@@ -54,38 +54,6 @@ $(document).ready(function(){
         })
     });
 
-    $('.cart_quantity_delete').click(function() {
-        Swal.fire({
-            position: 'top-end',
-            type: 'success',
-            title: 'ลบรายการออกจากตระกร้าสินค้าเรียบร้อย',
-            showConfirmButton: false,
-            timer: 3500
-          })
-    });
-
-    $('#add-product-card').submit(function() {
-        Swal.fire({
-            position: 'top-end',
-            type: 'success',
-            title: 'เพิ่มรายการไปที่ตระกร้าสินค้าเรียบร้อย',
-            showConfirmButton: false,
-            timer: 3500
-          })
-    });
-
-    $('.cart_quantity_up').click(function() {
-        Swal.fire({
-            position: 'top-end',
-            type: 'success',
-            title: 'เพิ่มจำนวนสินค้าเรียบร้อยแล้ว',
-            showConfirmButton: false,
-            timer: 3500
-          })
-    });
-
-
-
 });
 
 $(document).ready(function(){
