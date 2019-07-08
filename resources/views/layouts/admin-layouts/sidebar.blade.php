@@ -14,6 +14,12 @@
           <li><a href="{{ url('/admin/list-product') }}">แสดงสินค้าทั้งหมด</a></li>
         </ul>
       </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Banner</span> <span class="label label-important">3</span></a>
+        <ul>
+          <li><a href="{{ url('/admin/add-banner') }}">เพิ่ม Banner</a></li>
+          <li><a href="{{ url('/admin/list-banner') }}">แสดง Banner ทั้งหมด</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
   <!--sidebar-menu-->

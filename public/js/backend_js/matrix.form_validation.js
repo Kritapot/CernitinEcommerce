@@ -251,6 +251,32 @@ $(document).ready(function(){
           })
     });
 
+
+    $('.deleteBanner').click(function() {
+        var id                  =   $(this).attr('rel');
+        var deleteFunction      =   $(this).attr('rel1');
+
+        Swal.fire({
+            title: 'คุณแน่ใจที่จะลบ Banner?',
+            text: "คุณจะไม่สามารถกลับไปแก้ไขได้อีกถ้ากดปุ่มยืนยัน!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ยืนยันการลบ Banner',
+            cancelButtonText: 'ยกเลิการทำรายการ'
+          }).then((result) => {
+            if (result.value) {
+              Swal.fire(
+                'ลบ Banner!',
+                'Banner ถูกลบเรียบร้อยแล้ว',
+                'success'
+              )
+              window.location.href="/admin/"+deleteFunction+"/"+id;
+            }
+          })
+    });
+
     $('.deleteRecord').click(function() {
         var id                  =   $(this).attr('rel');
         var deleteFunction      =   $(this).attr('rel1');
