@@ -14,6 +14,7 @@
 
 Route::get('/', 'IndexController@index');
 
+
 //Category/listing
 Route::get('/product/{url}', 'ProductController@products');
 
