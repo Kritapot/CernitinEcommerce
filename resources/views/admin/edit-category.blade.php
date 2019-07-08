@@ -42,12 +42,6 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label">URL</label>
-                                    <div class="controls">
-                                        <input type="text" name="url" id="url" value="{{$category['url']}}">
-                                    </div>
-                                </div>
-                                <div class="control-group">
                                     <label class="control-label">เปิด-ปิดการแสดง</label>
                                     <div class="controls">
                                         <input @if($category['status']==1) checked @endif type="checkbox" name="status" id="status" value="1">

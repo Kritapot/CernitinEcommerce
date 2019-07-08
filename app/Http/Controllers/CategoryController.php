@@ -34,11 +34,15 @@ class CategoryController extends Controller
             $data['status'] = 1;
         }
 
+        if(empty($data['description'])) {
+            $data['description'] = "";
+        }
+
         $saveCategory               =   new Category;
         $saveCategory->name         =   $data['name'];
         $saveCategory->parent_id    =   $data['parent_id'];
         $saveCategory->description  =   $data['description'];
-        $saveCategory->url          =   $data['url'];
+        $saveCategory->url          =   $data['name'];
         $saveCategory->status       =   $data['status'];
 
         $saveCategory->save();
@@ -91,10 +95,15 @@ class CategoryController extends Controller
             $data['status'] = 1;
         }
 
+        if(empty($data['description'])) {
+            $data['description'] = "";
+        }
+
+
         $updateCategory                     =   Category::where('id', $id)->first();
         $updateCategory->name               =   $data['name'];
         $updateCategory->description        =   $data['description'];
-        $updateCategory->url                =   $data['url'];
+        $updateCategory->url                =   $data['name'];
         $updateCategory->status             =   $data['status'];
         $updateCategory->save();
 

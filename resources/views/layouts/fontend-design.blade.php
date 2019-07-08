@@ -14,7 +14,8 @@
     <link href="{{ asset('css/fontend_css') }}/animate.css" rel="stylesheet">
 	<link href="{{ asset('css/fontend_css') }}/main.css" rel="stylesheet">
     <link href="{{ asset('css/fontend_css') }}/responsive.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link href="{{ asset('vendor/toastr/toastr.min.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -33,7 +34,7 @@
     <script src="{{ asset('vendor/sweetalert') }}/sweetalert2@8.js"></script>
     <script src="{{ asset('vendor/fontawesome') }}/all.js"></script>
     <script>$("#message-box").fadeTo(3000, 1000).slideUp(500, function(){$("#message-box").slideUp(2000);});</script>
-    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
     {!! Toastr::message() !!}
 </body>
 </html>

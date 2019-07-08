@@ -32,7 +32,16 @@ class ProductController extends Controller
             $saveProduct->product_name  =   $data['name'];
             $saveProduct->category_id   =   $data['category_id'];
             $saveProduct->product_code  =   $data['product_code'];
+
+            if(empty($data['product_color'])) {
+                $data['product_color']    =   "";
+            }
             $saveProduct->product_color =   $data['product_color'];
+
+            if(empty($data['description'])) {
+                $data['description']    =   "";
+            }
+
             $saveProduct->description   =   $data['description'];
 
             if(!empty($data['care'])) {
@@ -446,7 +455,6 @@ class ProductController extends Controller
             $productDetail          =   Product::where('id', $value->product_id)->first();
             $userCart[$key]->image  =   $productDetail->image;
         }
-        //DD($userCart);
         return view('products.cart', with(['userCart' => $userCart]));
     }
 
