@@ -50,7 +50,7 @@
                             @if (empty(Auth::check()))
                                 <li><a href="{{ url('/user-register') }}"><i class="fa fa-lock"></i> เข้าสู่ระบบ</a></li>
                             @else
-                                <li><a href="#"><i class="fa fa-user"></i> {{ Auth::user()->name }}</a></li>
+                                <li><a href="{{ url('account') }}"><i class="fa fa-user"></i> {{ Auth::user()->name }}</a></li>
                                 <li><a href="{{ url('/user-logout') }}"><i class="fa fa-lock"></i> ออกจากระบบ</a></li>
                             @endif
                         </ul>

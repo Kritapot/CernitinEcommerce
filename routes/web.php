@@ -40,6 +40,11 @@ Route::get('/user-register', 'UserController@userLoginRegister');
 Route::get('/user-logout', 'UserController@logout');
 Route::post('/user-login', 'UserController@login');
 
+Route::group(['middleware' => ['FontLogin']], function () {
+    //User Account Page
+    Route::match(['get', 'post'],'account', 'UserController@userAccountPage');
+});
+
 
 //Check Email
 Route::match(['get', 'post'],'/check-email', 'UserController@checkEmail');

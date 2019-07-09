@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use Session;
 
 class UserController extends Controller
 {
@@ -42,6 +43,7 @@ class UserController extends Controller
                 $saveUser->save();
 
                 if(Auth::attempt(['email' => $data['name'], 'password' => $data['password']])) {
+                    Session::put('fontSession', $data['email']);
                     return redirect('/cart');
                 }
             }
@@ -74,6 +76,7 @@ class UserController extends Controller
         $data       =   $request->all();
 
         if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
+            Session::put('fontSession', $data['email']);
             return redirect('/cart');
         }else {
             return redirect()->back()-with('flash_message_errors', 'ขออภัย Email หรือ Password ไม่ถูกต้อง');
@@ -89,6 +92,13 @@ class UserController extends Controller
     public function logout()
     {
         Auth::logout();
+        Session::forget('fontSession');
         return redirect('/');
+    }
+
+
+    public function userAccountPage()
+    {
+        return view('user.account');
     }
 }
