@@ -7,6 +7,7 @@ use App\User;
 use Auth;
 use Session;
 use App\apps_country;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -80,7 +81,7 @@ class UserController extends Controller
             Session::put('fontSession', $data['email']);
             return redirect('/cart');
         }else {
-            return redirect()->back()-with('flash_message_errors', 'ขออภัย Email หรือ Password ไม่ถูกต้อง');
+            return redirect()->back()->with('flash_message_errors', 'ขออภัย Email หรือ Password ไม่ถูกต้อง');
         }
 
     }
@@ -151,5 +152,47 @@ class UserController extends Controller
             'country'       => $country,
             'user_detail'   => $user_detail
             ]));
+    }
+
+
+    public function checkUserPassword(Request $request)
+    {
+        $data               =   $request->all();
+        $current_password   =   $data['currentPwd'];
+        $user_id            =   Auth::user()->id;
+
+        $checkPassword      =   User::where(['id' => $user_id])->first();
+        if(Hash::check($current_password, $checkPassword['password']))
+        {
+            echo "True";
+        }else {
+
+            echo "False";
+        }
+    }
+
+
+
+    public function updateUserPassword(Request $request)
+    {
+        $data               =   $request->all();
+
+        if($data['new_pwd'] != $data['confirm_pwd'])
+        {
+            return redirect()->back()->with('flash_message_errors', 'ท่านยืนยันรหัสผ่านไม่ตรงกัน');
+        }
+
+        $oldPassword        =   User::where(['id' => Auth::user()->id])->first();
+        $currentPassword    =   $data['current_pwd'];
+
+        if(Hash::check($currentPassword, $oldPassword['password'])) {
+            $newPassword    =   bcrypt($data['new_pwd']);
+            User::where(['id' => Auth::user()->id])->update(['password' => $newPassword]);
+
+            return redirect()->back()->with('flash_message_success', 'รหัสผ่านของท่านได้เปลี่ยนเรียบร้อยแล้ว');
+        }else {
+            return redirect()->back()->with('flash_message_errors', 'ขออภัยรหัสผ่านไม่ถูกต้อง');
+
+        }
     }
 }

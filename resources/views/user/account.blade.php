@@ -48,6 +48,13 @@
             <div class="col-sm-4">
                 <div class="signup-form"><!--sign up form-->
                     <h2>เปลี่ยนรหัสผู้ใช้งาน</h2>
+                    <form enctype="multipart/form-data" action="{{ url('/update-user-pwd') }}" method="post" name="passwordForm" id="passwordForm">
+                        {{ csrf_field() }}
+                        <input type="password" name="current_pwd" id="current-pwd" placeholder="รหัสผ่าน"><span id="check-current-pwd"></span>
+                        <input type="password" name="new_pwd" id="new-pwd" placeholder="รหัสผ่านใหม่">
+                        <input type="password" name="confirm_pwd" id="confrim-pwd" placeholder="ยืนยันรหัสผ่านใหม่">
+                        <button type="submit" class="btn btn-default">ยืนยันการเปลี่ยน</button>
+                    </form>
                 </div><!--/sign up form-->
             </div>
         </div>

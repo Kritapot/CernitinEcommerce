@@ -147,6 +147,63 @@ $(document).ready(function(){
         passwordToggle: true,
         tooltip: true,
         eyeImg: '/images/fontend_images/eye.svg'
-      });
+    });
+
+
+    $('#current-pwd').keyup(function () {
+        var currentPwd      =   $(this).val();
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'post',
+            url: '/check-user-pwd',
+            data: {currentPwd:currentPwd},
+            success:function(respon) {
+                console.log(respon)
+                if(respon == "False")
+                {
+                    $('#check-current-pwd').html("<font color = 'red'>รหัสผ่านไม่ถูกต้อง</font>")
+                }else if(respon == "True") {
+                    $('#check-current-pwd').html("<font color = 'green'>รหัสผ่านถูกต้อง</font>")
+                }
+            },
+            error:function(e) {
+                console.log('Eror:', e)
+            }
+        })
+    });
+
+    $("#passwordForm").validate({
+		rules:{
+            current_pwd:{
+				required: true,
+				minlength:6,
+				maxlength:20
+			},
+            new_pwd:{
+				required: true,
+				minlength:6,
+				maxlength:20
+			},
+            confirm_pwd:{
+				required: true,
+				minlength:6,
+				maxlength:20
+			},
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		}
+    });
+
+
 });
 
