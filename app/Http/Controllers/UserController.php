@@ -98,8 +98,51 @@ class UserController extends Controller
     }
 
 
-    public function userAccountPage()
+    public function userAccountPage(Request $request)
     {
+        if($request->isMethod('post'))
+        {
+            $data                   =   $request->all();
+
+            if(empty($data['name']))
+            {
+                return redirect()->back()->with('flash_message_errors', 'กรุณากรอกชื่อของท่านให้เรียบร้อย');
+            }
+            if(empty($data['address']))
+            {
+                $data['address']    =   "";
+            }
+            if(empty($data['state']))
+            {
+                $data['state']    =   "";
+            }
+            if(empty($data['country']))
+            {
+                $data['country']    =   "";
+            }
+            if(empty($data['pincode']))
+            {
+                $data['pincode']    =   "";
+            }
+            if(empty($data['mobile']))
+            {
+                $data['mobile']    =   "";
+            }
+
+
+            $updateUser             =   User::where('id', $data['id'])->first();
+            $updateUser->name       =   $data['name'];
+            $updateUser->address    =   $data['address'];
+            $updateUser->city       =   $data['state'];
+            $updateUser->country    =   $data['country'];
+            $updateUser->pincode    =   $data['pincode'];
+            $updateUser->mobile     =   $data['mobile'];
+            $updateUser->save();
+
+            return redirect()->back()->with('flash_message_success', 'แก้ไขข้อมูลส่วนตัวของท่านเรียบร้อยแล้ว');
+        }
+
+
         $user_id        =   Auth::user()->id;
         $user_detail    =   User::where('id' ,$user_id)->first();
         $country        =   apps_country::get();

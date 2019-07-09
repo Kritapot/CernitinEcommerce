@@ -101,6 +101,24 @@ $(document).ready(function(){
         }
     });
 
+    $("#accountForm").validate({
+		rules:{
+			name:{
+				required: true,
+                minlength:2,
+                accept:"[a-zA-Z]+"
+			},
+        },
+        messages:{
+            name:{
+                required:"กรุณากรอกชื่อของคุณ",
+                minlength:"ชื่อต้องมีความยาวมากกว่า 2 ตัวอักษรขึ้นไป!",
+                accept:"ชื่อของคุณจะต้องเป็นตัวอักษรเท่านั้น !"
+            },
+        }
+    });
+
+
     $("#login-form-user").validate({
 		rules:{
             email:{
