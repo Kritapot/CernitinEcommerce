@@ -15,6 +15,22 @@
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form"><!--login form-->
                     <h2>เปลี่ยนรายละเอียดผู้ใช้งาน</h2>
+                    <form action="{{ url('/account') }}" method="post" name="accountForm" id="accountForm">
+                        {{ csrf_field() }}
+                        <input value="{{ $user_detail['name'] }}" name="name" type="text" placeholder="Name" />
+                        <input value="{{ $user_detail['address'] }}" name="address" type="text" placeholder="Address" />
+                        <input value="{{ $user_detail['city'] }}" name="city" type="text" placeholder="City" />
+                        <input value="{{ $user_detail['state'] }}" name="state" type="text" placeholder="State" />
+                        <select name="country" id="country">
+                            <option value="">select country</option>
+                            @foreach ($country as $key => $item)
+                                <option {{ $user_detail['country'] == $item['country_name'] ? 'selected' : '' }} value="{{ $item['country_name'] }}">{{ $item['country_name'] }}</option>
+                            @endforeach
+                        </select>
+                        <input value="{{ $user_detail['pincode'] }}" style="margin-top: 10px" name="pincode" type="text" placeholder="Pincode" />
+                        <input value="{{ $user_detail['mobile'] }}" name="mobile" type="text" placeholder="Mobile" />
+                        <button type="submit" class="btn btn-default">บันทึก</button>
+                    </form>
                 </div><!--/login form-->
             </div>
             <div class="col-sm-1">

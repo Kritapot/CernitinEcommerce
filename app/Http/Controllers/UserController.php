@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use Session;
+use App\apps_country;
 
 class UserController extends Controller
 {
@@ -99,6 +100,13 @@ class UserController extends Controller
 
     public function userAccountPage()
     {
-        return view('user.account');
+        $user_id        =   Auth::user()->id;
+        $user_detail    =   User::where('id' ,$user_id)->first();
+        $country        =   apps_country::get();
+
+        return view('user.account', with([
+            'country'       => $country,
+            'user_detail'   => $user_detail
+            ]));
     }
 }
