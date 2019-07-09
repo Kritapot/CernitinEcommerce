@@ -34,6 +34,12 @@ Route::get('/cart/delete/{id}', 'ProductController@delete_cart_product');
 //update product quaitity
 Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductController@update_quantity');
 
+//Register Login
+Route::match(['get', 'post'],'/login-register', 'UserController@register');
+
+//Register Login
+Route::match(['get', 'post'],'/check-email', 'UserController@checkEmail');
+
 
 
 Auth::routes();

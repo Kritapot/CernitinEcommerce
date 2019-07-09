@@ -65,3 +65,42 @@ $(document).ready(function(){
 
 
 
+$(document).ready(function(){
+    $("#login-form").validate({
+		rules:{
+			name:{
+				required: true,
+                minlength:2,
+                accept:"[a-zA-Z]+"
+			},
+			password:{
+				required:true,
+				minlength:6
+			},
+			email:{
+				required:true,
+                email:true,
+                remote: '/check-email'
+			}
+        },
+        messages:{
+            name:{
+                required:"กรุณากรอกชื่อของคุณ",
+                minlength:"ชื่อต้องมีความยาวมากกว่า 2 ตัวอักษรขึ้นไป!",
+                accept:"ชื่อของคุณจะต้องเป็นตัวอักษรเท่านั้น !"
+            },
+            password:{
+                required:"กรุณากรอกรหัสผ่าน",
+                minlength:"รหัสผ่านของคุณจะต้องมีความยาวไม่น้อยกว่า 6 ตัวอักษรขึ้นไป!",
+
+			},
+			email:{
+                required:"กรุณากรอกอีเมล์ของคุณ",
+                email:"Plese enter valid Email",
+                remote: "ขออภัยอีเมล์นี้มีผู้ใช้งานแล้ว"
+			}
+
+        }
+    });
+});
+

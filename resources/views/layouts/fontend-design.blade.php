@@ -31,6 +31,7 @@
     <script src="{{ asset('js/fontend_js') }}/jquery.prettyPhoto.js"></script>
     <script src="{{ asset('js/fontend_js') }}/main.js"></script>
     <script src="{{ asset('js/fontend_js') }}/jquery.zoom.js"></script>
+    <script src="{{ asset('js/fontend_js') }}/jquery.validate.js"></script>
     <script src="{{ asset('vendor/sweetalert') }}/sweetalert2@8.js"></script>
     <script src="{{ asset('vendor/fontawesome') }}/all.js"></script>
     <script>$("#message-box").fadeTo(3000, 1000).slideUp(500, function(){$("#message-box").slideUp(2000);});</script>
