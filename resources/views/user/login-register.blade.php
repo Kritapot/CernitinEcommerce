@@ -15,13 +15,11 @@
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form"><!--login form-->
                     <h2>เข้าสู่ระบบ</h2>
-                    <form action="#">
-                        <input type="text" placeholder="Name" />
-                        <input type="email" placeholder="Email Address" />
-                        <span>
-                            <input type="checkbox" class="checkbox">
-                            ให้ฉันอยู่ในระบบ
-                        </span>
+                    <form name="login-form-user" id="login-form-user" enctype="multipart/form-data" action="{{ url('/user-login') }}" method="post">
+                        {{ csrf_field() }}
+                        <input name="email" type="email" placeholder="Name" />
+                        <input name="password" type="password" placeholder="Email Address" />
+
                         <button type="submit" class="btn btn-default">เข้าสู่ระบบ</button>
                     </form>
                 </div><!--/login form-->
@@ -32,11 +30,11 @@
             <div class="col-sm-4">
                 <div class="signup-form"><!--sign up form-->
                     <h2>ผู้ใช้ใหม่ลงทะเบียน!</h2>
-                    <form name="login-register" id="login-form" enctype="multipart/form-data" action="{{ url('/login-register') }}" method="post" novalidate="novalidate">
+                    <form name="login-register" id="login-form" enctype="multipart/form-data" action="{{ url('/form-register') }}" method="post">
                         {{ csrf_field() }}
                         <input name="name" type="text" placeholder="Name"/>
                         <input name="email" type="email" placeholder="Email Address"/>
-                        <input name="password" type="password" placeholder="Password"/>
+                        <input id="myPassword" name="password" type="password" placeholder="Password"/>
                         <button type="submit" class="btn btn-default">ลงทะเบียน</button>
                     </form>
                 </div><!--/sign up form-->

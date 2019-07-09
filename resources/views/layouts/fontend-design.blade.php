@@ -14,6 +14,7 @@
     <link href="{{ asset('css/fontend_css') }}/animate.css" rel="stylesheet">
 	<link href="{{ asset('css/fontend_css') }}/main.css" rel="stylesheet">
     <link href="{{ asset('css/fontend_css') }}/responsive.css" rel="stylesheet">
+    <link href="{{ asset('css/fontend_css') }}/passtrength.css" rel="stylesheet">
     <link href="{{ asset('vendor/toastr/toastr.min.css') }}" rel="stylesheet">
 
 </head>
@@ -32,6 +33,7 @@
     <script src="{{ asset('js/fontend_js') }}/main.js"></script>
     <script src="{{ asset('js/fontend_js') }}/jquery.zoom.js"></script>
     <script src="{{ asset('js/fontend_js') }}/jquery.validate.js"></script>
+    <script src="{{ asset('js/fontend_js') }}/passtrength.js"></script>
     <script src="{{ asset('vendor/sweetalert') }}/sweetalert2@8.js"></script>
     <script src="{{ asset('vendor/fontawesome') }}/all.js"></script>
     <script>$("#message-box").fadeTo(3000, 1000).slideUp(500, function(){$("#message-box").slideUp(2000);});</script>

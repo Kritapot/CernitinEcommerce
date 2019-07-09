@@ -80,7 +80,6 @@ $(document).ready(function(){
 			email:{
 				required:true,
                 email:true,
-                remote: '/check-email'
 			}
         },
         messages:{
@@ -97,10 +96,39 @@ $(document).ready(function(){
 			email:{
                 required:"กรุณากรอกอีเมล์ของคุณ",
                 email:"Plese enter valid Email",
-                remote: "ขออภัยอีเมล์นี้มีผู้ใช้งานแล้ว"
 			}
 
         }
     });
+
+    $("#login-form-user").validate({
+		rules:{
+            email:{
+				required:true,
+                email:true,
+			},
+			password:{
+				required:true,
+			},
+        },
+        messages:{
+            email:{
+                required:"กรุณากรอกอีเมล์ของคุณ",
+                email:"Plese enter valid Email",
+			},
+
+            password:{
+                required:"กรุณากรอกรหัสผ่าน",
+			},
+        }
+    });
+
+
+    $('#myPassword').passtrength({
+        minChars: 4,
+        passwordToggle: true,
+        tooltip: true,
+        eyeImg: '/images/fontend_images/eye.svg'
+      });
 });
 

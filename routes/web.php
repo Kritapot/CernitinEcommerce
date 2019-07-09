@@ -34,10 +34,14 @@ Route::get('/cart/delete/{id}', 'ProductController@delete_cart_product');
 //update product quaitity
 Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductController@update_quantity');
 
-//Register Login
-Route::match(['get', 'post'],'/login-register', 'UserController@register');
+//User Login-Register
+Route::post('/form-register', 'UserController@register');
+Route::get('/user-register', 'UserController@userLoginRegister');
+Route::get('/user-logout', 'UserController@logout');
+Route::post('/user-login', 'UserController@login');
 
-//Register Login
+
+//Check Email
 Route::match(['get', 'post'],'/check-email', 'UserController@checkEmail');
 
 
