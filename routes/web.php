@@ -47,6 +47,7 @@ Route::group(['middleware' => ['FontLogin']], function () {
     Route::post('/check-user-pwd', 'UserController@checkUserPassword');
     //Update User Password
     Route::post('/update-user-pwd', 'UserController@updateUserPassword');
+    Route::match(['get', 'post'],'/checkout', 'ProductController@checkOut');
 
 });
 

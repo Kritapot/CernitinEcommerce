@@ -20,7 +20,7 @@ class AdminController extends Controller
         if($request->isMethod('post')){
             $data   =   $request->input();
 
-            if(Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'admin' => '1'])){
+            if(Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'admin' => 1])){
                 return redirect('/admin/dashboard');
             }else{
                 return redirect('/admin')->with('flash_message_errors', 'Invalid Username or Password');

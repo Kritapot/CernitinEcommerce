@@ -143,12 +143,11 @@
                 <div class="total_area">
                     <ul>
                         <li>Cart Sub Total <span>$59</span></li>
-                        <li>Eco Tax <span>$2</span></li>
                         <li>ค่าจัดส่ง <span>THB 50</span></li>
                         <li>ยอดรวม <span>THB <?php echo $totalAmount; ?></span></li>
                     </ul>
                     <a class="btn btn-default update" href="">Update</a>
-                    <a class="btn btn-default check_out" href="">Check Out</a>
+                    <a class="btn btn-default check_out" href="{{ url('/checkout') }}">ชำระเงิน</a>
                 </div>
             </div>
         </div>

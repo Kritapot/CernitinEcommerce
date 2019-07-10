@@ -205,5 +205,28 @@ $(document).ready(function(){
     });
 
 
+    $('#copy-address').change(function() {
+        if(this.checked)
+        {
+            $('#ship_name').val($('#billing_name').val());
+            $('#ship_address').val($('#billing_address').val());
+            $('#ship_city').val($('#billing_city').val());
+            $('#ship_state').val($('#billing_state').val());
+            $('#ship_country').val($('#billing_country').val());
+            $('#ship_pincode').val($('#billing_pincode').val());
+            $('#ship_mobile').val($('#billing_mobile').val());
+
+        }else {
+            $('#ship_name').val("");
+            $('#ship_address').val("");
+            $('#ship_city').val("");
+            $('#ship_state').val("");
+            $('#ship_country').val("");
+            $('#ship_pincode').val("");
+            $('#ship_mobile').val("");
+        }
+    })
+
+
 });
 

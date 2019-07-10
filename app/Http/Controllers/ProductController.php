@@ -11,7 +11,10 @@ use App\Category;
 use App\Product;
 use App\ProductAttributes;
 use App\Cart;
-
+use Auth;
+use App\User;
+use App\apps_country;
+use App\DeliveryAddress;
 class ProductController extends Controller
 {
     /**
@@ -398,6 +401,10 @@ class ProductController extends Controller
                 $data['user_email']   =   "";
             }
 
+            if(empty($data['product_color'])) {
+                $data['product_color'] = "";
+            }
+
             // check empty session , create sesion
             $session_id     =   Session::get('session_id');
             if(empty($session_id)) {
@@ -499,5 +506,83 @@ class ProductController extends Controller
                 return redirect('/cart');
             }
 
+    }
+
+    /**
+     * Check out function
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function checkOut(Request $request)
+    {
+        $userId         =   Auth::user()->id;
+        $userDetail     =   User::where(['id' => $userId])->first();
+        $country        =   apps_country::get();
+
+        //Count Address Delivery
+        $shipCount              =   DeliveryAddress::where(['user_id' => $userId])->count();
+        if($shipCount>0) {
+            $deliveryDetail     =   DeliveryAddress::where(['user_id' => $userId])->first();
+        }
+
+        if($request->isMethod('post'))
+        {
+            $data       =   $request->all();
+
+            if(empty($data['ship_name'] || $data['ship_address'] || $data['ship_city'] || $data['ship_state'] || $data['ship_country'] || $data['ship_pincode'] || $data['ship_mobile']))
+            {
+                return redirect()->back()->with('flash_message_errors', 'กรุณากรอกรายละเอียดให้เรียบร้อย!');
+            }
+
+            // Update Detail User
+            User::where(['id' => $userId])
+                ->update([
+                    'name'      =>  $data['ship_name'],
+                    'address'   =>  $data['ship_address'],
+                    'city'      =>  $data['ship_city'],
+                    'state'     =>  $data['ship_state'],
+                    'country'   =>  $data['ship_country'],
+                    'pincode'   =>  $data['ship_pincode'],
+                    'mobile'    =>  $data['ship_mobile'],
+                ]);
+
+            // Save to Address Table
+            if($shipCount > 0)
+            {
+                DeliveryAddress::where(['user_id' => $userId])
+                ->update([
+                    'user_id'    =>  $userId,
+                    'user_email' =>  Auth::user()->email,
+                    'name'       =>  $data['ship_name'],
+                    'address'    =>  $data['ship_address'],
+                    'city'       =>  $data['ship_city'],
+                    'state'      =>  $data['ship_state'],
+                    'country'    =>  $data['ship_country'],
+                    'pincode'    =>  $data['ship_pincode'],
+                    'mobile'     =>  $data['ship_mobile'],
+                ]);
+
+            }else{
+                $saveDeliverAddress                 =   new DeliveryAddress();
+                $saveDeliverAddress->user_id        =   $userId;
+                $saveDeliverAddress->user_email     =   Auth::user()->email;
+                $saveDeliverAddress->name           =   $data['ship_name'];
+                $saveDeliverAddress->address        =   $data['ship_address'];
+                $saveDeliverAddress->city           =   $data['ship_city'];
+                $saveDeliverAddress->state          =   $data['ship_state'];
+                $saveDeliverAddress->country        =   $data['ship_country'];
+                $saveDeliverAddress->pincode        =   $data['ship_pincode'];
+                $saveDeliverAddress->mobile         =   $data['ship_mobile'];
+                $saveDeliverAddress->save();
+            }
+        }
+
+
+        return view('products.check-out', with([
+            'userDetail'        => $userDetail,
+            'country'           => $country,
+            'deliveryDetail'    => $deliveryDetail
+        ]));
     }
 }
