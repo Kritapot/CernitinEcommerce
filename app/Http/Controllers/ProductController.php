@@ -401,8 +401,10 @@ class ProductController extends Controller
                 $sizeArr        =   explode("-", $data['size']);
 
 
-            if(empty($data['user_email'])) {
+            if(empty(Auth::user()->email)) {
                 $data['user_email']   =   "";
+            }else {
+                $data['user_email']   =   Auth::user()->email;
             }
 
             if(empty($data['product_color'])) {
@@ -472,6 +474,7 @@ class ProductController extends Controller
             $productDetail          =   Product::where('id', $value->product_id)->first();
             $userCart[$key]->image  =   $productDetail->image;
         }
+
         return view('products.cart', with(['userCart' => $userCart]));
     }
 
@@ -540,7 +543,7 @@ class ProductController extends Controller
         //Update Cart with user email
         $session_id     =   Session::get('session_id');
         $user_email     =   Auth::user()->email;
-        Cart::where('session_id', $session_id)->update(['user_email' => $user_email]);
+        //Cart::where('session_id', $session_id)->update(['user_email' => $user_email]);
 
         if($request->isMethod('post'))
         {
@@ -679,6 +682,18 @@ class ProductController extends Controller
                 $saveOrderProducts->product_qty     =   $item->quantity;
                 $saveOrderProducts->save();
             }
+
+            Session::put('order_id', $order_id);
+            Session::put('grand_total', $data['grand_total']);
+
+            Cart::where('user_email', $user_email)->delete();
+            return redirect('/thank-page');
         }
+    }
+
+
+    public function thankPage()
+    {
+        return view('products.thank-page');
     }
 }
