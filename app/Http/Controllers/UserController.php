@@ -44,7 +44,7 @@ class UserController extends Controller
                 $saveUser->password       =   bcrypt($data['password']);
                 $saveUser->save();
 
-                if(Auth::attempt(['email' => $data['name'], 'password' => $data['password']])) {
+                if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
                     Session::put('fontSession', $data['email']);
                     return redirect('/cart');
                 }

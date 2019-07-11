@@ -15,6 +15,10 @@ use Auth;
 use App\User;
 use App\apps_country;
 use App\DeliveryAddress;
+use App\Order;
+use Illuminate\Support\Facades\DB;
+use App\OrderProduct;
+
 class ProductController extends Controller
 {
     /**
@@ -454,9 +458,15 @@ class ProductController extends Controller
      */
     public function cart()
     {
-        $session_id     =   Session::get('session_id');
-        $userCart       =   Cart::where('session_id', $session_id)
-                            ->get();
+        //Check Auth get product show
+        if(Auth::check())
+        {
+            $user_email     =   Auth::user()->email;
+            $userCart       =   Cart::where('user_email', $user_email)->get();
+        }else {
+            $session_id     =   Session::get('session_id');
+            $userCart       =   Cart::where('session_id', $session_id)->get();
+        }
 
         foreach($userCart as $key => $value) {
             $productDetail          =   Product::where('id', $value->product_id)->first();
@@ -522,9 +532,15 @@ class ProductController extends Controller
 
         //Count Address Delivery
         $shipCount              =   DeliveryAddress::where(['user_id' => $userId])->count();
+        $deliveryDetail         =   [];
         if($shipCount>0) {
             $deliveryDetail     =   DeliveryAddress::where(['user_id' => $userId])->first();
         }
+
+        //Update Cart with user email
+        $session_id     =   Session::get('session_id');
+        $user_email     =   Auth::user()->email;
+        Cart::where('session_id', $session_id)->update(['user_email' => $user_email]);
 
         if($request->isMethod('post'))
         {
@@ -576,6 +592,7 @@ class ProductController extends Controller
                 $saveDeliverAddress->mobile         =   $data['ship_mobile'];
                 $saveDeliverAddress->save();
             }
+            return redirect('/order-review');
         }
 
 
@@ -584,5 +601,84 @@ class ProductController extends Controller
             'country'           => $country,
             'deliveryDetail'    => $deliveryDetail
         ]));
+    }
+
+    /**
+     * show order review function
+     *
+     * @return void
+     */
+    public function orderReview()
+    {
+        $userId             =   Auth::user()->id;
+        $userDetail         =   User::where(['id' => $userId])->first();
+        $deliveryDetail     =   DeliveryAddress::where('user_id', $userId)->first();
+        //Check Auth get product show
+        if(Auth::check())
+        {
+            $user_email         =   Auth::user()->email;
+            $userCart           =   Cart::where('user_email', $user_email)->get();
+        }
+
+        foreach($userCart as $key => $value) {
+            $productDetail          =   Product::where('id', $value->product_id)->first();
+            $userCart[$key]->image  =   $productDetail->image;
+        }
+
+        return view('products.order-review', with([
+            'userDetail'        => $userDetail,
+            'deliveryDetail'    => $deliveryDetail,
+            'userCart'          => $userCart
+        ]));
+    }
+
+    /**
+     * save order and orderProducts function
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function placeOrder(Request $request)
+    {
+        if($request->isMethod('post'))
+        {
+            $data                   =   $request->all();
+
+            $user_id                =   Auth::user()->id;
+            $user_email             =   Auth::user()->email;
+            $deliveryDetail         =   DeliveryAddress::where(['user_email' => $user_email])->first();
+
+            $saveOrder                      =   new Order();
+            $saveOrder->user_id             =   $user_id;
+            $saveOrder->user_email          =   $user_email;
+            $saveOrder->name                =   $deliveryDetail['name'];
+            $saveOrder->address             =   $deliveryDetail['address'];
+            $saveOrder->city                =   $deliveryDetail['city'];
+            $saveOrder->state               =   $deliveryDetail['state'];
+            $saveOrder->country             =   $deliveryDetail['country'];
+            $saveOrder->pincode             =   $deliveryDetail['pincode'];
+            $saveOrder->mobile              =   $deliveryDetail['mobile'];
+            $saveOrder->shipping_charges    =   50;
+            $saveOrder->order_status        =   "New";
+            $saveOrder->playment_method     =   $data['playment_medthod'];
+            $saveOrder->grand_total         =   $data['grand_total'];
+            $saveOrder->save();
+
+            //Save to order products table
+            $order_id           =   DB::getPdo()->lastInsertId();
+            $cartProducts       =   Cart::where('user_email', $user_email)->get();
+            foreach($cartProducts as $item) {
+                $saveOrderProducts                  =   new OrderProduct();
+                $saveOrderProducts->order_id        =   $order_id;
+                $saveOrderProducts->user_id         =   $user_id;
+                $saveOrderProducts->product_id      =   $item->product_id;
+                $saveOrderProducts->product_code    =   $item->product_code;
+                $saveOrderProducts->product_name    =   $item->product_name;
+                $saveOrderProducts->product_size    =   $item->size;
+                $saveOrderProducts->product_price   =   $item->price;
+                $saveOrderProducts->product_qty     =   $item->quantity;
+                $saveOrderProducts->save();
+            }
+        }
     }
 }

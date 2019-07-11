@@ -17,28 +17,23 @@ Route::get('/', 'IndexController@index');
 
 //Category/listing
 Route::get('/product/{url}', 'ProductController@products');
-
 //Product detail
 Route::get('/product-detail/{id}', 'ProductController@products_detail');
-
 //Get price from Product-size
 Route::get('/get-product-size', 'ProductController@product_from_size');
-
 //Add to cart
 Route::match(['get', 'post'],'/add-cart', 'ProductController@add_to_cart');
-
 //cart
 Route::match(['get', 'post'],'/cart', 'ProductController@cart');
 Route::get('/cart/delete/{id}', 'ProductController@delete_cart_product');
-
 //update product quaitity
 Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductController@update_quantity');
-
 //User Login-Register
 Route::post('/form-register', 'UserController@register');
 Route::get('/user-register', 'UserController@userLoginRegister');
 Route::get('/user-logout', 'UserController@logout');
 Route::post('/user-login', 'UserController@login');
+
 
 Route::group(['middleware' => ['FontLogin']], function () {
     //User Account Page
@@ -47,7 +42,12 @@ Route::group(['middleware' => ['FontLogin']], function () {
     Route::post('/check-user-pwd', 'UserController@checkUserPassword');
     //Update User Password
     Route::post('/update-user-pwd', 'UserController@updateUserPassword');
+    // Check out
     Route::match(['get', 'post'],'/checkout', 'ProductController@checkOut');
+    // review order product
+    Route::match(['get', 'post'],'/order-review', 'ProductController@orderReview');
+    // place order
+    Route::match(['get', 'post'],'/place-order', 'ProductController@placeOrder');
 
 });
 
@@ -62,7 +62,7 @@ Auth::routes();
 Route::match(['get', 'post'], '/admin', 'AdminController@log_in');
 Route::get('/logout', 'AdminController@logout');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['BackendLogin']], function () {
     Route::get('/admin/dashboard', 'AdminController@Dashboard');
     Route::get('/admin/setting', 'AdminController@setting');
     Route::get('/admin/check-pwd', 'AdminController@check_password');

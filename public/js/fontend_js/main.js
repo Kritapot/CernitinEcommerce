@@ -53,7 +53,6 @@ $(document).ready(function(){
             }
         })
     });
-
 });
 
 $(document).ready(function(){
@@ -226,6 +225,16 @@ $(document).ready(function(){
             $('#ship_mobile').val("");
         }
     })
+
+    $('#select-playment-method').on('click', function() {
+        if($('#paypal').is(':checked') || $('#direct').is(':checked')) {
+            console.log("checked")
+        }else {
+            alert("กรุณาเลือกวิธีการชำระเงิน")
+            return false;
+        }
+    });
+
 
 
 });
