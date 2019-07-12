@@ -119,7 +119,7 @@
 						<label style="font-size: 1.6em"><input type="radio" name="playment_medthod" id="direct" value="direct"> โอนผ่านธนาคารโดยตรง</label>
 					</span>
 					<span>
-						<label style="font-size: 1.6em"><input type="radio" name="playment_medthod" id="paypal" value="paypal"> ชำระผ่าน Paypal</label>
+						<label style="font-size: 1.6em"><input disabled type="radio" name="playment_medthod" id="paypal" value="paypal"> ชำระผ่าน Paypal <span style="font-size: 0.6em; color: red">**ยังไม่เปิดให้บริการในขณะนี้</span></label>
                     </span>
                     <span style="float: right">
 						<button type="submit" class="btn btn-success" id="select-playment-method">ยืนยันการชำระเงิน</button>

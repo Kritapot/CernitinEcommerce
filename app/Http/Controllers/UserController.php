@@ -8,6 +8,7 @@ use Auth;
 use Session;
 use App\apps_country;
 use Illuminate\Support\Facades\Hash;
+use App\Cart;
 
 class UserController extends Controller
 {
@@ -46,6 +47,13 @@ class UserController extends Controller
 
                 if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
                     Session::put('fontSession', $data['email']);
+
+                    if(!empty(Session::get('session_id')))
+                    {
+                        $session_id     =   Session::get('session_id');
+                        Cart::where('session_id', $session_id)->update(['user_email' => $data['email']]);
+                    }
+
                     return redirect('/cart');
                 }
             }
@@ -79,7 +87,14 @@ class UserController extends Controller
 
         if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
             Session::put('fontSession', $data['email']);
-            Session::forget('session_id');
+
+            //Session::forget('session_id');
+            if(!empty(Session::get('session_id')))
+            {
+                $session_id     =   Session::get('session_id');
+                Cart::where('session_id', $session_id)->update(['user_email' => $data['email']]);
+            }
+
             return redirect('/cart');
         }else {
             return redirect()->back()->with('flash_message_errors', 'ขออภัย Email หรือ Password ไม่ถูกต้อง');

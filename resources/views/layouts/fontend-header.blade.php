@@ -43,7 +43,6 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i> ผู้ใช้งาน</a></li>
                             <li><a href="{{ url('/cart') }}"><i class="fas fa-shopping-cart"></i> ตระกร้าสินค้า</a></li>
                             @if (empty(Auth::check()))
                                 <li><a href="{{ url('/user-register') }}"><i class="fa fa-lock"></i> เข้าสู่ระบบ</a></li>
