@@ -3,6 +3,8 @@
     $product        =   Controller::count_product();
     $category       =   Controller::count_category();
     $banner         =   Controller::count_banner();
+    $order          =   Controller::count_order();
+
 
     $url    =   url()->current();
 ?>
@@ -27,6 +29,11 @@
         <ul @if(preg_match('/banner/i', $url)) style="display: block"   @endif>
           <li @if (preg_match('/add-banner/i', $url)) class="active" @endif><a href="{{ url('/admin/add-banner') }}">เพิ่ม Banner</a></li>
           <li @if (preg_match('/list-banner/i', $url)) class="active" @endif><a href="{{ url('/admin/list-banner') }}">แสดง Banner ทั้งหมด</a></li>
+        </ul>
+      </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>รายการสั่งซ์้อ</span> <span class="label label-important">{{ $order }}</span></a>
+        <ul @if(preg_match('/order/i', $url)) style="display: block"   @endif>
+          <li @if (preg_match('/list-order/i', $url)) class="active" @endif><a href="{{ url('/admin/list-order') }}">แสดงรายการสั่งซื้อทั้งหมด</a></li>
         </ul>
       </li>
     </ul>

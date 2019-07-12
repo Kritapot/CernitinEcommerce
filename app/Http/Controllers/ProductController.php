@@ -295,6 +295,34 @@ class ProductController extends Controller
     }
 
     /**
+     * Show orders function
+     *
+     * @return void
+     */
+    public function showOrderAdmin()
+    {
+        $order      =   Order::with('orderProducts')->orderBy('id', 'DESC')->get();
+        return view('admin.order.list', with(['order' => $order]));
+    }
+
+    /**
+     * Show orders Detail function
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function showDetailOrderAdmin($order_id)
+    {
+        $orderDetail    =   Order::with('orderProducts')->where('id', $order_id)->first();
+        $userDetail     =   User::where('id', $orderDetail['user_id'])->first();
+
+        return view('admin.order.order-detail', with([
+            'orderDetail' => $orderDetail,
+            'userDetail'  => $userDetail
+        ]));
+    }
+
+    /**
      * Homepage show product from category function
      *
      * @param $url

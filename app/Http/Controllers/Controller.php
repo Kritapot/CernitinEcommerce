@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Category;
 use App\Product;
 use App\Banner;
+use App\Order;
 
 class Controller extends BaseController
 {
@@ -45,6 +46,14 @@ class Controller extends BaseController
 
         return $banner;
     }
+
+    public static function count_order()
+    {
+        $order     =   Order::count();
+
+        return $order;
+    }
+
 
 
 

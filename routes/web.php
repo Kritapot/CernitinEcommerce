@@ -101,6 +101,12 @@ Route::group(['middleware' => ['BackendLogin']], function () {
     Route::get('/admin/list-banner', 'BannerController@list_banners');
     Route::match(['get', 'post'],'/admin/edit-banner/{id}', 'BannerController@edit_banner');
     Route::get('/admin/delete-banner/{id}', 'BannerController@delete_banner');
+
+    //Order
+    Route::get('/admin/list-order', 'ProductController@showOrderAdmin');
+    Route::get('/admin/list-order/{id}', 'ProductController@showDetailOrderAdmin');
+
+
 });
 
 
