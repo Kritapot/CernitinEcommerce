@@ -79,6 +79,7 @@ class UserController extends Controller
 
         if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
             Session::put('fontSession', $data['email']);
+            Session::forget('session_id');
             return redirect('/cart');
         }else {
             return redirect()->back()->with('flash_message_errors', 'ขออภัย Email หรือ Password ไม่ถูกต้อง');
@@ -95,6 +96,7 @@ class UserController extends Controller
     {
         Auth::logout();
         Session::forget('fontSession');
+        Session::forget('session_id');
         return redirect('/');
     }
 

@@ -628,7 +628,7 @@ class ProductController extends Controller
             $userCart[$key]->image  =   $productDetail->image;
         }
 
-        return view('products.order-review', with([
+        return view('orders.order-review', with([
             'userDetail'        => $userDetail,
             'deliveryDetail'    => $deliveryDetail,
             'userCart'          => $userCart
@@ -670,6 +670,13 @@ class ProductController extends Controller
             //Save to order products table
             $order_id           =   DB::getPdo()->lastInsertId();
             $cartProducts       =   Cart::where('user_email', $user_email)->get();
+            foreach($cartProducts as $key => $value) {
+                $product_code   =   Product::where('id', $value->product_id)->get();
+                foreach($product_code as $valueCode) {
+                    $cartProducts[$key]->product_code   =   $valueCode->product_code;
+                }
+            }
+
             foreach($cartProducts as $item) {
                 $saveOrderProducts                  =   new OrderProduct();
                 $saveOrderProducts->order_id        =   $order_id;
@@ -691,9 +698,34 @@ class ProductController extends Controller
         }
     }
 
-
+    /**
+     * TankPage  function
+     *
+     * @return void
+     */
     public function thankPage()
     {
         return view('products.thank-page');
+    }
+
+    /**
+     * Show order user function
+     *
+     * @return void
+     */
+    public function userOrderPage()
+    {
+        $user_id            =   Auth::user()->id;
+        $orders             =   Order::with('orderProducts')->where('user_id', $user_id)->orderby('id', 'desc')->get();
+
+        return view('orders.order-user-page', with(['orders' => $orders]));
+    }
+
+
+    public function showOrderProduct($order_id)
+    {
+        $orderDetail    =   Order::with('orderProducts')->where('id', $order_id)->first();
+
+        return view('orders.order-user-detail', with(['orderDetail' => $orderDetail]));
     }
 }

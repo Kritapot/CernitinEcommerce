@@ -50,6 +50,10 @@ Route::group(['middleware' => ['FontLogin']], function () {
     Route::match(['get', 'post'],'/place-order', 'ProductController@placeOrder');
     // thank page
     Route::get('/thank-page', 'ProductController@thankPage');
+    // show order userpage
+    Route::get('/order-user-page', 'ProductController@userOrderPage');
+    // show order product userpage
+    Route::get('/order-user-page/{id}', 'ProductController@showOrderProduct');
 
 
 });
