@@ -3,9 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Auth;
+use Session;
 
-class BackendLogin
+class AdminLogin
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,9 @@ class BackendLogin
      */
     public function handle($request, Closure $next)
     {
-        if(empty(Auth::user()->admin)) {
-            return redirect('/admin');
-        }
-
+        if(empty(Session::has('adminSession'))) {
+        return redirect('/admin');
+    }
         return $next($request);
     }
 }

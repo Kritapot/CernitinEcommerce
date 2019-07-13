@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Admin;
 
 class AdminController extends Controller
 {
@@ -18,9 +19,11 @@ class AdminController extends Controller
     public function log_in(Request $request)
     {
         if($request->isMethod('post')){
-            $data   =   $request->input();
+            $data           =   $request->input();
+            $adminCount     =   Admin::where(['username'=>$data['username'], 'password'=>md5($data['password']), 'status'=>1])->count();
 
-            if(Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'admin' => 1])){
+            if($adminCount > 0){
+                Session::put('adminSession', $data['username']);
                 return redirect('/admin/dashboard');
             }else{
                 return redirect('/admin')->with('flash_message_errors', 'Invalid Username or Password');

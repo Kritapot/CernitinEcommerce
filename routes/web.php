@@ -69,7 +69,7 @@ Auth::routes();
 Route::match(['get', 'post'], '/admin', 'AdminController@log_in');
 Route::get('/logout', 'AdminController@logout');
 
-Route::group(['middleware' => ['BackendLogin']], function () {
+Route::group(['middleware' => ['AdminLogin']], function () {
     Route::get('/admin/dashboard', 'AdminController@Dashboard');
     Route::get('/admin/setting', 'AdminController@setting');
     Route::get('/admin/check-pwd', 'AdminController@check_password');
@@ -105,6 +105,7 @@ Route::group(['middleware' => ['BackendLogin']], function () {
     //Order
     Route::get('/admin/list-order', 'ProductController@showOrderAdmin');
     Route::get('/admin/list-order/{id}', 'ProductController@showDetailOrderAdmin');
+    Route::post('/admin/update-order-status/{id}', 'ProductController@updateOrderStatus');
 
 
 });
