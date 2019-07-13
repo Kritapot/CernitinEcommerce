@@ -46,7 +46,7 @@ class BannerController extends Controller
 
                 }
                 //Resize Image
-                Image::make($imgTmp)->resize(940, 320)->save($banner_image_path);
+                Image::make($imgTmp)->resize(940, 380)->save($banner_image_path);
 
                 //Save name image into database
                 $saveBanner->image         =   $filename;
@@ -105,7 +105,7 @@ class BannerController extends Controller
 
                 }
                 //Resize Image
-                Image::make($imgTmp)->resize(940, 320)->save($banner_image_path);
+                Image::make($imgTmp)->resize(940, 380)->save($banner_image_path);
 
                 //Save name image into database
                 $saveBanner->image         =   $filename;

@@ -7,7 +7,7 @@
 @import url(http://fonts.googleapis.com/css?family=Abel);
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   position: relative;
   font-weight:400px;
 }
@@ -34,7 +34,7 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
 }
 
 .btn:hover,
@@ -51,7 +51,7 @@ a#scrollUp {
   bottom: 0px;
   right: 10px;
   padding: 5px 10px;
-  background: #FE980F;
+  background: #8bc34a;
   color: #FFF;
   -webkit-animation: bounce 2s ease infinite;
   animation: bounce 2s ease infinite;
@@ -67,7 +67,7 @@ a#scrollUp i{
 **************************/
 
 .header_top {
-  background: none repeat scroll 0 0 #F0F0E9;
+  background: none repeat scroll 0 0 #8bc34a;
 }
 
 .contactinfo ul li:first-child{
@@ -75,9 +75,9 @@ a#scrollUp i{
 }
 
 .contactinfo ul li a{
-  font-size: 12px;
-  color: #696763;
-  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: white;
+  font-family: 'Pridi', serif;
 }
 
 
@@ -158,13 +158,13 @@ a#scrollUp i{
 }
 
 .usa:hover {
-	background:#FE980F;
+	background:#8bc34a;
 	color:#fff;
-	border-color:#FE980F;
+	border-color:#8bc34a;
 }
 
 .usa:active, .usa.active {
-  background: none repeat scroll 0 0 #FE980F;
+  background: none repeat scroll 0 0 #8bc34a;
   box-shadow: inherit;
   outline: 0 none;
 }
@@ -175,9 +175,9 @@ a#scrollUp i{
 }
 
 .dropdown-menu  li  a:hover, .dropdown-menu  li  a:focus {
-  background-color: #FE980F;
+  background-color: #8bc34a;
   color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   text-decoration: none;
 }
 
@@ -196,8 +196,8 @@ a#scrollUp i{
 .shop-menu ul li a {
   background: #FFFFFF;
   color: #696763;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-family: 'Pridi', serif;
+  font-size: 18px;
   font-weight: 300;
   padding:0;
   padding-right: 0;
@@ -211,7 +211,7 @@ a#scrollUp i{
 
 
 .shop-menu ul li a:hover {
-	color:#fe980f;
+	color:#8bc34a;
 	background:#fff;
 }
 
@@ -236,8 +236,8 @@ a#scrollUp i{
 
 .mainmenu ul li a {
 	color: #696763;
-	font-family: 'Roboto', sans-serif;
-	font-size: 17px;
+    font-family: 'Pridi', serif;
+    font-size: 22px;
 	font-weight: 300;
 	padding: 0;
 	padding-bottom: 10px;
@@ -245,23 +245,23 @@ a#scrollUp i{
 
 .mainmenu ul li a:hover, .mainmenu ul li a.active,  .shop-menu ul li a.active{
 	background:none;
-	color:#fdb45e;
+	color:#8bc34a;
 }
 
 .search_box input {
   background: #F0F0E9;
   border: medium none;
   color: #B2B2B2;
-  font-family: 'roboto';
-  font-size: 12px;
+  font-family: 'Pridi', serif;
+  font-size: 20px;
   font-weight: 300;
   height: 35px;
   outline: medium none;
   padding-left: 10px;
-  width: 155px;
+  width: 200px;
   background-image: url(/images/fontend_images/home/searchicon.png);
   background-repeat: no-repeat;
-  background-position: 130px;
+  background-position: 170px;
 }
 
 
@@ -298,7 +298,7 @@ ul.sub-menu {
 }
 
 .dropdown ul.sub-menu li .active{
-  color: #FDB45E;
+  color: #8bc34a;
   padding-left: 0;
 }
 
@@ -316,7 +316,7 @@ ul.sub-menu {
 }
 
 .navbar-nav li ul.sub-menu li a:hover{
-    color: #FDB45E;
+    color: #8bc34a;
 }
 
 .fa-angle-down{
@@ -363,12 +363,12 @@ ul.sub-menu {
 }
 
 .companyinfo h2  span{
-  color:#FE980F;
+  color:#8bc34a;
 }
 
 .companyinfo p {
   color: #B3B3AD;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 12px;
   font-weight: 300;
 }
@@ -401,7 +401,7 @@ ul.sub-menu {
   top: 0;
   width: 100%;
   height: 61px;
-  background: #FE980F;
+  background: #8bc34a;
   border-radius: 3px;
   color: #FFF;
   font-size: 20px;
@@ -426,7 +426,7 @@ ul.sub-menu {
 
 .video-gallery p {
   color: #8C8C88;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 12px;
   font-weight: 500;
   margin-bottom:0px;
@@ -434,7 +434,7 @@ ul.sub-menu {
 
 .video-gallery  h2 {
   color: #8c8c88;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 12px;
   font-weight: 300;
   text-transform:uppercase;
@@ -453,7 +453,7 @@ ul.sub-menu {
 
 .address p {
   color: #666663;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 14px;
   font-weight: 300;
   left: 25px;
@@ -472,7 +472,7 @@ ul.sub-menu {
 
 .single-widget h2 {
   color: #666663;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 22px;
@@ -485,7 +485,7 @@ ul.sub-menu {
 
 .single-widget ul li a{
 	color: #8C8C88;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Pridi', serif;
 	font-size: 14px;
 	font-weight: 300;
 	padding: 5px 0;
@@ -497,14 +497,14 @@ ul.sub-menu {
 
 .single-widget ul li a:hover{
 	background:none;
-	color:#FE980F;
+	color:#8bc34a;
 }
 
 
 .searchform input {
   border: 1px solid #DDDDDD;
   color: #CCCCC6;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 14px;
   margin-top: 0;
   outline: medium none;
@@ -514,7 +514,7 @@ ul.sub-menu {
 
 
 .searchform button {
-  background: #FE980F;
+  background: #8bc34a;
   border: medium none;
   border-radius: 0;
   margin-left: -5px;
@@ -529,12 +529,12 @@ ul.sub-menu {
 
 .searchform  button:hover,
 .searchform  button:focus{
-	background-color:#FE980F;
+	background-color:#8bc34a;
 }
 
 .searchform p {
   color: #8C8C88;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 14px;
   font-weight: 300;
   margin-top: 25px;
@@ -547,13 +547,13 @@ ul.sub-menu {
 
 .footer-bottom p {
   color: #363432;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-weight: 300;
   margin-left: 15px;
 }
 
 .footer-bottom p span a {
-  color: #FE980F;
+  color: #8bc34a;
   font-style: italic;
   text-decoration: underline;
 }
@@ -573,7 +573,7 @@ ul.sub-menu {
 }
 
 .carousel-indicators li.active {
-	  background: #FE980F;
+	  background: #8bc34a;
 }
 
 .item {
@@ -599,12 +599,12 @@ ul.sub-menu {
 }
 
 .item h1 span {
-	color:#FE980F;
+	color:#8bc34a;
 }
 
 .item h2 {
   color: #363432;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 22px;
@@ -615,15 +615,15 @@ ul.sub-menu {
 	color:#363432;
 	font-size:16px;
 	font-weight:300;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Pridi', serif;
 }
 
 .get {
-  background: #FE980F;
+  background: #8bc34a;
   border: 0 none;
   border-radius: 0;
   color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 16px;
   font-weight: 300;
   margin-top: 23px;
@@ -631,7 +631,7 @@ ul.sub-menu {
 
 
 .item button:hover {
-  background: #FE980F;
+  background: #8bc34a;
 }
 
 .control-carousel {
@@ -642,7 +642,7 @@ ul.sub-menu {
 }
 
 .control-carousel:hover{
-  color: #FE980F ;
+  color: #8bc34a ;
 }
 
 .right {
@@ -656,8 +656,8 @@ ul.sub-menu {
   padding-top: 15px;
 }
 .left-sidebar h2, .brands_products h2 {
-  color: #FE980F;
-  font-family: 'Roboto', sans-serif;
+  color: #8bc34a;
+  font-family: 'Pridi', serif;
   font-size: 18px;
   font-weight: 700;
   margin: 0 auto 30px;
@@ -719,10 +719,15 @@ h2.title:before{
 
 .category-products .panel-default .panel-heading .panel-title a {
   color: #696763;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-family: 'Pridi', serif;
+  font-size: 18px;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.category-products .panel-default .panel-heading .panel-title a:hover {
+    color: #8bc34a;
+
 }
 
 .panel-group .panel-heading + .panel-collapse .panel-body {
@@ -751,9 +756,13 @@ h2.title:before{
 
 .panel-body ul li a {
   color: #696763;
-  font-family: 'Roboto', sans-serif;
-  font-size: 12px;
+  font-family: 'Pridi', serif;
+  font-size: 16px;
   text-transform: uppercase;
+}
+
+.panel-body ul li a:hover {
+    color: #8bc34a;
 }
 
 .brands-name {
@@ -766,7 +775,7 @@ h2.title:before{
 .brands-name .nav-stacked li a {
   background-color: #FFFFFF;
   color: #696763;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 14px;
   padding: 5px 25px;
   text-decoration: none;
@@ -803,7 +812,7 @@ h2.title:before{
 
 
 .tooltip-inner {
-  background-color: #FE980F;
+  background-color: #8bc34a;
   border-radius: 4px;
   color: #FFFFFF;
   max-width: 200px;
@@ -813,7 +822,7 @@ h2.title:before{
 }
 
 .tooltip.top .tooltip-arrow {
-  border-top-color: #FE980F;
+  border-top-color: #8bc34a;
   border-width: 5px 5px 0;
   bottom: 0;
   left: 50%;
@@ -831,8 +840,8 @@ h2.title:before{
 
 
 h2.title {
-  color: #FE980F;
-  font-family: 'Roboto', sans-serif;
+  color: #8bc34a;
+  font-family: 'Pridi', serif;
   font-size: 18px;
   font-weight: 700;
   margin: 0 15px;
@@ -858,22 +867,22 @@ h2.title {
 }
 
 .productinfo h2{
-	color: #FE980F;
-	font-family: 'Roboto', sans-serif;
+	color: #8bc34a;
+	font-family: 'Pridi', serif;
 	font-size: 24px;
 	font-weight: 700;
 }
 .product-overlay h2{
 	color: #fff;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Pridi', serif;
 	font-size: 24px;
 	font-weight: 700;
 }
 
 
 .productinfo p{
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-family: 'Pridi', serif;
+  font-size: 30px;
   font-weight: 400;
   color: #696763;
 }
@@ -887,7 +896,7 @@ h2.title {
 }
 
 .product-overlay {
-  background:#FE980F;
+  background:#8bc34a;
   top: 0;
   display: none;
   height: 0;
@@ -915,20 +924,20 @@ h2.title {
   background:#fff;
   border: 0 none;
   border-radius: 0;
-  color: #FE980F;
-  font-family: 'Roboto', sans-serif;
+  color: #8bc34a;
+  font-family: 'Pridi', serif;
   font-size: 15px;
   margin-bottom: 25px;
 }
 
 .product-overlay .add-to-cart:hover {
   background:#fff;
-  color: #FE980F;
+  color: #8bc34a;
 }
 
 
 .product-overlay p{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 20px;
   font-weight: 400;
   color: #fff;
@@ -941,13 +950,13 @@ h2.title {
   border: 0 none;
   border-radius: 0;
   color: #696763;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 15px;
   margin-bottom: 25px;
 }
 
 .add-to-cart:hover {
-  background: #FE980F;
+  background: #8bc34a;
   border: 0 none;
   border-radius: 0;
   color: #FFFFFF;
@@ -962,7 +971,7 @@ h2.title {
 }
 
 .add-to-cart:hover {
-  background: #FE980F;
+  background: #8bc34a;
   color: #FFFFFF;
 }
 
@@ -972,7 +981,7 @@ h2.title {
 
 .choose ul li a {
   color: #B3AFA8;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 13px;
   padding-left: 0;
   padding-right: 0;
@@ -984,7 +993,7 @@ h2.title {
 
 .choose ul li a:hover{
 	background:none;
-	color:#FE980F;
+	color:#8bc34a;
 }
 
 .category-tab {
@@ -993,7 +1002,7 @@ h2.title {
 
 .category-tab ul {
   background: #40403E;
-  border-bottom: 1px solid #FE980F;
+  border-bottom: 1px solid #8bc34a;
   list-style: none outside none;
   margin: 0 0 30px;
   padding: 0;
@@ -1005,13 +1014,13 @@ h2.title {
   border-radius: 0;
   color: #B3AFA8;
   display: block;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 14px;
   text-transform: uppercase;
 }
 
 .category-tab ul  li  a:hover{
-	background:#FE980F;
+	background:#8bc34a;
 	color:#fff;
 }
 
@@ -1020,7 +1029,7 @@ h2.title {
   -moz-border-left-colors: none;
   -moz-border-right-colors: none;
   -moz-border-top-colors: none;
-  background-color: #FE980F;
+  background-color: #8bc34a;
   border:0px;
   color: #FFFFFF;
   cursor: default;
@@ -1049,7 +1058,7 @@ h2.title {
 }
 
 .recommended-item-control i {
-  background: none repeat scroll 0 0 #FE980F;
+  background: none repeat scroll 0 0 #8bc34a;
   color: #FFFFFF;
   font-size: 20px;
   padding: 4px 10px;
@@ -1108,8 +1117,8 @@ h2.title {
 }
 
 .pagination  .active  a, .pagination  .active  span, .pagination  .active  a:hover, .pagination  .active  span:hover, .pagination  .active  a:focus, .pagination  .active  span:focus {
-  background-color: #FE980F;
-  border-color: #FE980F;
+  background-color: #8bc34a;
+  border-color: #8bc34a;
   color: #FFFFFF;
   cursor: default;
   z-index: 2;
@@ -1129,7 +1138,7 @@ h2.title {
 }
 
 .pagination  li  a:hover{
-	background:#FE980F;
+	background:#8bc34a;
 	color:#fff;
 }
 
@@ -1168,10 +1177,10 @@ h2.title {
 
 
 .view-product h3 {
-  background: #FE980F;
+  background: #8bc34a;
   bottom: 0;
   color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 0;
@@ -1194,7 +1203,7 @@ h2.title {
   top: 35%;
 }
 .item-control i {
-  background: #FE980F;
+  background: #8bc34a;
   color: #FFFFFF;
   font-size: 20px;
   padding: 5px 10px;
@@ -1221,14 +1230,14 @@ h2.title {
 
 .product-information h2 {
   color: #363432;
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
+  font-family: 'Pridi', serif;
+  font-size: 35px;
   margin-top: 0;
 }
 
 .product-information p {
   color: #696763;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   margin-bottom: 5px;
 }
 
@@ -1239,9 +1248,9 @@ h2.title {
 }
 
 .product-information span span {
-  color: #FE980F;
+  color: #8bc34a;
   float: left;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 30px;
   font-weight: 700;
   margin-right: 20px;
@@ -1250,7 +1259,7 @@ h2.title {
 .product-information span input {
   border: 1px solid #DEDEDC;
   color: #696763;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 20px;
   font-weight: 700;
   height: 33px;
@@ -1261,7 +1270,7 @@ h2.title {
 
 .product-information span label {
   color: #696763;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-weight: 700;
   margin-right: 5px;
 }
@@ -1272,11 +1281,11 @@ h2.title {
 
 
 .cart {
-  background: #FE980F;
+  background: #8bc34a;
   border: 0 none;
   border-radius: 0;
   color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 15px;
   margin-bottom: 10px;
   margin-left: 20px;
@@ -1311,19 +1320,19 @@ h2.title {
 #reviews ul li a {
   color: #696763;
   display: block;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 14px;
   padding-right: 15px;
 }
 
 #reviews ul li a i{
-	color:#FE980F;
+	color:#8bc34a;
 	padding-right:8px;
 }
 
 #reviews ul li a:hover{
 	background:#fff;
-	color:#FE980F;
+	color:#8bc34a;
 }
 
 #reviews p{
@@ -1338,7 +1347,7 @@ h2.title {
   background:#F0F0E9;
   border: 0 none;
   color: #A6A6A1;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 14px;
   outline: medium none;
   padding: 8px;
@@ -1363,11 +1372,11 @@ h2.title {
 }
 
 #reviews button {
-  background: #FE980F;
+  background: #8bc34a;
   border: 0 none;
   border-radius: 0;
   color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 14px;
 }
 
@@ -1382,7 +1391,7 @@ h2.title {
 
 .content-404 h1 {
   color: #363432;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 41px;
   font-weight: 300;
 }
@@ -1393,7 +1402,7 @@ h2.title {
 
 .content-404 p {
   color: #363432;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 18px;
 }
 
@@ -1402,9 +1411,9 @@ h2.title {
 }
 
 .content-404 h2 a {
-  background: #FE980F;
+  background: #8bc34a;
   color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 44px;
   font-weight: 300;
   padding: 8px 40px;
@@ -1432,7 +1441,7 @@ h2.title {
 
 .login-form h2, .signup-form h2 {
   color: #696763;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 20px;
   font-weight: 300;
   margin-bottom: 30px;
@@ -1444,7 +1453,7 @@ h2.title {
   border: medium none;
   color: #696763;
   display: block;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-size: 14px;
   font-weight: 300;
   height: 40px;
@@ -1470,12 +1479,12 @@ h2.title {
 }
 
 .login-form form button, .signup-form form button {
-  background: #FE980F;
+  background: #8bc34a;
   border: medium none;
   border-radius: 0;
   color: #FFFFFF;
   display: block;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   padding: 6px 25px;
 }
 
@@ -1495,10 +1504,10 @@ h2.title {
 
 
 .or{
-	background: #FE980F;
+	background: #8bc34a;
 	border-radius: 40px;
 	color: #FFFFFF;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Pridi', serif;
 	font-size: 16px;
 	height: 50px;
 	line-height: 50px;
@@ -1527,7 +1536,7 @@ h2.title {
 }
 
 .breadcrumbs .breadcrumb li a {
-  background:#FE980F;
+  background:#8bc34a;
   color: #FFFFFF;
   padding: 3px 7px;
 }
@@ -1538,7 +1547,7 @@ h2.title {
   width: auto;
   border-width: 8px;
   border-style: solid;
-  border-color:transparent transparent transparent #FE980F;
+  border-color:transparent transparent transparent #8bc34a;
   position: absolute;
   top: 11px;
   left:48px;
@@ -1556,10 +1565,10 @@ h2.title {
 
 
 #cart_items .cart_info .cart_menu {
-  background: #FE980F;
+  background: #8bc34a;
   color: #fff;
   font-size: 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-weight: normal;
 }
 
@@ -1611,7 +1620,7 @@ h2.title {
 
 
 #cart_items .cart_info .cart_total_price {
-  color: #FE980F;
+  color: #8bc34a;
   font-size: 24px;
 }
 
@@ -1660,7 +1669,7 @@ h2.title {
 }
 
 .cart_delete a:hover {
-  background:#FE980F
+  background:#8bc34a
 }
 
 
@@ -1673,7 +1682,7 @@ h2.title {
 .heading h3 {
   color: #363432;
   font-size: 20px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
 }
 
 .heading p {
@@ -1766,7 +1775,7 @@ h2.title {
 }
 
 .update, .check_out {
-  background: #FE980F;
+  background: #8bc34a;
   border-radius: 0;
   color: #FFFFFF;
   margin-top: 18px;
@@ -1797,7 +1806,7 @@ h2.title {
   font-size: 20px;
   margin-bottom: 35px;
   padding: 10px 25px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
 }
 
 .checkout-options {
@@ -1810,7 +1819,7 @@ h2.title {
   font-size: 20px;
   margin-bottom: 0;
   font-weight: normal;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
 }
 
 .checkout-options p {
@@ -1824,7 +1833,7 @@ h2.title {
   margin-right: 45px;
   color: #696763;
   font-size: 18px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   font-weight: normal;
 }
 
@@ -1833,7 +1842,7 @@ h2.title {
 }
 
 .checkout-options .nav li a {
-  color: #FE980F;
+  color: #8bc34a;
   font-size: 18px;
   font-weight: normal;
   padding: 0
@@ -1847,7 +1856,7 @@ h2.title {
   margin-right: 10px;
   border-radius: 50%;
   padding: 5px;
-  background: #FE980F;
+  background: #8bc34a;
   color:#fff;
   font-size: 14px;
   padding: 2px 3px;
@@ -1878,7 +1887,7 @@ h2.title {
 
 
 .shopper-info .btn-primary {
-  background: #FE980F;
+  background: #8bc34a;
   border: 0 none;
   border-radius: 0;
   margin-right: 15px;
@@ -1923,7 +1932,7 @@ h2.title {
 .order-message label {
   font-weight:300;
   color: #696763;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   margin-left: 10px;
   font-size: 14px
 }
@@ -1963,7 +1972,7 @@ h2.title {
 
 #cart_items .cart_info
 .table.table-condensed.total-result span {
-  color: #FE980F;
+  color: #8bc34a;
   font-weight: 700;
   font-size: 16px
 }
@@ -2034,7 +2043,7 @@ h2.title {
 
 .blog-post-area
 .post-meta ul li i {
-  background:#FE980F;
+  background:#8bc34a;
   color: #FFFFFF;
   margin-left: -4px;
   margin-right: 7px;
@@ -2048,7 +2057,7 @@ h2.title {
   position: absolute;
   width: auto;
   height: auto;
-  border-color:transparent transparent transparent #FE980F;
+  border-color:transparent transparent transparent #8bc34a;
   border-width:4px;
   border-style: solid;
   top:6px;
@@ -2058,7 +2067,7 @@ h2.title {
 .blog-post-area
 .post-meta ul span {
   float: right;
-  color: #FE980F
+  color: #8bc34a
 }
 
 .post-meta span{
@@ -2066,14 +2075,14 @@ h2.title {
 }
 
 .post-meta span i{
-  color: #FE980F
+  color: #8bc34a
 }
 
 
 .blog-post-area
 .single-blog-post
 .btn-primary {
-  background:#FE980F;
+  background:#8bc34a;
   border: medium none;
   border-radius: 0;
   color: #FFFFFF;
@@ -2100,7 +2109,7 @@ h2.title {
 .pagination li a:hover,
 .pagination-area
 .pagination li .active {
-  background:#FE980F;
+  background:#8bc34a;
   color: #fff
 }
 
@@ -2128,7 +2137,7 @@ h2.title {
 
 .pager-area
 .pager li a:hover {
-  background: #FE980F;
+  background: #8bc34a;
   color: #fff
 }
 
@@ -2166,7 +2175,7 @@ h2.title {
 .rating-area
 .ratings .color,
 .rating-area .color {
-  color: #FE980F
+  color: #8bc34a
 }
 
 
@@ -2216,7 +2225,7 @@ h2.title {
   color: #363432;
   font-size: 14px;
   font-weight: 700;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Pridi', serif;
   margin-bottom: 15px
 }
 
@@ -2255,7 +2264,7 @@ h2.title {
 
 .blog-socials ul li a:hover {
   color: #fff;
-  background:#FE980F
+  background:#8bc34a
 }
 
 
@@ -2319,7 +2328,7 @@ h2.title {
 }
 
 .sinlge-post-meta li i {
-  background:#FE980F;
+  background:#8bc34a;
   color: #FFFFFF;
   margin-right: 10px;
   padding: 8px 10px;
@@ -2346,7 +2355,7 @@ h2.title {
 }
 
 .replay-box label {
-  background:#FE980F;
+  background:#8bc34a;
   color: #FFFFFF;
   margin-bottom: 15px;
   padding: 3px 15px;
@@ -2355,7 +2364,7 @@ h2.title {
 }
 
 .replay-box span {
-  color: #FE980F;
+  color: #8bc34a;
   float: right;
   font-weight: 700;
   margin-top: 21px;
@@ -2372,7 +2381,7 @@ h2.title {
 
 .replay-box form input:hover,
 .text-area textarea:hover {
-  border: 1px solid #FE980F;
+  border: 1px solid #8bc34a;
 }
 
 .text-area {
@@ -2385,7 +2394,7 @@ h2.title {
 }
 
 .btn.btn-primary {
-  background:#FE980F;
+  background:#8bc34a;
   border: 0 none;
   border-radius: 0;
   margin-top: 16px;
@@ -2402,7 +2411,7 @@ h2.title {
   height: auto;
   border-style: solid;
   border-width: 8px;
-  border-color:#FE980F transparent transparent transparent;
+  border-color:#8bc34a transparent transparent transparent;
   top: 25px;
   left: 5px
 }
@@ -2459,7 +2468,7 @@ h2.title {
 #contact-page .form-control:focus,
 #contact-page .form-control:hover {
   box-shadow: inherit;
-  border-color: #FDB45E;
+  border-color: #8bc34a;
 }
 
 #contact-page .contact-info {
@@ -2510,7 +2519,7 @@ h2.title {
 }
 
 .contact-info .social-networks ul li a:hover{
-  color: #FE980F;
+  color: #8bc34a;
 }
 
 		/* styles unrelated to zoom */

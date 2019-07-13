@@ -60,7 +60,6 @@
                                 <p id="avibility"><b>สถานะสินค้าใน : </b> @if($totalStock>0) <span
                                         style="color: green">ใน stock {{$totalStock}}</span> @else <span
                                         style="color: red">สินค้าหมด stock</span> @endif</p>
-                                <p><b>Condition:</b> New</p>
                                 <a href=""><img src="images/product-details/share.png" class="share img-responsive"
                                         alt=""></a>
                             </div>
@@ -94,7 +93,7 @@
 
                         <div class="tab-pane fade" id="deliver">
                             <div class="col-sm-12">
-
+                                <h3>จัดส่งโดย Kerry Express</h3>
                             </div>
                         </div>
                     </div>
@@ -125,7 +124,7 @@
                                                         href="{{ url('/product-detail/'.$product->id) }}">ดูรายละเอียดสินค้า</a>
                                                 </p>
                                                 <button type="button" class="btn btn-default add-to-cart"><i
-                                                        class="fa fa-shopping-cart"></i>Add to cart</button>
+                                                        class="fa fa-shopping-cart"></i>เพิ่มเข้าตระกร้าสินค้า</button>
                                             </div>
                                         </div>
                                     </div>

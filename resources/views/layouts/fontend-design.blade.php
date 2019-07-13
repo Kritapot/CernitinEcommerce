@@ -17,6 +17,7 @@
     <link href="{{ asset('css/fontend_css') }}/responsive.css" rel="stylesheet">
     <link href="{{ asset('css/fontend_css') }}/passtrength.css" rel="stylesheet">
     <link href="{{ asset('vendor/toastr/toastr.min.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet">
 
 </head>
 

@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="{{ url('/') }}"><img style="width: 140px; height: 90px;" src="{{ asset('images/fontend_images') }}/shop/logo.jpg" alt="" /></a>
+                        <a href="{{ url('/') }}"><img style="width: 230px; height: 140px;" src="{{ asset('images/fontend_images') }}/shop/logo.jpg" alt="" /></a>
                     </div>
                     <div class="btn-group pull-right">
                         <div class="btn-group">
@@ -72,7 +72,7 @@
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="index.html" class="active">หน้าหลัก</a></li>
+                            <li><a href="{{ url('/') }}" class="active">หน้าหลัก</a></li>
                             <li class="dropdown"><a href="#">หมวดหมู่สินค้า<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     @foreach ($maincategories as $key => $value)
@@ -89,7 +89,7 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
+                        <input type="text" placeholder="ค้นหา"/>
                     </div>
                 </div>
             </div>
