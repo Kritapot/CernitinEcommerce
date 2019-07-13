@@ -61,7 +61,7 @@
                                                 @endforeach
                                             </td>
                                             <td style="text-align: right">{{ $value['grand_total'] }}</td>
-                                            <td style="text-align: right">{{ $value['order_status'] == "New" ? "ยังไม่ได้ชำระเงิน" : '' }}</td>
+                                            <td style="text-align: right">{{ $value['order_status'] }}</td>
                                             <td style="text-align: right">{{ $value['playment_method'] == "direct" ? "โอนเงินผ่านธนาคาร" : '' }}</td>
                                             <td>
                                                 <a href="{{ url('/admin/list-order/'.$value['id']) }}" class="btn btn-info btn-mini">ดูรายละเอียดการสั่งซื้อ</a>

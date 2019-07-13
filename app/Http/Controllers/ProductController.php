@@ -322,6 +322,16 @@ class ProductController extends Controller
         ]));
     }
 
+
+    public function updateOrderStatus(Request $request, $id)
+    {
+        $data       =   $request->all();
+
+        Order::where('id', $id)->update(['order_status' => $data['order_status']]);
+        return redirect()->back()->with('flash_message_success', 'แก้ไขสถานะรายการสั่งซื้อเรียบร้อยแล้ว');
+
+    }
+
     /**
      * Homepage show product from category function
      *

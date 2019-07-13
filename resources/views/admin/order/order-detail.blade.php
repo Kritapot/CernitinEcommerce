@@ -8,6 +8,14 @@
                 href="#" class="current">Widgets</a> </div>
         <h1>แสดงรายละเอียดการสั่งซื้อ โดยคุณ {{ $userDetail['name'] }}</h1>
     </div>
+    @if (Session::has('flash_message_success'))
+    <div class="alert alert-success alert-block" id="message-box">
+        <strong>{!! session('flash_message_success') !!}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
     <div class="container-fluid">
         <hr>
         <div class="row-fluid">
@@ -107,14 +115,26 @@
                             <table class="table table-striped table-bordered">
                                 <tbody>
                                     <tr>
-                                        <td class="taskDesc">ชื่อลูกค้า</td>
-                                        <td class="taskStatus"><span class="in-progress">{{ $userDetail['name'] }}</span></td>
+                                        <td class="taskDesc">
+                                            <form action="{{ url('/admin/update-order-status/'.$orderDetail['id']) }}" method="post">
+                                                {{ csrf_field() }}
+                                                <select name="order_status" id="order_status" class="control-label" style="width: 240px" required>
+                                                    <option {{ $orderDetail['order_status'] == "" ? 'selected' : '' }} value="">กรุณาเลือก</option>
+                                                    <option {{ $orderDetail['order_status'] == "New" ? 'selected' : '' }} value="New">ใหม่</option>
+                                                    <option {{ $orderDetail['order_status'] == "Pending" ? 'selected' : '' }} value="Pending">รอการชำระเงิน</option>
+                                                    <option {{ $orderDetail['order_status'] == "Cancle" ? 'selected' : '' }} value="Cancle">ยกเลิก</option>
+                                                    <option {{ $orderDetail['order_status'] == "Inprocess" ? 'selected' : '' }} value="Inprocess">กำลังตรวจสอบ</option>
+                                                    <option {{ $orderDetail['order_status'] == "Shipping" ? 'selected' : '' }} value="Shipping">กำลังเตรียมจัดส่ง</option>
+                                                    <option {{ $orderDetail['order_status'] == "Deliveried" ? 'selected' : '' }} value="Deliveried">ส่งเรียบร้อยแล้ว</option>
+                                                </select>
+                                                <input type="submit" class="btn btn-success btn-mini" value="ตกลง">
+                                            </form>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
             </div>
             <div class="widget-box">
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
