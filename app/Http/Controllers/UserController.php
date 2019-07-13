@@ -47,7 +47,6 @@ class UserController extends Controller
 
                 if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
                     Session::put('fontSession', $data['email']);
-
                     if(!empty(Session::get('session_id')))
                     {
                         $session_id     =   Session::get('session_id');

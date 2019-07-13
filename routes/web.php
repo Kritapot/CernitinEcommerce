@@ -31,11 +31,12 @@ Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductController@update_qu
 //User Login-Register
 Route::post('/form-register', 'UserController@register');
 Route::get('/user-register', 'UserController@userLoginRegister');
-Route::get('/user-logout', 'UserController@logout');
 Route::post('/user-login', 'UserController@login');
 
 
 Route::group(['middleware' => ['FontLogin']], function () {
+    Route::get('/user-logout', 'UserController@logout');
+
     //User Account Page
     Route::match(['get', 'post'],'account', 'UserController@userAccountPage');
     //Check current password
@@ -67,9 +68,10 @@ Route::match(['get', 'post'],'/check-email', 'UserController@checkEmail');
 Auth::routes();
 
 Route::match(['get', 'post'], '/admin', 'AdminController@log_in');
-Route::get('/logout', 'AdminController@logout');
 
 Route::group(['middleware' => ['AdminLogin']], function () {
+    Route::get('/logout', 'AdminController@logout');
+
     Route::get('/admin/dashboard', 'AdminController@Dashboard');
     Route::get('/admin/setting', 'AdminController@setting');
     Route::get('/admin/check-pwd', 'AdminController@check_password');

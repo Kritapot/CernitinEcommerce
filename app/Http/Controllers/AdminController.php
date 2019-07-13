@@ -60,17 +60,18 @@ class AdminController extends Controller
      */
     public function setting()
     {
-        return view('admin.setting');
+        $adminDetail       =    Admin::where(['username' => Session::get('adminSession')])->first();
+
+        return view('admin.setting', with(['adminDetail'=>$adminDetail]));
     }
 
 
     public function check_password(Request $request)
     {
         $data                   =   $request->all();
-        $currentPassword        =   $data['current_pwd'];
-        $checkPassword          =   User::where('admin', 1)->first();
+        $adminCount             =   Admin::where(['username' => Session::get('adminSession'), 'password'=>md5($data['current_pwd'])])->count();
 
-        if(Hash::check($currentPassword, $checkPassword['password'])) {
+        if($adminCount == 1) {
             echo "True"; die;
         }else{
             echo "Failed"; die;
@@ -81,12 +82,13 @@ class AdminController extends Controller
     public function update_password(Request $request)
     {
             $data               =   $request->all();
-            $checkPassword      =   User::where('email', Auth::user()->email)->first();
-            $currentPassword    =   $data['current_pwd'];
 
-            if(Hash::check($currentPassword, $checkPassword['password'])){
-                $password   =   bcrypt($data['new_pwd']);
-                User::where('id', 1)->update(['password' => $password]);
+            $adminCount             =   Admin::where(['username' => Session::get('adminSession'), 'password'=>md5($data['current_pwd'])])->count();
+
+
+            if($adminCount == 1){
+                $password   =   md5($data['new_pwd']);
+                Admin::where('username', Session::get('adminSession'))->update(['password' => $password]);
                 return redirect('/admin/setting')->with('flash_message_success', 'เปลี่ยนรหัสผ่านเรียบร้อยแล้ว');
             }else{
                 return redirect('/admin/setting')->with('flash_message_errors', 'กรอกรหัสผ่านผิด');

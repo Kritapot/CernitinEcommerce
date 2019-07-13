@@ -35,20 +35,26 @@
                     <form class="form-horizontal" method="post" action="{{ url('/admin/update-password') }}" name="password_validate" id="password_validate" novalidate="novalidate">
                         {{ csrf_field() }}
                         <div class="control-group">
-                        <label class="control-label">Current password</label>
+                            <label class="control-label">ชื่อผู้ใช้งาน</label>
+                            <div class="controls">
+                                <input style="font-size: 1.4em" value="{{ $adminDetail['username'] }}" type="text" readonly>
+                            </div>
+                            </div>
+                        <div class="control-group">
+                        <label class="control-label">รหัสผ่านเก่า</label>
                         <div class="controls">
                             <input type="password" name="current_pwd" id="current_pwd">
                             <span id="password-check"></span>
                         </div>
                         </div>
                         <div class="control-group">
-                        <label class="control-label">New password</label>
+                        <label class="control-label">รหัสผ่านใหม่</label>
                         <div class="controls">
                             <input type="password" name="new_pwd" id="new_pwd">
                         </div>
                         </div>
                         <div class="control-group">
-                        <label class="control-label">Confirm password</label>
+                        <label class="control-label">ยืนยันรหัสผ่านใหม่</label>
                         <div class="controls">
                             <input type="password" name="confirm_pwd" id="confirm_pwd">
                         </div>
