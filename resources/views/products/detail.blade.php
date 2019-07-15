@@ -73,27 +73,26 @@
                     <!--category-tab-->
                     <div class="col-sm-12">
                         <ul class="nav nav-tabs">
-                            <li><a href="#description" data-toggle="tab">รายละเอียดสินค้า</a></li>
+                            <li class="active"><a href="#description" data-toggle="tab">รายละเอียดสินค้า</a></li>
                             <li><a href="#care" data-toggle="tab">ส่วนผสม และการดูแลรักษา</a></li>
                             <li><a href="#deliver" data-toggle="tab">การจัดส่ง</a></li>
                         </ul>
                     </div>
                     <div class="tab-content">
-                        <div class="tab-pane fade" id="description">
+                        <div class="tab">
                             <div class="col-sm-12">
-                                <p>{{ $productDetail['description'] }}</p>
+                                <p style="font-size: 24px">{{ $productDetail['description'] }}</p>
                             </div>
                         </div>
-
                         <div class="tab-pane fade" id="care">
                             <div class="col-sm-12">
-                                <p>{{ $productDetail['care'] }}</p>
+                                <p style="font-size: 24px">{{ $productDetail['care'] }}</p>
                             </div>
                         </div>
 
                         <div class="tab-pane fade" id="deliver">
                             <div class="col-sm-12">
-                                <h3>จัดส่งโดย Kerry Express</h3>
+                                <h3>จัดส่งฟรีโดย Kerry Express</h3>
                             </div>
                         </div>
                     </div>

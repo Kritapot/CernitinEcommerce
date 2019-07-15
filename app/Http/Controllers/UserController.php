@@ -9,6 +9,7 @@ use Session;
 use App\apps_country;
 use Illuminate\Support\Facades\Hash;
 use App\Cart;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -44,6 +45,14 @@ class UserController extends Controller
                 $saveUser->email       =   $data['email'];
                 $saveUser->password       =   bcrypt($data['password']);
                 $saveUser->save();
+
+                //Send Email register;
+                $email          =   $data['email'];
+                $messageData    =   ['email'=>$data['email'], 'name'=>$data['name']];
+                Mail::send('email.register', $messageData, function ($message) use($email) {
+                    $message->to($email)->subject('Registration with Cernitin Website');
+                });
+
 
                 if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
                     Session::put('fontSession', $data['email']);

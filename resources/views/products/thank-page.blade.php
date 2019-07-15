@@ -6,7 +6,7 @@
         <div class="breadcrumbs">
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
-                <li class="active">thank</li>
+                <li class="active">ขอบคุณ</li>
             </ol>
         </div>
     </div>
@@ -15,8 +15,13 @@
 <section id="do_action">
     <div class="container">
         <div class="heading text-center">
-            <h3>Your CDO order has been place</h3>
-            <p>Your order number is 00000{{ Session::get('order_id') }} and total patable about is THB  {{ Session::get('grand_total') }}</p>
+            <h2>การสั่งซื้อของคุณสำเร็จแล้ว เราจะตรวจสอบและจัดส่งสินค้าให้โดยเร็วที่สุด</h2>
+            <p style="font-size: 18px;">
+                หมายเลขการสั่งซื้อสินค้าของคุณคือ
+                <span style="color: green">{{ Session::get('order_id') }}</span><br>
+                ยอดรวมของการสั่งซื้อคือ
+                <span style="color: green">{{ Session::get('grand_total') }}</span></p>
+                <a href="{{ url('/') }}" class="btn btn-success">กลับไปหน้าหลัก</a>
         </div>
     </div>
 </section>

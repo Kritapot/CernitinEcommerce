@@ -85,9 +85,9 @@
             <div class="col-sm-6">
                 <div class="total_area">
                     <ul>
-                        <?php $shipping = 50 ?>
+                        <?php $shipping = 0 ?>
                         <li>ยอดรวมสินค้า <span>THB  <?php echo $totalAmount ?></span></li>
-                        <li>ค่าจัดส่ง <span>THB 50</span></li>
+                        <li>ค่าจัดส่ง <span>ฟรี</span></li>
                         <li>รวม <span>THB <?php echo $totalAmount + $shipping; ?></span></li>
                     </ul>
                     <a class="btn btn-default check_out" href="{{ url('/checkout') }}">ชำระเงิน</a>

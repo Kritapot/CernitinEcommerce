@@ -14,7 +14,7 @@
 <!--/#cart_items-->
 <section id="do_action">
     <div class="container">
-        <div class="heading text-center">
+        <div class="heading text-center" style="font-size: 18px">
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>

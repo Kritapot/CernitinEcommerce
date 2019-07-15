@@ -69,13 +69,13 @@
                             <div class="control-group">
                                 <label class="control-label">รายละเอียด</label>
                                 <div class="controls">
-                                    <textarea name="description" id="description">{{ $product['description'] }}</textarea>
+                                    <textarea style="width: 500px; height: 200px" name="description" id="description">{{ $product['description'] }}</textarea>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Material and Care</label>
                                 <div class="controls">
-                                    <textarea name="care" id="care">{{ $product['care'] }}</textarea>
+                                    <textarea style="width: 500px; height: 200px" name="care" id="care">{{ $product['care'] }}</textarea>
                                 </div>
                             </div>
                             <div class="control-group">

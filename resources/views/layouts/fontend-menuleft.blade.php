@@ -23,4 +23,9 @@
                 @endforeach
             </div>
         </div><!--/category-products-->
+        <h2>สินค้าขายดี</h2>
+        <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+            <div class="panel panel-default">
+            </div>
+        </div><!--/category-products-->
     </div>

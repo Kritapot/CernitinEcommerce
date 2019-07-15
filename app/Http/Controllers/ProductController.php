@@ -18,6 +18,8 @@ use App\DeliveryAddress;
 use App\Order;
 use Illuminate\Support\Facades\DB;
 use App\OrderProduct;
+use Illuminate\Support\Facades\Mail;
+
 
 class ProductController extends Controller
 {
@@ -132,6 +134,9 @@ class ProductController extends Controller
             $saveProduct->product_name  =   $data['name'];
             $saveProduct->category_id   =   $data['category_id'];
             $saveProduct->product_code  =   $data['product_code'];
+            if(empty($data['product_color'])) {
+                $data['product_color']    =   "";
+            }
             $saveProduct->product_color =   $data['product_color'];
             $saveProduct->description   =   $data['description'];
 
@@ -699,7 +704,7 @@ class ProductController extends Controller
             $saveOrder->country             =   $deliveryDetail['country'];
             $saveOrder->pincode             =   $deliveryDetail['pincode'];
             $saveOrder->mobile              =   $deliveryDetail['mobile'];
-            $saveOrder->shipping_charges    =   50;
+            $saveOrder->shipping_charges    =   0;
             $saveOrder->order_status        =   "New";
             $saveOrder->playment_method     =   $data['playment_medthod'];
             $saveOrder->grand_total         =   $data['grand_total'];
@@ -730,6 +735,22 @@ class ProductController extends Controller
 
             Session::put('order_id', $order_id);
             Session::put('grand_total', $data['grand_total']);
+
+            //Send OrderDetail to Email
+            $productDetail  =   Order::with('orderProducts')->where('id',$order_id)->first();
+            $userDetail     =   User::where('id', $user_id)->first();
+            $email          =   $user_email;
+            $messageData    =   [
+                'email'             =>   $email,
+                'name'              =>   $deliveryDetail['name'],
+                'order_id'          =>   $order_id,
+                'productDetail'     =>   $productDetail,
+                'userDetail'        =>   $userDetail
+            ];
+            Mail::send('email.order', $messageData, function ($message) use($email) {
+                $message->to($email)->subject('รายละเอียดการสั่งซื้อ');
+            });
+
 
             Cart::where('user_email', $user_email)->delete();
             return redirect('/thank-page');

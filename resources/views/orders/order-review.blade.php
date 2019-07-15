@@ -94,12 +94,12 @@
 								<table class="table table-condensed total-result">
 									<tr class="shipping-cost">
                                         <td>ค่าจัดส่ง</td>
-                                        <?php $shipping = 50 ?>
-                                        <td>THB <?php echo $shipping ?></td>
+                                        <?php $shipping = 0 ?>
+                                        <td>ฟรีค่าจัดส่ง</td>
 									</tr>
 									<tr>
                                         <td>ยอดรวม</td>
-                                        <?php $grandTotal = $totalAmount + $shipping ?>
+                                        <?php $grandTotal = $totalAmount ?>
 										<td>THB <span> <?php echo $grandTotal; ?></span></td>
 									</tr>
 								</table>

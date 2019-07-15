@@ -658,7 +658,7 @@ ul.sub-menu {
 .left-sidebar h2, .brands_products h2 {
   color: #8bc34a;
   font-family: 'Pridi', serif;
-  font-size: 18px;
+  font-size: 30px;
   font-weight: 700;
   margin: 0 auto 30px;
   text-align: center;
@@ -842,7 +842,7 @@ h2.title:before{
 h2.title {
   color: #8bc34a;
   font-family: 'Pridi', serif;
-  font-size: 18px;
+  font-size: 30px;
   font-weight: 700;
   margin: 0 15px;
   text-transform: uppercase;
@@ -1015,7 +1015,7 @@ h2.title {
   color: #B3AFA8;
   display: block;
   font-family: 'Pridi', serif;
-  font-size: 14px;
+  font-size: 22px;
   text-transform: uppercase;
 }
 

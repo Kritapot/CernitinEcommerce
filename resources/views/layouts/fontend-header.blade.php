@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="{{ url('/') }}"><img style="width: 230px; height: 140px;" src="{{ asset('images/fontend_images') }}/shop/logo.jpg" alt="" /></a>
+                        <a href="{{ url('/') }}"><img style="width: 200px; height: 120px;" src="{{ asset('images/fontend_images') }}/shop/logo.jpg" alt="" /></a>
                     </div>
                     <div class="btn-group pull-right">
                         <div class="btn-group">
@@ -82,7 +82,7 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a href="#">สาระหน้ารู้</a></li>
+                            <li><a href="#">บทความเกี่ยวกับ Cernitin</a></li>
                             <li><a href="#">ติดต่อเรา</a></li>
                         </ul>
                     </div>

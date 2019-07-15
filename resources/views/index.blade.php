@@ -67,16 +67,26 @@
                         </div>
                     @endforeach
                 </div><!--features_items-->
-
-
-                <div class="recommended_items"><!--recommended_items-->
-                    <h2 class="title text-center">recommended items</h2>
-
-                </div><!--/recommended_items-->
-
             </div>
         </div>
     </div>
 </section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="blog-post-area">
+                    <h2 class="title text-center">ประโยชน์ของ Cernitin</h2>
+                    <div class="single-blog-post">
+                        <a href="#">
+                            <img src="{{ asset('images/fontend_images/home/cernitn52.jpg') }}" alt="">
+                        </a>
+                    </div>
+                </div><!--/blog-post-area-->
+            </div>
+        </div>
+    </div>
+</section>
+
 
 @endsection
