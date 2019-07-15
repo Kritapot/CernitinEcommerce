@@ -94,4 +94,20 @@ class AdminController extends Controller
                 return redirect('/admin/setting')->with('flash_message_errors', 'กรอกรหัสผ่านผิด');
             }
     }
+
+
+    public function listUsers()
+    {
+        $user       =   User::orderBy('id', 'DESC')->get();
+
+        return view('admin.user-register.list-user', with(['user' => $user]));
+    }
+
+
+    public function deleteUser($id)
+    {
+        User::where('id', $id)->delete();
+        return redirect('/admin/list-user')->with('flash_message_success', 'ลบสมาชิกรายนี้เรียบร้อยแล้ว');
+
+    }
 }

@@ -10,6 +10,7 @@ use App\Category;
 use App\Product;
 use App\Banner;
 use App\Order;
+use App\User;
 
 class Controller extends BaseController
 {
@@ -53,6 +54,14 @@ class Controller extends BaseController
 
         return $order;
     }
+
+    public static function count_user()
+    {
+        $user     =   User::count();
+
+        return $user;
+    }
+
 
 
 

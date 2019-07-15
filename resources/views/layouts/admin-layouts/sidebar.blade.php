@@ -4,6 +4,7 @@
     $category       =   Controller::count_category();
     $banner         =   Controller::count_banner();
     $order          =   Controller::count_order();
+    $user           =   Controller::count_user();
 
 
     $url    =   url()->current();
@@ -34,6 +35,11 @@
       <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>รายการสั่งซ์้อ</span> <span class="label label-important">{{ $order }}</span></a>
         <ul @if(preg_match('/order/i', $url)) style="display: block"   @endif>
           <li @if (preg_match('/list-order/i', $url)) class="active" @endif><a href="{{ url('/admin/list-order') }}">แสดงรายการสั่งซื้อทั้งหมด</a></li>
+        </ul>
+      </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>รายชือสมาชิก</span> <span class="label label-important">{{ $user }}</span></a>
+        <ul @if(preg_match('/user/i', $url)) style="display: block"   @endif>
+          <li @if (preg_match('/list-user/i', $url)) class="active" @endif><a href="{{ url('/admin/list-user') }}">แสดงรายชื่อสมาชิกทั้งหมด</a></li>
         </ul>
       </li>
     </ul>
