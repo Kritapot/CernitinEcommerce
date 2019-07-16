@@ -88,7 +88,11 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="ค้นหา"/>
+                        <form action="{{ url('/search-product') }}" method="post">
+                            {{ csrf_field() }}
+                            <input type="text" placeholder="ค้นหาสินค้า" name="product"/>
+                            <button type="submit" style="border-radius: 0; height: 33px; margin-bottom: 6px; margin-left: -5px" class="btn btn-info">ค้นหา</button>
+                        </form>
                     </div>
                 </div>
             </div>

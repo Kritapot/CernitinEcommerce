@@ -38,7 +38,11 @@
                                     <td class="text-left">{{ $value['playment_method'] == "direct" ? "โอนตรงผ่านธนาคาร" : '' }}</td>
                                     <td class="text-left">{{ $value['grand_total'] }}</td>
                                     <td class="text-left">{{ $value['created_at'] }}</td>
-                                    <td class="text-left">{{ $value['order_status']=='New' ? 'ยังไม่ได้ชำระเงิน' : '' }}</td>
+                                    <td class="text-left">
+                                        @if ($value['order_status'] == "New")
+                                            <span style="color: red">ยังไม่ได้ชำระเงิน</span>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

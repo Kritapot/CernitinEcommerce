@@ -383,6 +383,33 @@ class ProductController extends Controller
     }
 
     /**
+     * Search Product function
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function searchProduct(Request $request)
+    {
+        $data       =   $request->all();
+
+        //dropdown category
+        $categorise         =   Category::with('categories')->where('parent_id', 0);
+
+        $productAll         =   Product::where('product_name', 'like', '%'.$data['product'].'%')
+                                    ->orwhere('description', 'like', '%'.$data['product'].'%')
+                                    ->where('status', 1)
+                                    ->get();
+
+        return view('products.listing', with([
+            'searchProduct'     => $data['product'],
+            'categorise'        => $categorise,
+            'productAll'        => $productAll
+        ]));
+
+    }
+
+
+    /**
      * Show Product detail function
      *
      * @param $id
@@ -779,11 +806,17 @@ class ProductController extends Controller
         return view('orders.order-user-page', with(['orders' => $orders]));
     }
 
-
+    /**
+     *  Show order product detail function
+     *
+     * @param [type] $order_id
+     * @return void
+     */
     public function showOrderProduct($order_id)
     {
         $orderDetail    =   Order::with('orderProducts')->where('id', $order_id)->first();
 
         return view('orders.order-user-detail', with(['orderDetail' => $orderDetail]));
     }
+
 }
