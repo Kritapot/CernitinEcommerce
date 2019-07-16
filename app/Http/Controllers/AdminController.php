@@ -49,7 +49,7 @@ class AdminController extends Controller
      */
     public function logout()
     {
-        Session::flush();
+        Session::forget('adminSession');
         return redirect('/admin')->with('flash_message_success', 'Log out successfully');
     }
 

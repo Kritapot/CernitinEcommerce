@@ -10,8 +10,8 @@
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-                            <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i> +66 95 01 88 821</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> cernitinth@gmail.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -32,13 +32,6 @@
                     <div class="logo pull-left">
                         <a href="{{ url('/') }}"><img style="width: 200px; height: 120px;" src="{{ asset('images/fontend_images/shop/logo.jpg') }}" alt="" /></a>
                     </div>
-                    <div class="btn-group pull-right">
-                        <div class="btn-group">
-                        </div>
-
-                        <div class="btn-group">
-                        </div>
-                    </div>
                 </div>
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
@@ -52,6 +45,12 @@
                                 <li><a href="{{ url('/user-logout') }}"><i class="fa fa-lock"></i> ออกจากระบบ</a></li>
                             @endif
                         </ul>
+                    </div>
+                    <div class="btn-group pull-right">
+                        <h4 style="line-height: 1.9em">ศูนย์จำหน่าย เซอร์นิติน ของแท้จากบริษัท สนใจสินค้า สั่งซื้อหรือ สอบถามปรึกษาปัญหาสุขภาพ &nbsp;&nbsp;<br>
+                        </h4>
+                        <i class="fab fa-line" style="color: green; font-size: 30px"></i>&nbsp; <span style="font-size: 20px">id: xxxxxxxxxxxx</span>&nbsp;&nbsp;
+                        <i class="fa fa-phone" style="color: green; font-size: 25px"></i>&nbsp; <span style="font-size: 20px">โทร: xxxxxxxxxxxx</span></i>
                     </div>
                 </div>
             </div>

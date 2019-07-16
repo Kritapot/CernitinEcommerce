@@ -194,7 +194,7 @@ a#scrollUp i{
 
 
 .shop-menu ul li a {
-  background: #FFFFFF;
+  background: #CBF2C8;
   color: #696763;
   font-family: 'Pridi', serif;
   font-size: 18px;
@@ -202,6 +202,7 @@ a#scrollUp i{
   padding:0;
   padding-right: 0;
   margin-top: 10px;
+  padding: 5px 5px;
 }
 
 
