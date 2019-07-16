@@ -470,6 +470,18 @@ class ProductController extends Controller
 
                 $sizeArr        =   explode("-", $data['size']);
 
+            // check qty product in stock
+            $countProductStock  =   ProductAttributes::where([
+                                        'product_id'    => $data['product_id'],
+                                        'size'          => $sizeArr[1]
+                                    ])->first();
+
+            if($data['quantity'] > $countProductStock['stock'])
+            {
+                Toastr::error('ขออภัยสินค้านี้มีสต๊อค 100 ชิ้น', '', ["positionClass" => "toast-top-center", "closeButton" => true, "timeOut" => "2000", "progressBar" => true,]);
+                return redirect()->back();
+            }
+
 
             if(empty(Auth::user()->email)) {
                 $data['user_email']   =   "";
@@ -488,17 +500,34 @@ class ProductController extends Controller
                 Session::put('session_id', $session_id);
             }
 
+            if(empty(Auth::check()))
+            {
             // check add product in cart
-            $countCartInProduct =   Cart::where('product_id', $data['product_id'])
-                                    ->where('product_name', $data['product_name'])
-                                    ->where('price', $data['price'])
-                                    ->where('session_id', $session_id)
-                                    ->count();
+                $countCartInProduct =   Cart::where('product_id', $data['product_id'])
+                                        ->where('product_name', $data['product_name'])
+                                        ->where('price', $data['price'])
+                                        ->where('session_id', $session_id)
+                                        ->count();
 
-            if($countCartInProduct>0){
-                Toastr::error('ขออภัยสินค้านี้มีในตระกร้าสินค้าแล้ว', '', ["positionClass" => "toast-top-center", "closeButton" => true, "timeOut" => "2000", "progressBar" => true,]);
-                return redirect('/cart');
-            } else {
+                if($countCartInProduct>0){
+                    Toastr::error('ขออภัยสินค้านี้มีในตระกร้าสินค้าแล้ว', '', ["positionClass" => "toast-top-center", "closeButton" => true, "timeOut" => "2000", "progressBar" => true,]);
+                    return redirect('/cart');
+                }
+            }else{
+                // check add product in cart
+                $countCartInProduct =   Cart::where('product_id', $data['product_id'])
+                                        ->where('product_name', $data['product_name'])
+                                        ->where('price', $data['price'])
+                                        ->where('user_email', Auth::user()->email)
+                                        ->count();
+
+                if($countCartInProduct>0){
+                    Toastr::error('ขออภัยสินค้านี้มีในตระกร้าสินค้าแล้ว', '', ["positionClass" => "toast-top-center", "closeButton" => true, "timeOut" => "2000", "progressBar" => true,]);
+                    return redirect('/cart');
+                }
+
+            }
+
 
                 $getSku                         =   ProductAttributes::select('sku')->where(['product_id'=>$data['product_id'], 'size'=>$sizeArr[1]])
                                                     ->first();
@@ -518,7 +547,7 @@ class ProductController extends Controller
                 Toastr::success('เพิ่มสินค้าลงในตระกร้าสินค้าเรียบร้อย', '', ["positionClass" => "toast-top-center", "closeButton" => true, "timeOut" => "2000", "progressBar" => true,]);
                 return redirect('/cart');
 
-            }
+
 
         }
     }
