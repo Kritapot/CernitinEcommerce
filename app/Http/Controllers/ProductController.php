@@ -776,7 +776,6 @@ class ProductController extends Controller
     {
         $user_id            =   Auth::user()->id;
         $orders             =   Order::with('orderProducts')->where('user_id', $user_id)->orderby('id', 'desc')->get();
-
         return view('orders.order-user-page', with(['orders' => $orders]));
     }
 

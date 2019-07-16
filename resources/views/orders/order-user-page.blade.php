@@ -23,6 +23,7 @@
                                 <th>รูปแบบการชำระเงิน</th>
                                 <th>ยอดรวม</th>
                                 <th>วันเวลา</th>
+                                <th>สถานะ</th>
                             </tr>
                         </thead>
                         <tbody><?php //dd($orders) ?>
@@ -37,6 +38,7 @@
                                     <td class="text-left">{{ $value['playment_method'] == "direct" ? "โอนตรงผ่านธนาคาร" : '' }}</td>
                                     <td class="text-left">{{ $value['grand_total'] }}</td>
                                     <td class="text-left">{{ $value['created_at'] }}</td>
+                                    <td class="text-left">{{ $value['order_status']=='New' ? 'ยังไม่ได้ชำระเงิน' : '' }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
