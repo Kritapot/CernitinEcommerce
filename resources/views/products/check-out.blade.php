@@ -29,9 +29,8 @@
         <div class="row">
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form"><!--login form-->
-                    <h2>ที่อยู่จัดส่งใบเสร็จ</h2>
                     <form action="#">
-                        <input type="text" id="billing_name" name="billing_name" value="{{ !empty($userDetail['name']) ? $userDetail['name'] : '' }}" placeholder="Billing Name" />
+                        <h2>ที่อยู่จัดส่งใบเสร็จ</h2>
                         <input type="text" id="billing_address" name="billing_address" value="{{ !empty($userDetail['address']) ? $userDetail['address'] : '' }}" placeholder="Address" />
                         <input type="text" id="billing_city" name="billing_city" value="{{ !empty($userDetail['city']) ? $userDetail['city'] : '' }}" placeholder="City" />
                         <input type="text" id="billing_state" name="billing_state" value="{{ !empty($userDetail['state']) ? $userDetail['state'] : '' }}" placeholder="State" />

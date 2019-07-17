@@ -6,7 +6,9 @@
     <div id="content-header">
         <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a
                 href="#" class="current">Widgets</a> </div>
-        <h1>แสดงรายละเอียดการสั่งซื้อ โดยคุณ {{ $userDetail['name'] }}</h1>
+        <h1>แสดงรายละเอียดการสั่งซื้อ โดยคุณ {{ $userDetail['name'] }}
+            <a href="{{ url('/admin/list-order') }}" class="btn btn-info">กลับไป</a>
+        </h1>
     </div>
     @if (Session::has('flash_message_success'))
     <div class="alert alert-success alert-block" id="message-box">
@@ -126,6 +128,7 @@
                                                     <option {{ $orderDetail['order_status'] == "Inprocess" ? 'selected' : '' }} value="Inprocess">กำลังตรวจสอบ</option>
                                                     <option {{ $orderDetail['order_status'] == "Shipping" ? 'selected' : '' }} value="Shipping">กำลังเตรียมจัดส่ง</option>
                                                     <option {{ $orderDetail['order_status'] == "Deliveried" ? 'selected' : '' }} value="Deliveried">ส่งเรียบร้อยแล้ว</option>
+                                                    <option {{ $orderDetail['order_status'] == "Wrong" ? 'selected' : '' }} value="Wrong">แจ้งยอดชำระเงินไม่ถูกต้อง</option>
                                                 </select>
                                                 <input type="submit" class="btn btn-success btn-mini" value="ตกลง">
                                             </form>
@@ -135,6 +138,29 @@
                             </table>
                         </div>
                     </div>
+                    <div class="widget-box">
+                            <div class="widget-title">
+                                <h5>การแจ้งชำระเงิน</h5>
+                            </div>
+                            <div class="widget-content nopadding">
+                                <table class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td class="taskDesc">วันเวลาที่โอน : </td>
+                                            <td class="taskDesc">@if(!empty($orderDetail['playment_time'])) <span style="color: green">{{ $orderDetail['playment_time'] }}</span> @else <span style="color: red">ยังไม่ได้ชำระเงิน</span> @endif</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="taskDesc">ยอดเงินที่โอน : </td>
+                                            <td class="taskDesc">@if(!empty($orderDetail['playment_total'])) <span style="color: green">{{ $orderDetail['playment_total'] }}</span> @else <span style="color: red">ยังไม่ได้ชำระเงิน</span> @endif</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="taskDesc">ธนาคารที่โอน : </td>
+                                            <td class="taskDesc">@if(!empty($orderDetail['playment_bank'])) <span style="color: green">{{ $orderDetail['playment_bank'] }}</span> @else <span style="color: red">ยังไม่ได้ชำระเงิน</span> @endif</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
             </div>
             <div class="widget-box">
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -160,6 +186,7 @@
                     </tbody>
                 </table>
             </div>
+
 
             <!--main-container-part-->
             @endsection

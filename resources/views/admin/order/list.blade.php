@@ -45,6 +45,7 @@
                                         <th>ยอดรวมทั้งหมด</th>
                                         <th>สถานะ</th>
                                         <th>ประเภทการชำระเงิน</th>
+                                        <th>การแจ้งชำระเงิน</th>
                                         <th>การจัดการ</th>
                                     </tr>
                                 </thead>
@@ -63,8 +64,16 @@
                                             <td style="text-align: right">{{ $value['grand_total'] }}</td>
                                             <td style="text-align: right">{{ $value['order_status'] }}</td>
                                             <td style="text-align: right">{{ $value['playment_method'] == "direct" ? "โอนเงินผ่านธนาคาร" : '' }}</td>
+                                            <td style="text-align: right">
+                                                @if (!empty($value['playment_total']))
+                                                    <span style="color: green">แจ้งโอนแล้ว</span>
+                                                @else
+                                                    <span style="color: red">ยังไม่ได้แจ้งโอน</span>
+                                                @endif
+                                            </td>
                                             <td>
-                                                <a href="{{ url('/admin/list-order/'.$value['id']) }}" class="btn btn-info btn-mini">ดูรายละเอียดการสั่งซื้อ</a>
+                                                <a href="{{ url('/admin/list-order/'.$value['id']) }}" class="btn btn-info btn-mini">รายละเอียด</a>
+                                                <a href="{{ url('/admin/list-order-invoice/'.$value['id']) }}" class="btn btn-success btn-mini">Invoice</a>
                                             </td>
                                         </tr>
                                     @endforeach

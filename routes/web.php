@@ -101,6 +101,7 @@ Route::group(['middleware' => ['AdminLogin']], function () {
     //Order
     Route::get('/admin/list-order', 'ProductController@showOrderAdmin');
     Route::get('/admin/list-order/{id}', 'ProductController@showDetailOrderAdmin');
+    Route::get('/admin/list-order-invoice/{id}', 'ProductController@showDetailOrderInvoice');
     Route::post('/admin/update-order-status/{id}', 'ProductController@updateOrderStatus');
     //list user
     Route::get('/admin/list-user', 'AdminController@listUsers');

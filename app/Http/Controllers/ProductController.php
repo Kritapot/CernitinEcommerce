@@ -313,7 +313,7 @@ class ProductController extends Controller
     /**
      * Show orders Detail function
      *
-     * @param [type] $id
+     * @param $id
      * @return void
      */
     public function showDetailOrderAdmin($order_id)
@@ -322,6 +322,23 @@ class ProductController extends Controller
         $userDetail     =   User::where('id', $orderDetail['user_id'])->first();
 
         return view('admin.order.order-detail', with([
+            'orderDetail' => $orderDetail,
+            'userDetail'  => $userDetail
+        ]));
+    }
+
+    /**
+     * show Invoice order function
+     *
+     * @param $order_id
+     * @return void
+     */
+    public function showDetailOrderInvoice($order_id)
+    {
+        $orderDetail    =   Order::with('orderProducts')->where('id', $order_id)->first();
+        $userDetail     =   User::where('id', $orderDetail['user_id'])->first();
+
+        return view('admin.order.order-invoice', with([
             'orderDetail' => $orderDetail,
             'userDetail'  => $userDetail
         ]));
@@ -746,6 +763,11 @@ class ProductController extends Controller
         {
             $data                   =   $request->all();
 
+            if(empty($data['playment_total'] && $data['playment_time'] && $data['playment_bank']))
+            {
+                return redirect()->back()->with('flash_message_errors', 'กรุณากรอกรายละเอียดการชำระเงินให้เรียบร้อย!');
+            }
+
             $user_id                =   Auth::user()->id;
             $user_email             =   Auth::user()->email;
             $deliveryDetail         =   DeliveryAddress::where(['user_email' => $user_email])->first();
@@ -764,6 +786,9 @@ class ProductController extends Controller
             $saveOrder->order_status        =   "New";
             $saveOrder->playment_method     =   $data['playment_medthod'];
             $saveOrder->grand_total         =   $data['grand_total'];
+            $saveOrder->playment_total      =   $data['playment_total'];
+            $saveOrder->playment_time       =   $data['playment_time'];
+            $saveOrder->playment_bank       =   $data['playment_bank'];
             $saveOrder->save();
 
             //Save to order products table

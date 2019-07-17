@@ -41,6 +41,16 @@
                                     <td class="text-left">
                                         @if ($value['order_status'] == "New")
                                             <span style="color: red">ยังไม่ได้ชำระเงิน</span>
+                                        @elseif($value['order_status'] == "Pending")
+                                            <span style="color: orangered">รอการชำระเงิน</span>
+                                        @elseif($value['order_status'] == "Inprocess")
+                                            <span style="color: orangered">อยู่ระหว่างการตรวจสอบ</span>
+                                        @elseif($value['order_status'] == "Shipping")
+                                            <span style="color: green">เตรียมการจัดส่ง</span>
+                                        @elseif($value['order_status'] == "Deliveried")
+                                            <span style="color: green">จัดส่งเรียบร้อยแล้ว</span>
+                                        @elseif($value['order_status'] == "Wrong")
+                                            <span style="color: red">แจ้งยอดชำระเงินไม่ถูกต้อง</span>
                                         @endif
                                     </td>
                                 </tr>

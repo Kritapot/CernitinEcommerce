@@ -38,7 +38,7 @@
     <script src="{{ asset('js/fontend_js') }}/passtrength.js"></script>
     <script src="{{ asset('vendor/sweetalert') }}/sweetalert2@8.js"></script>
     <script src="{{ asset('vendor/fontawesome') }}/all.js"></script>
-    <script>$("#message-box").fadeTo(3000, 1000).slideUp(500, function(){$("#message-box").slideUp(2000);});</script>
+    <script>$("#message-box").fadeTo(5000, 2000).slideUp(1000, function(){$("#message-box").slideUp(4000);});</script>
     <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
     {!! Toastr::message() !!}
 </body>

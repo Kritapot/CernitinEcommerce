@@ -4,6 +4,15 @@
 <section id="form" style="margin-top: 20px; margin-bottom: 40px;"><!--form-->
     <div class="container">
         <div class="row">
+                @if (Session::has('flash_message_errors'))
+                <div class="alert alert-error alert-block" id="message-box" style="background-color: #ff4444">
+                    <strong style="color: white; font-size: 18px;">{!! session('flash_message_errors') !!}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form"><!--login form-->
                     <h2><strong>รายละเอียด ที่อยู่จัดส่งใบเสร็จ</strong></h2>
@@ -121,10 +130,24 @@
 					<span>
 						<label style="font-size: 1.6em"><input disabled type="radio" name="playment_medthod" id="paypal" value="paypal"> ชำระผ่าน Paypal <span style="font-size: 0.6em; color: red">**ยังไม่เปิดให้บริการในขณะนี้</span></label>
                     </span>
-                    <span style="float: right">
-						<button type="submit" class="btn btn-success" id="select-playment-method">ยืนยันการชำระเงิน</button>
-					</span>
-				</div>
+                    <div class="form-group col-md-6">
+                        <h3>ยอดโอนเงิน</h3>
+                        <input class="form-control" type="text" name="playment_total" placeholder="ยอดโอนเงิน เช่น 1500" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <h3>วันเวลาที่โอน</h3>
+                        <input class="form-control" type="text" name="playment_time" placeholder="วันเวลาที่โอน เช่น 17/07/17 23.15" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <h3>ธนาคารที่โอน</h3>
+                        <input class="form-control" type="text" name="playment_bank" placeholder="ธนาคาร เช่น กสิกร" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <span style="float: right">
+                            <button type="submit" class="btn btn-success" id="select-playment-method">ยืนยันการชำระเงิน</button>
+                        </span>
+                    </div>
+                </div>
             </form>
 		    </div>
 	</section> <!--/#cart_items-->
