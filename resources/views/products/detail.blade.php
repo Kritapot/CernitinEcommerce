@@ -20,8 +20,8 @@
                         </div>
                     </div>
                     <div class="col-sm-7">
-                        <form name="add-cart" id="add-product-card" method="post" action="{{ url('/add-cart') }}">
-                            {{ csrf_field() }}
+                        <form name="add-cart" id="add-product-card" method="POST" action="{{ url('/add-cart') }}">
+                            @csrf
                             <input type="hidden" name="product_id" value="{{ $productDetail['id'] }}">
                             <input type="hidden" name="product_name" value="{{ $productDetail['product_name'] }}">
                             <input type="hidden" name="product_code" value="{{ $productDetail['product_code'] }}">

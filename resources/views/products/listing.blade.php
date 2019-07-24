@@ -14,7 +14,11 @@
                         @if (!empty($searchProduct))
                             {{ $searchProduct }}
                         @else
-                            {{ $categoryDetail['name'] }}
+                            @if(empty($categoryDetail['name']))
+                                <span style="color: red">ไม่มีรายการที่ท่านค้นหา</span>
+                            @else
+                                {{ $categoryDetail['name'] }}
+                            @endif
                         @endif
                     </h2>
                     @foreach ($productAll as $key => $value)

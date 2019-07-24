@@ -117,8 +117,8 @@
 					</tbody>
 				</table>
             </div>
-            <form name="payment-form" id="payment-form" action="{{ url('/place-order') }}" method="post">
-                {{ csrf_field() }}
+            <form name="payment-form" id="payment-form" action="{{ url('/place-order') }}" method="POST">
+                @csrf
                 <input type="hidden" name="grand_total" value="{{ $grandTotal }}">
                 <div class="payment-options">
                     <span>

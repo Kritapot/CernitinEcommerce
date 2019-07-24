@@ -17,7 +17,7 @@
                         <h5>เพิ่มประเภทสินค้า</h5>
                     </div>
                     <div class="widget-content nopadding">
-                        <form class="form-horizontal" method="post" action="{{ url('/admin/add-category/save') }}" name="add-category" id="add-category" novalidate="novalidate">{{ csrf_field() }}
+                        <form class="form-horizontal" method="POST" action="{{ url('/admin/add-category/save') }}" name="add-category" id="add-category" novalidate="novalidate">@csrf
                             <div class="control-group">
                                 <label class="control-label">ชื่อประเภท</label>
                                 <div class="controls">

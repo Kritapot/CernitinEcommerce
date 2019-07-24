@@ -10,4 +10,16 @@ class Order extends Model
     {
         return $this->hasMany('App\OrderProduct', 'order_id');
     }
+
+    /**
+     * CountPendingOrders function
+     *
+     * @return int
+     */
+    public static function countPending()
+    {
+        $countPending       =   Order::where('order_status', '!=', 'Deliveried')->count();
+
+        return $countPending;
+    }
 }

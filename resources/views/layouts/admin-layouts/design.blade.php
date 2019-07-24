@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="{{ asset('css/backend_css') }}/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 
+
+
 </head>
 <body>
     @include('layouts.admin-layouts.header')
@@ -36,13 +38,5 @@
 <script src="{{ asset('js/backend_js') }}/matrix.popover.js"></script>
 <script src="{{ asset('js/backend_js') }}/jquery.validate.js"></script>
 <script src="{{ asset('vendor/sweetalert') }}/sweetalert2@8.js"></script>
-
-
-
-<script>
-    $("#message-box").fadeTo(4000, 2000).slideUp(500, function(){
-    $("#message-box").slideUp(2000);
-    });
-</script>
 </body>
 </html>

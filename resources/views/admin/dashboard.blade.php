@@ -1,5 +1,16 @@
 @extends('layouts.admin-layouts.design')
+<?php
+    use App\Http\Controllers\Controller;
+    use App\Order;
+    $product        =   Controller::count_product();
+    $category       =   Controller::count_category();
+    $banner         =   Controller::count_banner();
+    $order          =   Controller::count_order();
+    $user           =   Controller::count_user();
+    $cmsPage        =   Controller::count_cms();
 
+    $countPending   =   Order::countPending();
+?>
 @section('content')
 <div id="content">
     <!--breadcrumbs-->
@@ -12,47 +23,20 @@
       <div class="container-fluid">
         <div class="quick-actions_homepage">
           <ul class="quick-actions">
-            <li class="bg_lb"> <a href="index.html"> <i class="icon-dashboard"></i> <span class="label label-important">20</span> My Dashboard </a> </li>
-            <li class="bg_lg span3"> <a href="charts.html"> <i class="icon-signal"></i> Charts</a> </li>
-            <li class="bg_ly"> <a href="widgets.html"> <i class="icon-inbox"></i><span class="label label-success">101</span> Widgets </a> </li>
-            <li class="bg_lo"> <a href="tables.html"> <i class="icon-th"></i> Tables</a> </li>
-            <li class="bg_ls"> <a href="grid.html"> <i class="icon-fullscreen"></i> Full width</a> </li>
-            <li class="bg_lo span3"> <a href="form-common.html"> <i class="icon-th-list"></i> Forms</a> </li>
-            <li class="bg_ls"> <a href="buttons.html"> <i class="icon-tint"></i> Buttons</a> </li>
-            <li class="bg_lb"> <a href="interface.html"> <i class="icon-pencil"></i>Elements</a> </li>
-            <li class="bg_lg"> <a href="calendar.html"> <i class="icon-calendar"></i> Calendar</a> </li>
-            <li class="bg_lr"> <a href="error404.html"> <i class="icon-info-sign"></i> Error</a> </li>
-
+            <li class="bg_lb span3"> <a href="{{ url('/admin/add-category') }}"> <i class="icon-plus">{{ $category }}</i> <span class="label label-important"></span> <span style="font-size: 20px">ประเภทสินค้า</span> </a> </li>
+            <li class="bg_lg span3"> <a href="{{ url('/admin/add-product') }}"> <i class="icon-plus">{{ $product }}</i> <span style="font-size: 20px">สินค้าทั้งหมด</span></a> </li>
+            <li class="bg_ly span3"> <a href="{{ url('/admin/add-product') }}"> <i class="icon-user">{{ $user }}</i><span class="label label-success"></span> <span style="font-size: 20px">รายชื่อสมาชิก</span> </a> </li>
+            <li class="bg_lo span3"> <a href="{{ url('/admin/list-user') }}"> <i class="icon-tag">{{ $order }}</i> <span style="font-size: 20px">รายการสั่งซื้อ</span></a> </li>
+            <li class="bg_ls"> <a href="{{ url('/admin/list-order') }}"> <i class="icon-repeat">{{ $countPending }}</i> <span style="font-size: 20px">รายการสั่งซื้อที่รอดำเนินการ</span></a> </li>
+            <li class="bg_lo span4"> <a href="{{ url('/admin/add-cms') }}"> <i class="icon-plus">{{ $cmsPage }}</i> <span style="font-size: 20px">CMS Page</span></a> </li>
+            <li class="bg_ls span4"> <a href="{{ url('/admin/add-banner') }}"> <i class="icon-plus">{{ $banner }}</i> <span style="font-size: 20px">Banner</span></a> </li>
+            <li class="bg_lb span4"> <a href="interface.html"> <i class="icon-plus">20</i><span style="font-size: 20px">บทความ</span></a> </li>
+            <li class="bg_lg span4"> <a href="calendar.html"> <i class="icon-calendar">40</i> Calendar</a> </li>
+            <li class="bg_lr span4"> <a href="error404.html"> <i class="icon-info-sign">30</i> Error</a> </li>
           </ul>
         </div>
     <!--End-Action boxes-->
 
-    <!--Chart-box-->
-        <div class="row-fluid">
-          <div class="widget-box">
-            <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
-              <h5>Site Analytics</h5>
-            </div>
-            <div class="widget-content" >
-              <div class="row-fluid">
-                <div class="span9">
-                  <div class="chart"></div>
-                </div>
-                <div class="span3">
-                  <ul class="site-stats">
-                    <li class="bg_lh"><i class="icon-user"></i> <strong>2540</strong> <small>Total Users</small></li>
-                    <li class="bg_lh"><i class="icon-plus"></i> <strong>120</strong> <small>New Users </small></li>
-                    <li class="bg_lh"><i class="icon-shopping-cart"></i> <strong>656</strong> <small>Total Shop</small></li>
-                    <li class="bg_lh"><i class="icon-tag"></i> <strong>9540</strong> <small>Total Orders</small></li>
-                    <li class="bg_lh"><i class="icon-repeat"></i> <strong>10</strong> <small>Pending Orders</small></li>
-                    <li class="bg_lh"><i class="icon-globe"></i> <strong>8540</strong> <small>Online Orders</small></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-    <!--End-Chart-box-->
         <hr/>
       </div>
     </div>

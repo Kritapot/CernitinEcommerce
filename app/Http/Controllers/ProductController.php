@@ -33,6 +33,7 @@ class ProductController extends Controller
     {
         if($request->isMethod('post')){
             $data                       =   $request->all();
+
             if(empty($data['category_id'])) {
                 return redirect()->back()->with('flash_message_errors', 'กรุณาเลือกประเภทของสินค้า');
             }
@@ -871,6 +872,17 @@ class ProductController extends Controller
         $orderDetail    =   Order::with('orderProducts')->where('id', $order_id)->first();
 
         return view('orders.order-user-detail', with(['orderDetail' => $orderDetail]));
+    }
+
+
+    public function testApi()
+    {
+         return DB::table('users')
+         ->join('orders', 'orders.user_id', 'users.id')
+         ->join('order_products', 'order_products.order_id', 'orders.id')
+         ->join('products', 'products.id', 'order_products.product_id')
+         ->get();
+
     }
 
 }

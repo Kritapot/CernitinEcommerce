@@ -219,4 +219,49 @@ class UserController extends Controller
 
         }
     }
+
+
+    public function forgotPassword(Request $request)
+    {
+        if($request->isMethod('post'))
+        {
+            $data       =   $request->all();
+
+            $userCount  =   User::where('email', $data['email'])->count();
+
+            if($userCount == 0)
+            {
+                return redirect()->back()->with('flash_message_errors', 'กรุณาระบุอีเมล์ให้ถูกต้อง');
+            }
+
+            $userDetail         =   User::where('email', $data['email'])->first();
+
+            $randomPassword     =   str_random(8);
+            $newPassword        =   bcrypt($randomPassword);
+
+            User::where('email', $userDetail['email'])->update(['password' => $newPassword]);
+
+            $email              =   $userDetail['email'];
+            $name               =   $userDetail['name'];
+
+            $messageData        =   [
+                'email'     =>  $email,
+                'name'      =>  $name,
+                'password'  =>  $randomPassword
+            ];
+
+            Mail::send('email.forgot-password', $messageData, function ($message) use($email) {
+                $message->to($email)->subject('์New Password');
+            });
+            return redirect()->back()->with('flash_message_success', 'เราได้ทำการส่งรหัสผ่านให้ให้คุณใน Email เรียบร้อยแล้ว');
+
+
+
+
+        }
+
+        return view('user.forgot-password');
+
+
+    }
 }

@@ -33,7 +33,7 @@
                         <h5>แก้ไขสินค้า</h5>
                     </div>
                     <div class="widget-content nopadding">
-                        <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{{ url('/admin/edit-product/'.$product['id']) }}" name="edit-product" id="edit-product" novalidate="novalidate">{{ csrf_field() }}
+                        <form enctype="multipart/form-data" class="form-horizontal" method="POST" action="{{ url('/admin/edit-product/'.$product['id']) }}" name="edit-product" id="edit-product" novalidate="novalidate">@csrf
                             <div class="control-group">
                                 <label class="control-label">ประเภทสินค้า</label>
                                 <div class="controls">

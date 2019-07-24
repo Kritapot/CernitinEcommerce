@@ -157,6 +157,28 @@ $(document).ready(function(){
 			$(element).parents('.control-group').removeClass('error');
 			$(element).parents('.control-group').addClass('success');
 		}
+    });
+
+    $("#add-cms-page").validate({
+		rules:{
+			title:{
+				required:true,
+				name: true
+			},
+			description:{
+				required:true,
+				description: true
+			},
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		}
 	});
 
 
@@ -328,6 +350,33 @@ $(document).ready(function(){
           })
 
     });
+
+    $('.deleteCms').click(function() {
+        var id                  =   $(this).attr('rel');
+        var deleteFunction      =   $(this).attr('rel1');
+
+        Swal.fire({
+            title: 'คุณแน่ใจที่จะลบบทความ ?',
+            text: "คุณจะไม่สามารถกลับไปแก้ไขได้อีกถ้ากดปุ่มยืนยัน!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ยืนยันการลบบทความ',
+            cancelButtonText: 'ยกเลิการทำรายการ'
+          }).then((result) => {
+            if (result.value) {
+              Swal.fire(
+                'ลบบทความ !',
+                'บทความถูกลบเรียบร้อยแล้ว',
+                'success'
+              )
+              window.location.href="/admin/"+deleteFunction+"/"+id;
+            }
+          })
+
+    });
+
 
     $(document).ready(function(){
         var maxField = 10; //Input fields increment limitation

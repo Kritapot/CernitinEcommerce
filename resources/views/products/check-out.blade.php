@@ -55,8 +55,8 @@
             <div class="col-sm-4">
                 <div class="signup-form"><!--sign up form-->
                     <h2>ที่อยู่จัดส่งสินค้า</h2>
-                    <form name="ship-form-save" id="ship-form-save" enctype="multipart/form-data" action="{{ url('/checkout') }}" method="post">
-                        {{ csrf_field() }}
+                    <form name="ship-form-save" id="ship-form-save" enctype="multipart/form-data" action="{{ url('/checkout') }}" method="POST">
+                        @csrf
                         <input type="text" value="{{ !empty($deliveryDetail['name']) ? $deliveryDetail['name'] : '' }}" placeholder="Shipping Name" name="ship_name" id="ship_name" />
                         <input type="text" value="{{ !empty($deliveryDetail['address']) ? $deliveryDetail['address'] : '' }}" placeholder="Shipping Address" name="ship_address" id="ship_address" />
                         <input type="text" value="{{ !empty($deliveryDetail['city']) ? $deliveryDetail['city'] : '' }}" placeholder="Shipping City" name="ship_city" id="ship_city" />

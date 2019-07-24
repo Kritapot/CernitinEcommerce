@@ -1,3 +1,5 @@
+<?php use App\Product; ?>
+
 <div class="left-sidebar">
         <h2>ประเภทสินค้า</h2>
         <div class="panel-group category-products" id="accordian"><!--category-productsr-->
@@ -15,7 +17,12 @@
                         <div class="panel-body">
                             <ul>
                                 @foreach ($value['categories'] as $key => $subValue)
-                                    <li><a href="{{ asset('/product/'.$subValue['url']) }}">{{ $subValue['name'] }} </a></li>
+                                    <?php $productCount     =   Product::productCount($subValue['id']) ?>
+                                    @if ($subValue['status'] == 1)
+                                        <li>
+                                            <a href="{{ asset('/product/'.$subValue['url']) }}">{{ $subValue['name'] }} (<span style="color: green">{{ $productCount }}</span>)</a>
+                                        </li>
+                                    @endif
                                 @endforeach
                             </ul>
                         </div>

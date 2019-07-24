@@ -14,7 +14,7 @@
     </head>
     <body>
         <div id="loginbox">
-            <form id="loginform" class="form-vertical" method="post" action="{{ url('admin') }}">{{ csrf_field() }}
+            <form id="loginform" class="form-vertical" method="POST" action="{{ url('admin') }}">@csrf
                 @if (Session::has('flash_message_errors'))
                         <div class="alert alert-error alert-block" id="message-box">
                             <strong>{!! session('flash_message_errors') !!}</strong>

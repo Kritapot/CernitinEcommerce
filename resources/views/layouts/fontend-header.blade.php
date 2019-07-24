@@ -1,6 +1,9 @@
 <?php
     use App\Http\Controllers\Controller;
     $maincategories     =   Controller::main_categories();
+    $cmsTitle           =   Controller::cms_title();
+    use App\Product;
+    $cartCount          =   Product::cartCount();
 ?>
 
 <header id="header"><!--header-->
@@ -10,7 +13,7 @@
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-                            <li><a href="#"><i class="fa fa-phone"></i> +66 95 01 88 821</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i> +66 95 689 0639</a></li>
                             <li><a href="#"><i class="fa fa-envelope"></i> cernitinth@gmail.com</a></li>
                         </ul>
                     </div>
@@ -36,7 +39,7 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="{{ url('/cart') }}"><i class="fas fa-shopping-cart"></i> ตระกร้าสินค้า</a></li>
+                            <li><a href="{{ url('/cart') }}"><i class="fas fa-shopping-cart"></i> ตระกร้าสินค้า (<span style="font-weight: 600; color: red">{{ $cartCount }}</span>)</a></li>
                             @if (empty(Auth::check()))
                                 <li><a href="{{ url('/user-register') }}"><i class="fa fa-lock"></i> เข้าสู่ระบบ</a></li>
                             @else
@@ -49,8 +52,8 @@
                     <div class="btn-group pull-right">
                         <h4 style="line-height: 1.9em">ศูนย์จำหน่าย เซอร์นิติน ของแท้จากบริษัท สนใจสินค้า สั่งซื้อหรือ สอบถามปรึกษาปัญหาสุขภาพ &nbsp;&nbsp;<br>
                         </h4>
-                        <i class="fab fa-line" style="color: green; font-size: 30px"></i>&nbsp; <span style="font-size: 20px">id: xxxxxxxxxxxx</span>&nbsp;&nbsp;
-                        <i class="fa fa-phone" style="color: green; font-size: 25px"></i>&nbsp; <span style="font-size: 20px">โทร: xxxxxxxxxxxx</span></i>
+                        <i class="fab fa-line" style="color: green; font-size: 30px"></i>&nbsp; <span style="font-size: 20px">id: 0826113223</span>&nbsp;&nbsp;
+                        <i id="res-icon-tel" class="fa fa-phone" style="color: green; font-size: 25px"></i>&nbsp; <span id="res-tel" style="font-size: 20px">โทร: 0826113223</span></i>
                     </div>
                 </div>
             </div>
@@ -81,15 +84,17 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a href="#">บทความเกี่ยวกับ Cernitin</a></li>
-                            <li><a href="#">ติดต่อเรา</a></li>
+                            @foreach ($cmsTitle as $key => $value)
+                                <li><a href="{{ url('/page/'.$value['url']) }}">{{ $value['title'] }}</a></li>
+                            @endforeach
+                            <li><a href="{{ url('/contact') }}">ติดต่อเรา</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <form action="{{ url('/search-product') }}" method="post">
-                            {{ csrf_field() }}
+                        <form action="{{ url('/search-product') }}" method="POST">
+                            @csrf
                             <input type="text" placeholder="ค้นหาสินค้า" name="product"/>
                             <button type="submit" style="border-radius: 0; height: 33px; margin-bottom: 6px; margin-left: -5px" class="btn btn-info">ค้นหา</button>
                         </form>

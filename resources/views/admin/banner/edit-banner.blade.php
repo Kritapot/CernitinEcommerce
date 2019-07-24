@@ -33,8 +33,8 @@
                             <h5>แก้ไข Banner</h5>
                         </div>
                         <div class="widget-content nopadding">
-                            <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{{ url('/admin/edit-banner/'.$banner['id']) }}" name="add-banner" id="add-banner" novalidate="novalidate">
-                                {{ csrf_field() }}
+                            <form enctype="multipart/form-data" class="form-horizontal" method="POST" action="{{ url('/admin/edit-banner/'.$banner['id']) }}" name="add-banner" id="add-banner" novalidate="novalidate">
+                                @csrf
                                 <div class="control-group">
                                     <label class="control-label">รูปภาพ Banner</label>
                                     <div class="controls">

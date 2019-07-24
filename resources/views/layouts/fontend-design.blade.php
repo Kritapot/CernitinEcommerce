@@ -7,7 +7,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Home | Cernitin</title>
+    <title>@if (!empty($meta_title)) {{ $meta_title }} @else Home | Cernitin @endif</title>
+    @if(!empty($meta_description)) <meta name="description" content="{{ $meta_description }}"> @endif
+    @if(!empty($meta_key_word)) <meta name="keyword" content="{{ $meta_key_word }}"> @endif
+
     <link href="{{ asset('css/fontend_css') }}/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/fontend_css') }}/font-awesome.min.css" rel="stylesheet">
     <link href="{{ asset('css/fontend_css') }}/prettyPhoto.css" rel="stylesheet">
@@ -38,7 +41,6 @@
     <script src="{{ asset('js/fontend_js') }}/passtrength.js"></script>
     <script src="{{ asset('vendor/sweetalert') }}/sweetalert2@8.js"></script>
     <script src="{{ asset('vendor/fontawesome') }}/all.js"></script>
-    <script>$("#message-box").fadeTo(5000, 2000).slideUp(1000, function(){$("#message-box").slideUp(4000);});</script>
     <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
     {!! Toastr::message() !!}
 </body>

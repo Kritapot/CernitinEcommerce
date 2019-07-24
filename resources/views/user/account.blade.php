@@ -23,8 +23,8 @@
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form"><!--login form-->
                     <h2>เปลี่ยนรายละเอียดผู้ใช้งาน</h2>
-                    <form enctype="multipart/form-data" action="{{ url('account') }}" method="post" name="accountForm" id="accountForm">
-                        {{ csrf_field() }}
+                    <form enctype="multipart/form-data" action="{{ url('account') }}" method="POST" name="accountForm" id="accountForm">
+                        @csrf
                         <input value="{{ $user_detail['name'] }}" name="name" type="text" placeholder="Name" />
                         <input value="{{ $user_detail['address'] }}" name="address" type="text" placeholder="Address" />
                         <input value="{{ $user_detail['city'] }}" name="city" type="text" placeholder="City" />
@@ -48,8 +48,8 @@
             <div class="col-sm-4">
                 <div class="signup-form"><!--sign up form-->
                     <h2>เปลี่ยนรหัสผู้ใช้งาน</h2>
-                    <form enctype="multipart/form-data" action="{{ url('/update-user-pwd') }}" method="post" name="passwordForm" id="passwordForm">
-                        {{ csrf_field() }}
+                    <form enctype="multipart/form-data" action="{{ url('/update-user-pwd') }}" method="POST" name="passwordForm" id="passwordForm">
+                        @csrf
                         <input type="password" name="current_pwd" id="current-pwd" placeholder="รหัสผ่าน"><span id="check-current-pwd"></span>
                         <input type="password" name="new_pwd" id="new-pwd" placeholder="รหัสผ่านใหม่">
                         <input type="password" name="confirm_pwd" id="confrim-pwd" placeholder="ยืนยันรหัสผ่านใหม่">

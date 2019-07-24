@@ -34,9 +34,9 @@
                         <h5>เพิ่ม attributes</h5>
                     </div>
                     <div class="widget-content nopadding">
-                        <form class="form-horizontal" method="post"
+                        <form class="form-horizontal" method="POST"
                             action="{{ url('/admin/add-attributes/'.$productAt['id']) }}" name="add-attributes"
-                            id="add-attributes">{{ csrf_field() }}
+                            id="add-attributes">@csrf
                             <div class="control-group">
                                 <label class="control-label">ชื่อสินค้า</label>
                                 <label class="control-label"><strong>{{ $productAt['product_name'] }}</strong></label>
@@ -77,7 +77,7 @@
                     </div>
                     <div class="widget-content nopadding">
                         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
-                            <form action="{{ url('/admin/edit-attributes/'.$productAt['id']) }}" method="post" name="edit-attributes">{{ csrf_field() }}
+                            <form action="{{ url('/admin/edit-attributes/'.$productAt['id']) }}" method="POST" name="edit-attributes">@csrf
                                     <table class="table table-bordered data-table dataTable" id="DataTables_Table_0">
                                             <thead>
                                                 <tr>

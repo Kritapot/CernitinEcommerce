@@ -118,8 +118,8 @@
                                 <tbody>
                                     <tr>
                                         <td class="taskDesc">
-                                            <form action="{{ url('/admin/update-order-status/'.$orderDetail['id']) }}" method="post">
-                                                {{ csrf_field() }}
+                                            <form action="{{ url('/admin/update-order-status/'.$orderDetail['id']) }}" method="POST">
+                                                @csrf
                                                 <select name="order_status" id="order_status" class="control-label" style="width: 240px" required>
                                                     <option {{ $orderDetail['order_status'] == "" ? 'selected' : '' }} value="">กรุณาเลือก</option>
                                                     <option {{ $orderDetail['order_status'] == "New" ? 'selected' : '' }} value="New">ใหม่</option>

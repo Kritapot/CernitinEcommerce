@@ -772,7 +772,7 @@
                 "symfony/css-selector": "Required to use some of the crawler integration testing tools (^4.2).",
                 "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (^4.2).",
                 "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^1.1).",
-                "wildbit/swiftmailer-postmark": "Required to use Postmark mail driver (^3.0)."
+                "wildbit/swiftmailer-postmark": "Required to use postmark mail driver (^3.0)."
             },
             "type": "library",
             "extra": {

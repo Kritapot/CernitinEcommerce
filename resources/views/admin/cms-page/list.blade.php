@@ -4,9 +4,9 @@
 <div id="content">
     <div id="content-header">
         <div id="breadcrumb"> <a href="index.html" class="tip-bottom" data-original-title="Go to Home"><i
-                    class="icon-home"></i> หน้าหลัก</a> <a href="#">สินค้า</a> <a href="#"
-                class="current">แสดงสินค้าทั้งหมด</a> </div>
-        <h1>สินค้า</h1>
+                    class="icon-home"></i> หน้าหลัก</a> <a href="#">บทความ</a> <a href="#"
+                class="current">แสดงบทความทั้งหมด</a> </div>
+        <h1>บทความ</h1>
     </div>
         @if (Session::has('flash_message_errors'))
         <div class="alert alert-error alert-block" id="message-box">
@@ -37,53 +37,34 @@
                             <table class="table table-bordered data-table dataTable" id="DataTables_Table_0">
                                 <thead>
                                     <tr>
-                                        <th>รหัสสินค้า</th>
-                                        <th>ประเภทสินค้า</th>
-                                        <th>ชื่อสินค้า</th>
-                                        <th>code</th>
-                                        <th>สี</th>
-                                        <th>ราคา</th>
-                                        <th>รูปภาพ</th>
+                                        <th>รหัสบทความ</th>
+                                        <th>หัวข้อ</th>
                                         <th>สถานะ</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <div>
-                                    @foreach ($product as $key => $item)
+                                <div><?php //dd($cmsPage) ?>
+                                    @foreach ($cmsPage as $key => $item)
                                         <tr>
                                             <td>{{ $item['id'] }}</td>
-                                            <td>{{ $item['category_id'] }}</td>
-                                            <td>{{ $item['product_name'] }}</td>
-                                            <td>{{ $item['product_code'] }}</td>
-                                            <td>{{ $item['product_color'] }}</td>
-                                            <td>{{ $item['price'] }}</td>
-                                            <td>
-                                                @if (!empty($item['image']))
-                                                <img style="width: 80px" src="{{ asset('images/backend_images/products/small/'.$item['image']) }}">
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if($item['status'] == 1) <span class="label label-success">เปิดการแสดงผล</span> @else <span class="label label-important">ปิดการแสดงผล</span> @endif
-                                            </td>
+                                            <td>{{ $item['title'] }}</td>
+                                            <td>@if($item['status'] == 1) <span class="label label-success">เปิดการแสดง</span> @else <span class="label label-important">ปิดการแสดง</span>  @endif</td>
                                             <td >
                                                 <a href="#myModal{{ $item['id'] }}" data-toggle="modal" class="btn btn-warning btn-mini">รายละเอียด</a>
-                                                <a href="{{ url('/admin/add-attributes/'.$item['id']) }}" class="btn btn-success btn-mini">เพิ่มคุณลักษณะ</a>
-                                                <a href="{{ url('/admin/edit-product/'.$item['id']) }}" class="btn btn-info btn-mini">แก้ไข</a>
-                                                <a rel="{{ $item['id'] }}" rel1="delete-product" id="delete-product" href="javascript:" class="btn btn-danger btn-mini deleteRecord">ลบ</a>
+                                                <a href="{{ url('/admin/edit-cms/'.$item['id']) }}" class="btn btn-info btn-mini">แก้ไข</a>
+                                                <a rel="{{ $item['id'] }}" rel1="delete-cms" id="delete-cms" href="javascript:" class="btn btn-danger btn-mini deleteCms">ลบ</a>
                                             </td>
                                         </tr>
                                                 <div id="myModal{{ $item['id'] }}" class="modal hide">
                                                     <div class="modal-header">
                                                         <button data-dismiss="modal" class="close" type="button">×</button>
-                                                        <h3>รายละเอียดของสินค้า</h3>
+                                                        <h3>รายละเอียดบทความ</h3>
                                                     </div>
                                                     <div class="modal-body" style="font-size: 1.4em">
-                                                        <p><span style="font-weight: 600">รหัสสินค้า :</span> {{ $item['id'] }}</p>
-                                                        <p><span style="font-weight: 600">ประเภทสินค้า :</span> {{ $item['category_id'] }}</p>
+                                                        <p><span style="font-weight: 600">รหัสบทความ :</span> {{ $item['id'] }}</p>
+                                                        <p><span style="font-weight: 600">หัวข้อ :</span> {{ $item['title'] }}</p>
                                                         <p><span style="font-weight: 600">รายละเอียด :</span> {{ $item['description'] }}</p>
-                                                        <p><span style="font-weight: 600">code :</span> {{ $item['product_code'] }}</p>
-                                                        <p><span style="font-weight: 600">สี :</span> {{ $item['product_color'] }}</p>
-                                                        <p><span style="font-weight: 600">ราคา :</span> {{ $item['price'] }}</p>
+                                                        <p><span style="font-weight: 600">สถานะ :</span> {{ $item['status'] == 1 ? 'เปิดการแสดง' : 'ปิดการแสดง' }}</p>
                                                     </div>
                                                 </div>
                                     @endforeach

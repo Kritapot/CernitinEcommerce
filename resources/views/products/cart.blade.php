@@ -50,7 +50,7 @@
                             <p>{{ $value['product_code'] }}</p>
                         </td>
                         <td class="cart_price">
-                            <p>THB{{ $value['price'] }}</p>
+                            <p>THB  {{ $value['price'] }}</p>
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
@@ -62,7 +62,7 @@
                             </div>
                         </td>
                         <td class="cart_total">
-                            <p class="cart_total_price">THB{{ $value['price']*$value['quantity'] }}</p>
+                            <p class="cart_total_price">THB  {{ $value['price']*$value['quantity'] }}</p>
                         </td>
                         <td class="cart_delete">
                             <a class="cart_quantity_delete" href="{{ url('/cart/delete/'.$value['id']) }}"><i

@@ -53,7 +53,7 @@
                                             </div>
                                         </th>
                                         <th>
-                                            <div class="DataTables_sort_wrapper">รายละเอียด<span
+                                            <div class="DataTables_sort_wrapper">สถานะ<span
                                                     class="DataTables_sort_icon css_right ui-icon ui-icon-carat-2-n-s"></span>
                                             </div>
                                         </th>
@@ -71,7 +71,9 @@
                                         <td class="  sorting_1">{{ $item->id }}</td>
                                         <td class="">{{ $item->name }}</td>
                                         <td class="">@if($item->parent_id == 0)ประเภทหลัก@endif @if($item->parent_id != 0){{ $item->parent_id }}@endif</td>
-                                        <td class="">{{ $item->description }}</td>
+                                        <td>
+                                            @if($item->status == 1) <span class="label label-success">เปิดการแสดงผล</span> @else <span class="label label-important">ปิดการแสดงผล</span> @endif
+                                        </td>
                                         <td class="">
                                             <a href="{{ url('/admin/edit-category/'.$item->id) }}"
                                                 class="btn btn-info btn-mini">แก้ไข</a>

@@ -66,9 +66,9 @@
                                             <td style="text-align: right">{{ $value['playment_method'] == "direct" ? "โอนเงินผ่านธนาคาร" : '' }}</td>
                                             <td style="text-align: right">
                                                 @if (!empty($value['playment_total']))
-                                                    <span style="color: green">แจ้งโอนแล้ว</span>
+                                                <span class="label label-success">แจ้งโอนแล้ว</span>
                                                 @else
-                                                    <span style="color: red">ยังไม่ได้แจ้งโอน</span>
+                                                <span class="label label-important">ยังไม่ได้แจ้งโอน</span>
                                                 @endif
                                             </td>
                                             <td>

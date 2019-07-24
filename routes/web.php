@@ -11,8 +11,8 @@
 |
 */
 
-
 Route::get('/', 'IndexController@index');
+Route::get('/get-api', 'ProductController@testApi');
 
 
 //Category/listing
@@ -32,17 +32,19 @@ Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductController@update_qu
 Route::post('/form-register', 'UserController@register');
 Route::get('/user-register', 'UserController@userLoginRegister');
 Route::post('/user-login', 'UserController@login');
+Route::match(['get', 'post'],'/forgot-password', 'UserController@forgotPassword');
 //Check Email
 Route::match(['get', 'post'],'/check-email', 'UserController@checkEmail');
 // search products
 Route::post('/search-product', 'ProductController@searchProduct');
-
+//CMS Page
+Route::match(['get', 'post'], '/page/{url}', 'CmsPageController@showCmsPage');
+Route::match(['get', 'post'], '/contact', 'CmsPageController@contactUs');
 
 
 
 Route::group(['middleware' => ['FontLogin']], function () {
     Route::get('/user-logout', 'UserController@logout');
-
     //User Account Page
     Route::match(['get', 'post'],'account', 'UserController@userAccountPage');
     //Check current password
@@ -67,10 +69,8 @@ Route::group(['middleware' => ['FontLogin']], function () {
 Auth::routes();
 
 Route::match(['get', 'post'], '/admin', 'AdminController@log_in');
-
 Route::group(['middleware' => ['AdminLogin']], function () {
     Route::get('/logout', 'AdminController@logout');
-
     Route::get('/admin/dashboard', 'AdminController@Dashboard');
     Route::get('/admin/setting', 'AdminController@setting');
     Route::get('/admin/check-pwd', 'AdminController@check_password');
@@ -106,6 +106,11 @@ Route::group(['middleware' => ['AdminLogin']], function () {
     //list user
     Route::get('/admin/list-user', 'AdminController@listUsers');
     Route::get('/admin/delete-user/{id}', 'AdminController@deleteUser');
+    //add cms page
+    Route::match(['get', 'post'], '/admin/add-cms', 'CmsPageController@addCmsPage');
+    Route::get('/admin/list-cms', 'CmsPageController@listCmsPage');
+    Route::get('/admin/delete-cms/{id}', 'CmsPageController@delete');
+    Route::match(['get', 'post'], '/admin/edit-cms/{id}', 'CmsPageController@editCmsPage');
 });
 
 

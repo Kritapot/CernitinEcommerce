@@ -32,8 +32,8 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" method="post" action="{{ url('/admin/update-password') }}" name="password_validate" id="password_validate" novalidate="novalidate">
-                        {{ csrf_field() }}
+                    <form class="form-horizontal" method="POST" action="{{ url('/admin/update-password') }}" name="password_validate" id="password_validate" novalidate="novalidate">
+                        @csrf
                         <div class="control-group">
                             <label class="control-label">ชื่อผู้ใช้งาน</label>
                             <div class="controls">

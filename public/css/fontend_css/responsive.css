@@ -525,3 +525,24 @@ ul.sub-menu{
 }
 
 }
+
+@media (max-width: 409px) {
+    #res-icon-tel {
+        display: none;
+        font-size: 12px;
+    }
+    #res-tel {
+        padding-left: 90px;
+        font-size: 12px;
+    }
+    .contactinfo .nav-pills li a {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 320px) {
+    .search_box input {
+        width: 140px;
+    }
+}
+
