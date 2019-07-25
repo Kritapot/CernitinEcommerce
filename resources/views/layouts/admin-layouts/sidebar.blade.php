@@ -6,6 +6,8 @@
     $order          =   Controller::count_order();
     $user           =   Controller::count_user();
     $cmsPage        =   Controller::count_cms();
+    $blog           =   Controller::count_blog();
+    $gallery        =   Controller::count_gallery();
 
 
     $url    =   url()->current();
@@ -49,6 +51,20 @@
           <li @if (preg_match('/list-cms/i', $url)) class="active" @endif><a href="{{ url('/admin/list-cms') }}">แสดงหน้าทั้งหมด</a></li>
         </ul>
       </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>บทความ</span> <span class="label label-important">{{ $blog }}</span></a>
+        <ul @if(preg_match('/blogger/i', $url)) style="display: block"   @endif>
+          <li @if (preg_match('/add-blogger/i', $url)) class="active" @endif><a href="{{ url('/admin/add-blogger') }}">เพิ่มบทความ</a></li>
+          <li @if (preg_match('/list-blogger/i', $url)) class="active" @endif><a href="{{ url('/admin/list-blogger') }}">แสดงบทความทั้งหมด</a></li>
+        </ul>
+      </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Gallery</span> <span class="label label-important">{{ $gallery }}</span></a>
+        <ul @if(preg_match('/gallery/i', $url)) style="display: block"   @endif>
+          <li @if (preg_match('/add-gallery/i', $url)) class="active" @endif><a href="{{ url('/admin/add-gallery') }}">เพิ่มรูปภาพ</a></li>
+          <li @if (preg_match('/list-gallery/i', $url)) class="active" @endif><a href="{{ url('/admin/list-gallery') }}">แสดงรูปภาพทั้งหมด</a></li>
+        </ul>
+      </li>
+
+
     </ul>
   </div>
   <!--sidebar-menu-->

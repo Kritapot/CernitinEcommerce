@@ -26,5 +26,14 @@ class Category extends Model
         return !empty($value) ? $value : "";
     }
 
+    public static function getTitleCategory()
+    {
+        $categoryTitle      =   Category::where('parent_id', 0)
+                                ->get();
+
+        return $categoryTitle;
+    }
+
+
 
 }

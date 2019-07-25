@@ -33,7 +33,6 @@ class ProductController extends Controller
     {
         if($request->isMethod('post')){
             $data                       =   $request->all();
-
             if(empty($data['category_id'])) {
                 return redirect()->back()->with('flash_message_errors', 'กรุณาเลือกประเภทของสินค้า');
             }
@@ -90,6 +89,7 @@ class ProductController extends Controller
                 //Save name image into database
                 $saveProduct->image         =   $filename;
             }
+
 
             $saveProduct->save();
             return redirect('/admin/list-product')->with('flash_message_success', 'เพิ่มรายการสินค้าเรียบร้อยแล้ว');
@@ -385,17 +385,27 @@ class ProductController extends Controller
                                             ->where('status', 1)
                                             ->get();
 
+            $countProduct       =  Product::whereIn('category_id', $cat_ids)
+                                            ->where('status', 1)
+                                            ->count();
+
         }else {
             $productAll         =   Product::where('category_id', $categoryDetail->id)
                                             ->where('status', 1)
                                             ->get();
+
+            $countProduct       =  Product::where('category_id', $categoryDetail->id)
+                                            ->where('status', 1)
+                                            ->count();
+
         }
 
 
         return view('products.listing', with([
             'categoryDetail'    => $categoryDetail,
             'categorise'        => $categorise,
-            'productAll'        => $productAll
+            'productAll'        => $productAll,
+            'countProduct'      => $countProduct
         ]));
 
     }
@@ -411,17 +421,24 @@ class ProductController extends Controller
         $data       =   $request->all();
 
         //dropdown category
-        $categorise         =   Category::with('categories')->where('parent_id', 0);
+        $categorise         =   Category::with('categories')->where('parent_id', 0)
+                                ->get();
+        $searchProduct      =   $data['product'];
 
-        $productAll         =   Product::where('product_name', 'like', '%'.$data['product'].'%')
-                                    ->orwhere('description', 'like', '%'.$data['product'].'%')
-                                    ->where('status', 1)
-                                    ->get();
+        $productAll         =   Product::where(function($query) use($searchProduct) {
+                                $query->where('product_name', 'LIKE', '%'.$searchProduct.'%')
+                                    ->orWhere('description', 'LIKE', '%'.$searchProduct.'%');
+                                })->where('status', 1)->get();
 
-        return view('products.listing', with([
-            'searchProduct'     => $data['product'],
+         $sumProductAll     =   $productAll->count();
+
+
+        return view('products.search', with([
+            'searchProduct'     => $searchProduct,
             'categorise'        => $categorise,
-            'productAll'        => $productAll
+            'productAll'        => $productAll,
+            'sumProductAll'     => $sumProductAll
+
         ]));
 
     }
@@ -582,9 +599,11 @@ class ProductController extends Controller
         {
             $user_email     =   Auth::user()->email;
             $userCart       =   Cart::where('user_email', $user_email)->get();
+            $userCartCount  =   Cart::where('user_email', $user_email)->count();
         }else {
             $session_id     =   Session::get('session_id');
             $userCart       =   Cart::where('session_id', $session_id)->get();
+            $userCartCount  =   Cart::where('session_id', $session_id)->count();
         }
 
         foreach($userCart as $key => $value) {
@@ -592,7 +611,7 @@ class ProductController extends Controller
             $userCart[$key]->image  =   $productDetail->image;
         }
 
-        return view('products.cart', with(['userCart' => $userCart]));
+        return view('products.cart', with(['userCart' => $userCart, 'userCartCount' => $userCartCount]));
     }
 
     /**

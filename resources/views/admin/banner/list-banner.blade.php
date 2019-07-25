@@ -41,6 +41,7 @@
                                         <th>หัวข้อ</th>
                                         <th>Link</th>
                                         <th>รูปภาพ</th>
+                                        <th>สถานะ</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -54,6 +55,9 @@
                                                 @if (!empty($item['image']))
                                                 <img style="width: 500px; height: 200px" src="{{ asset('images/fontend_images/banner/'.$item['image']) }}">
                                                 @endif
+                                            </td>
+                                            <td>
+                                                @if($item['status'] == 1) <span class="label label-success">เปิดการแสดงผล</span> @else <span class="label label-important">ปิดการแสดงผล</span> @endif
                                             </td>
                                             <td>
                                                 <a href="{{ url('/admin/edit-banner/'.$item['id']) }}" class="btn btn-info btn-mini">แก้ไข</a>

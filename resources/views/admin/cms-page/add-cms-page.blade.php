@@ -44,9 +44,19 @@
                             <div class="control-group">
                                 <label class="control-label">รายละเอียด</label>
                                 <div class="controls">
-                                    <textarea id="summernote" name="description" id="description"></textarea>
+                                    <textarea class="textarea_editor span12" rows="6" name="description" id="description"></textarea>
                                 </div>
                             </div>
+                            <!-- toolbar with suitable buttons and dialogues -->
+<div id="toolbar">
+    <a data-wysihtml5-command="bold">bold</a>
+    <a data-wysihtml5-command="italic">italic</a>
+    <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1">H1</a>
+    <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="p">P</a>
+  </div>
+
+  <!-- element to edit -->
+  <div id="editor" data-placeholder="Go on, start editing..."></div>
                             <div class="control-group">
                                 <label class="control-label">เปิด-ปิดการแสดงบทความ</label>
                                 <div class="controls">

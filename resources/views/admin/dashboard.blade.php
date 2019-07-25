@@ -8,6 +8,9 @@
     $order          =   Controller::count_order();
     $user           =   Controller::count_user();
     $cmsPage        =   Controller::count_cms();
+    $blog           =   Controller::count_blog();
+    $gallery        =   Controller::count_gallery();
+
 
     $countPending   =   Order::countPending();
 ?>
@@ -30,9 +33,9 @@
             <li class="bg_ls"> <a href="{{ url('/admin/list-order') }}"> <i class="icon-repeat">{{ $countPending }}</i> <span style="font-size: 20px">รายการสั่งซื้อที่รอดำเนินการ</span></a> </li>
             <li class="bg_lo span4"> <a href="{{ url('/admin/add-cms') }}"> <i class="icon-plus">{{ $cmsPage }}</i> <span style="font-size: 20px">CMS Page</span></a> </li>
             <li class="bg_ls span4"> <a href="{{ url('/admin/add-banner') }}"> <i class="icon-plus">{{ $banner }}</i> <span style="font-size: 20px">Banner</span></a> </li>
-            <li class="bg_lb span4"> <a href="interface.html"> <i class="icon-plus">20</i><span style="font-size: 20px">บทความ</span></a> </li>
-            <li class="bg_lg span4"> <a href="calendar.html"> <i class="icon-calendar">40</i> Calendar</a> </li>
-            <li class="bg_lr span4"> <a href="error404.html"> <i class="icon-info-sign">30</i> Error</a> </li>
+            <li class="bg_lb span4"> <a href="{{ url('/admin/add-blogger') }}"> <i class="icon-plus">{{ $blog }}</i><span style="font-size: 20px">บทความ</span></a> </li>
+            <li class="bg_lg span4"> <a href="{{ url('/admin/add-gallery') }}"> <i class="icon-plus">{{ $gallery }}</i> Gallery</a> </li>
+            <li class="bg_lr span4"> <a href="error404.html"> <i class="icon-info-sign">30</i> SEO</a> </li>
           </ul>
         </div>
     <!--End-Action boxes-->

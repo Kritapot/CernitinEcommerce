@@ -12,6 +12,8 @@ use App\Banner;
 use App\Order;
 use App\User;
 use App\CmsPage;
+use App\Blogger;
+use App\Gallery;
 
 class Controller extends BaseController
 {
@@ -80,6 +82,20 @@ class Controller extends BaseController
         $cmsPage     =   CmsPage::count();
 
         return $cmsPage;
+    }
+
+    public static function count_blog()
+    {
+        $blog     =   Blogger::count();
+
+        return $blog;
+    }
+
+    public static function count_gallery()
+    {
+        $gallery     =   Gallery::count();
+
+        return $gallery;
     }
 
 

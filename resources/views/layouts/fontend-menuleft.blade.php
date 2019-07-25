@@ -1,4 +1,7 @@
-<?php use App\Product; ?>
+<?php
+use App\Product;
+use App\Blogger;
+?>
 
 <div class="left-sidebar">
         <h2>ประเภทสินค้า</h2>
@@ -26,6 +29,24 @@
                                 @endforeach
                             </ul>
                         </div>
+                    </div>
+                @endforeach
+            </div>
+        </div><!--/category-products-->
+    </div>
+    <div class="left-sidebar">
+        <h2>บทความ</h2>
+        <div class="panel-group category-products"><!--category-productsr-->
+            <div class="panel panel-default">
+                <?php $bloggerTitle     =   Blogger::showBlogHomepage()  ?>
+                @foreach ($bloggerTitle as $key => $value)
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="{{ asset('/blog-detail/'.$value['id']) }}" style="font-size: 18px">
+                                <span class="badge pull-right"><i class="fab fa-blogger-b"></i></span>
+                                {{ $value['title'] }}
+                            </a>
+                        </h4>
                     </div>
                 @endforeach
             </div>

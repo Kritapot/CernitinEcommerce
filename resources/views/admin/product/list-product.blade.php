@@ -80,7 +80,7 @@
                                                     <div class="modal-body" style="font-size: 1.4em">
                                                         <p><span style="font-weight: 600">รหัสสินค้า :</span> {{ $item['id'] }}</p>
                                                         <p><span style="font-weight: 600">ประเภทสินค้า :</span> {{ $item['category_id'] }}</p>
-                                                        <p><span style="font-weight: 600">รายละเอียด :</span> {{ $item['description'] }}</p>
+                                                        <p><span style="font-weight: 600">รายละเอียด :</span> {!! $item['description'] !!}</p>
                                                         <p><span style="font-weight: 600">code :</span> {{ $item['product_code'] }}</p>
                                                         <p><span style="font-weight: 600">สี :</span> {{ $item['product_color'] }}</p>
                                                         <p><span style="font-weight: 600">ราคา :</span> {{ $item['price'] }}</p>

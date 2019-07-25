@@ -21,6 +21,8 @@
     <link href="{{ asset('css/fontend_css') }}/passtrength.css" rel="stylesheet">
     <link href="{{ asset('vendor/toastr/toastr.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet">
+    <link href="{{ asset('vendor/image-gallery/css/style.css') }}" rel="stylesheet">
+
 
 </head>
 
@@ -43,5 +45,6 @@
     <script src="{{ asset('vendor/fontawesome') }}/all.js"></script>
     <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
     {!! Toastr::message() !!}
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d3822796525963d"></script>
 </body>
 </html>

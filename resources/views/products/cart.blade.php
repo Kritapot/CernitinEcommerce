@@ -37,6 +37,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if ($userCartCount == 0)
+                        <tr>
+                            <td>
+                                <div class="text-center" style="padding-top: 30px; margin-left: 300px">
+                                    <span style="color: red; font-size: 20px;">ไม่มีรายการสินค้าในตระกร้า</span>
+                                </div>
+                            </td>
+                        </tr>
+                    @endif
+
                     <?php $totalAmount = 0; ?>
                     @foreach ($userCart as $key => $value)
                     <tr>
@@ -82,17 +92,19 @@
         <div class="row">
             <div class="col-sm-6">
             </div>
+            @if ($userCartCount != 0)
             <div class="col-sm-6">
-                <div class="total_area">
-                    <ul>
-                        <?php $shipping = 0 ?>
-                        <li>ยอดรวมสินค้า <span>THB  <?php echo $totalAmount ?></span></li>
-                        <li>ค่าจัดส่ง <span>ฟรี</span></li>
-                        <li>รวม <span>THB <?php echo $totalAmount + $shipping; ?></span></li>
-                    </ul>
-                    <a class="btn btn-default check_out" href="{{ url('/checkout') }}">ชำระเงิน</a>
+                    <div class="total_area">
+                        <ul>
+                            <?php $shipping = 0 ?>
+                            <li>ยอดรวมสินค้า <span>THB  <?php echo $totalAmount ?></span></li>
+                            <li>ค่าจัดส่ง <span>ฟรี</span></li>
+                            <li>รวม <span>THB <?php echo $totalAmount + $shipping; ?></span></li>
+                        </ul>
+                        <a class="btn btn-default check_out" href="{{ url('/checkout') }}">ชำระเงิน</a>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 </section>

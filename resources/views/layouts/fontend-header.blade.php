@@ -53,7 +53,7 @@
                         <h4 style="line-height: 1.9em">ศูนย์จำหน่าย เซอร์นิติน ของแท้จากบริษัท สนใจสินค้า สั่งซื้อหรือ สอบถามปรึกษาปัญหาสุขภาพ &nbsp;&nbsp;<br>
                         </h4>
                         <i class="fab fa-line" style="color: green; font-size: 30px"></i>&nbsp; <span style="font-size: 20px">id: 0826113223</span>&nbsp;&nbsp;
-                        <i id="res-icon-tel" class="fa fa-phone" style="color: green; font-size: 25px"></i>&nbsp; <span id="res-tel" style="font-size: 20px">โทร: 0826113223</span></i>
+                        <i id="res-icon-tel" class="fa fa-phone" style="color: green; font-size: 25px"></i>&nbsp; <span id="res-tel" style="font-size: 20px">โทร: 082-6113223</span></i>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <form action="{{ url('/search-product') }}" method="POST">
+                        <form action="{{ url('/search-product') }}" method="POST" >
                             @csrf
                             <input type="text" placeholder="ค้นหาสินค้า" name="product"/>
                             <button type="submit" style="border-radius: 0; height: 33px; margin-bottom: 6px; margin-left: -5px" class="btn btn-info">ค้นหา</button>

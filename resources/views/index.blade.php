@@ -72,4 +72,6 @@
         </div>
     </div>
 </section>
+@include('products.card')
+@include('gallery.gallery-pic')
 @endsection

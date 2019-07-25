@@ -63,7 +63,7 @@
                                                     <div class="modal-body" style="font-size: 1.4em">
                                                         <p><span style="font-weight: 600">รหัสบทความ :</span> {{ $item['id'] }}</p>
                                                         <p><span style="font-weight: 600">หัวข้อ :</span> {{ $item['title'] }}</p>
-                                                        <p><span style="font-weight: 600">รายละเอียด :</span> {{ $item['description'] }}</p>
+                                                        <p><span style="font-weight: 600">รายละเอียด :</span> {!! $item['description'] !!}</p>
                                                         <p><span style="font-weight: 600">สถานะ :</span> {{ $item['status'] == 1 ? 'เปิดการแสดง' : 'ปิดการแสดง' }}</p>
                                                     </div>
                                                 </div>

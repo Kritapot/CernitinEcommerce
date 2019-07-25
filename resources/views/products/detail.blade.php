@@ -60,9 +60,9 @@
                                 <p id="avibility"><b>สถานะสินค้าใน : </b> @if($totalStock>0) <span
                                         style="color: green">ใน stock {{$totalStock}}</span> @else <span
                                         style="color: red">สินค้าหมด stock</span> @endif</p>
-                                <a href=""><img src="images/product-details/share.png" class="share img-responsive"
-                                        alt=""></a>
                             </div>
+                            <div class="addthis_inline_share_toolbox_17du"></div>
+
                             <!--/product-information-->
                         </form>
                     </div>
@@ -80,13 +80,13 @@
                     </div>
                     <div class="tab-content">
                         <div class="tab">
-                            <div class="col-sm-12">
-                                <p style="font-size: 24px">{{ $productDetail['description'] }}</p>
+                            <div class="col-sm-12" style="line-height: 10px">
+                                <p style="font-size: 24px">{!! $productDetail['description'] !!}</p>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="care">
                             <div class="col-sm-12">
-                                <p style="font-size: 24px">{{ $productDetail['care'] }}</p>
+                                <p style="font-size: 24px">{!! $productDetail['care'] !!}</p>
                             </div>
                         </div>
 

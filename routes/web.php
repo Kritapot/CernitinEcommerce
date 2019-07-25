@@ -40,6 +40,8 @@ Route::post('/search-product', 'ProductController@searchProduct');
 //CMS Page
 Route::match(['get', 'post'], '/page/{url}', 'CmsPageController@showCmsPage');
 Route::match(['get', 'post'], '/contact', 'CmsPageController@contactUs');
+//Blogger
+Route::get('/blog-detail/{id}', 'BloggerController@showDetailBlog');
 
 
 
@@ -111,6 +113,17 @@ Route::group(['middleware' => ['AdminLogin']], function () {
     Route::get('/admin/list-cms', 'CmsPageController@listCmsPage');
     Route::get('/admin/delete-cms/{id}', 'CmsPageController@delete');
     Route::match(['get', 'post'], '/admin/edit-cms/{id}', 'CmsPageController@editCmsPage');
+    //Blogger
+    Route::match(['get', 'post'], '/admin/add-blogger', 'BloggerController@addBlogger');
+    Route::match(['get', 'post'], '/admin/edit-blogger/{id}', 'BloggerController@editBlogger');
+    Route::get('/admin/list-blogger', 'BloggerController@list');
+    Route::get('/admin/delete-blog/{id}', 'BloggerController@delete');
+    //Gallery
+    Route::match(['get', 'post'], '/admin/add-gallery', 'GalleryController@addGallery');
+    Route::get('/admin/list-gallery', 'GalleryController@list');
+    Route::get('/admin/delete-gallery/{id}', 'GalleryController@delete');
+
+
 });
 
 

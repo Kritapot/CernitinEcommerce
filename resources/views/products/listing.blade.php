@@ -11,16 +11,12 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">
-                        @if (!empty($searchProduct))
-                            {{ $searchProduct }}
-                        @else
-                            @if(empty($categoryDetail['name']))
-                                <span style="color: red">ไม่มีรายการที่ท่านค้นหา</span>
-                            @else
-                                {{ $categoryDetail['name'] }}
-                            @endif
-                        @endif
+                        {{ $categoryDetail['name'] }}
                     </h2>
+                    <div class="text-left"><span style="font-size: 18px"><a href="{{ url('/') }}">กลับไป</a> | <span style="color: green">{{ $categoryDetail['url'] }}</span></div><br>
+                    @if ($countProduct == 0)
+                        <br><br><br><span style="font-size: 20px; color: red; margin: 0px 150px;">ขออภัยไม่มีรายการที่แสดง</span>
+                    @endif
                     @foreach ($productAll as $key => $value)
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">

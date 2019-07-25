@@ -377,6 +377,59 @@ $(document).ready(function(){
 
     });
 
+    $('.deleteGallery').click(function() {
+        var id                  =   $(this).attr('rel');
+        var deleteFunction      =   $(this).attr('rel1');
+
+        Swal.fire({
+            title: 'คุณแน่ใจที่จะลบรูปภาพ ?',
+            text: "คุณจะไม่สามารถกลับไปแก้ไขได้อีกถ้ากดปุ่มยืนยัน!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ยืนยันการลบรูปภาพ',
+            cancelButtonText: 'ยกเลิการทำรายการ'
+          }).then((result) => {
+            if (result.value) {
+              Swal.fire(
+                'ลบรูปภาพ !',
+                'รูปภาพถูกลบเรียบร้อยแล้ว',
+                'success'
+              )
+              window.location.href="/admin/"+deleteFunction+"/"+id;
+            }
+          })
+
+    });
+
+    $('.deleteBlog').click(function() {
+        var id                  =   $(this).attr('rel');
+        var deleteFunction      =   $(this).attr('rel1');
+
+        Swal.fire({
+            title: 'คุณแน่ใจที่จะลบบทความ?',
+            text: "คุณจะไม่สามารถกลับไปแก้ไขได้อีกถ้ากดปุ่มยืนยัน!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ยืนยันการลบบทความ',
+            cancelButtonText: 'ยกเลิการทำรายการ'
+          }).then((result) => {
+            if (result.value) {
+              Swal.fire(
+                'ลบบทความ!',
+                'บทความถูกลบเรียบร้อย',
+                'success'
+              )
+              window.location.href="/admin/"+deleteFunction+"/"+id;
+            }
+          })
+
+    });
+
+
 
     $(document).ready(function(){
         var maxField = 10; //Input fields increment limitation

@@ -44,7 +44,7 @@
                             <div class="control-group">
                                 <label class="control-label">รายละเอียด</label>
                                 <div class="controls">
-                                    <textarea id="summernote" name="description" id="description">{{ $cmsPage['description'] }}</textarea>
+                                    <textarea class="textarea_editor span12" rows="15" name="description" id="description">{{ $cmsPage['description'] }}</textarea>
                                 </div>
                             </div>
                             <div class="control-group">

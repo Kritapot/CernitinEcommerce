@@ -29,7 +29,7 @@
                                     <img src="images/blog/blog-one.jpg" alt="">
                                 </a>
                                 <p style="font-size: 20px">
-                                    {{ $cmsPageDetail['description'] }}
+                                    {!! $cmsPageDetail['description'] !!}
                                 </p>
 
                             </div>

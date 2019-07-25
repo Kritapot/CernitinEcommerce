@@ -69,13 +69,13 @@
                             <div class="control-group">
                                 <label class="control-label">รายละเอียด</label>
                                 <div class="controls">
-                                    <textarea name="description" id="description"></textarea>
+                                    <textarea class="textarea_editor span12" rows="15" name="description" id="description"></textarea>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Material and Care</label>
                                 <div class="controls">
-                                    <textarea name="care" id="care"></textarea>
+                                    <textarea class="textarea_editor span12" rows="3" name="care" id="care"></textarea>
                                 </div>
                             </div>
                             <div class="control-group">
